@@ -1,0 +1,81 @@
+name: arnold
+
+services:
+  db:
+    image: postgres:18.6-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks: [private]
+
+  redis:
+    image: redis:7.4-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks: [private]
+
+  migrate:
+    build: .
+    env_file: .env
+    command: python manage.py migrate --noinput
+    depends_on:
+      db:
+        condition: service_healthy
+    networks: [private]
+
+  web:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    command: gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 3
+    volumes:
+      - private-files:/var/lib/arnold/files
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    networks: [private]
+
+  worker:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    command: celery -A core.celery:app worker --loglevel=INFO --concurrency=2
+    volumes:
+      - private-files:/var/lib/arnold/files
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks: [private]
+
+volumes:
+  postgres-data:
+  redis-data:
+  private-files:
+
+networks:
+  private:
+    internal: true

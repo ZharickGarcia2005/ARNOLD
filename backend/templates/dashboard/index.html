@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">A</div>
+        <div><strong>ARNOLD</strong><span>ARDUR S.A.</span></div>
+      </div>
+
+      <nav class="nav-list">
+        <button class="nav-item active" data-view="dashboard"><span>⌂</span>Resumen</button>
+        <button class="nav-item" data-view="preliminar"><span>▦</span>Preliminar <b class="nav-count" id="issueCount">0</b></button>
+        <button class="nav-item" data-view="sources"><span>⇄</span>Fuentes <b class="nav-count">4</b></button>
+        <button class="nav-item" data-view="approvals"><span>✓</span>Aprobaciones <b class="nav-count" id="approvalCount">0</b></button>
+        <button class="nav-item" data-view="audit"><span>↺</span>Bitácora</button>
+        <button class="nav-item" data-view="security"><span>◇</span>Seguridad</button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <span class="environment-dot"></span>
+        <div><strong>Entorno protegido</strong><small>Prototipo sin datos reales</small></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">MÓDULO PRELIMINAR</p>
+          <h1 id="pageTitle">Resumen de validación</h1>
+        </div>
+        <div class="topbar-actions">
+          <label class="role-picker">Vista de permisos
+            <select id="roleSelect" aria-label="Cambiar rol de demostración">
+              <option value="validator">Validador</option>
+              <option value="supervisor">Jefe de área</option>
+              <option value="auditor">Auditor</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </label>
+          <div class="user-chip">
+            <div class="avatar" id="avatar">JV</div>
+            <div><strong id="userName">José Validador</strong><span id="userRole">Validador</span></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="demo-banner" role="status">
+        <span>●</span> Prototipo visual: el cambio de rol está habilitado solo para comprobar permisos. En producción cada usuario tendrá un rol fijo.
+      </div>
+
+      <section class="view active" id="dashboardView">
+        <div class="hero-card">
+          <div>
+            <span class="status-pill neutral">Última carga · Demostración</span>
+            <h2>La base preliminar necesita revisión</h2>
+            <p>ARNOLD separa los registros confiables de los que requieren corrección o aprobación.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn secondary" id="openAuditBtn">Ver bitácora</button>
+            <button class="btn primary can-import" id="importBtn">＋ Cargar base mensual</button>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card"><span class="metric-icon blue">▦</span><div><small>Registros cargados</small><strong id="metricTotal">0</strong><em>Base de demostración</em></div></article>
+          <article class="metric-card"><span class="metric-icon red">!</span><div><small>Problemas críticos</small><strong id="metricCritical">0</strong><em>Requieren atención</em></div></article>
+          <article class="metric-card"><span class="metric-icon amber">≈</span><div><small>Posibles repetidos</small><strong id="metricDuplicates">0</strong><em>Comparación histórica</em></div></article>
+          <article class="metric-card"><span class="metric-icon green">✓</span><div><small>Listos para aprobar</small><strong id="metricReady">0</strong><em>Sin alertas críticas</em></div></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel">
+            <div class="panel-head"><div><p class="eyebrow">CONTROL DE CALIDAD</p><h3>Resultado de las reglas</h3></div><button class="text-button" data-go="preliminar">Revisar registros →</button></div>
+            <div id="qualityBars" class="quality-bars"></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><div><p class="eyebrow">FLUJO DE TRABAJO</p><h3>Estado del lote</h3></div></div>
+            <ol class="timeline">
+              <li class="done"><i>✓</i><div><strong>Archivo recibido</strong><span>Formato y columnas reconocidos</span></div></li>
+              <li class="active"><i>2</i><div><strong>Validación preliminar</strong><span>Reglas automáticas y revisión humana</span></div></li>
+              <li><i>3</i><div><strong>Aprobación del jefe</strong><span>Cambios sensibles y cierre del lote</span></div></li>
+              <li><i>4</i><div><strong>Exportación</strong><span>Excel de incidencias y base depurada</span></div></li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="preliminarView">
+        <div class="workspace-toolbar">
+          <div class="segmented" id="filters" aria-label="Filtrar registros">
+            <button class="active" data-filter="all">Todos</button>
+            <button data-filter="critical">Críticos</button>
+            <button data-filter="duplicate">Repetidos</button>
+            <button data-filter="payment">Pago/cancelación</button>
+            <button data-filter="ready">Sin alertas</button>
+          </div>
+          <div class="toolbar-right">
+            <label class="search-box">⌕<input id="searchInput" placeholder="Buscar título, CIU o identificación" /></label>
+            <button class="btn secondary" id="exportBtn">⇩ Exportar incidencias</button>
+            <button class="btn primary can-import" id="importBtnGrid">＋ Nueva carga</button>
+          </div>
+        </div>
+
+        <div class="permission-note" id="permissionNote"></div>
+        <div class="table-card">
+          <div class="table-meta"><span id="visibleRows">0 registros</span><span>Los campos protegidos requieren aprobación del jefe</span></div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Estado</th><th>Título / expediente</th><th>Identificación</th><th>Contribuyente</th><th>CIU</th><th>Cuenta de agua</th><th class="numeric">Valor total</th><th>Orden</th><th>Acciones</th></tr></thead>
+              <tbody id="recordsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="sourcesView">
+        <div class="section-intro">
+          <div><p class="eyebrow">FUENTES RECONOCIDAS</p><h2>Mapa de datos del validador</h2><p>Perfil agregado de los libros analizados. ARNOLD no expone aquí información personal ni filas de origen.</p></div>
+          <span class="config-version" id="configVersion"></span>
+        </div>
+        <div class="source-summary" id="sourceSummary"></div>
+        <div class="source-grid" id="sourceCards"></div>
+        <div class="source-detail-grid">
+          <article class="panel">
+            <div class="panel-head"><div><p class="eyebrow">REGLAS ACTIVAS</p><h3>Controles incorporados</h3></div><span class="rule-count" id="ruleCount"></span></div>
+            <div class="rule-list" id="ruleList"></div>
+          </article>
+          <article class="panel">
+            <p class="eyebrow">TRAZABILIDAD DE LA FASE</p><h3>Origen comprobado</h3>
+            <ol class="lineage-list">
+              <li><b>Julio · fuente</b><span>37.330 registros con clave</span></li>
+              <li><b>Julio · consolidado</b><span>26.927 seleccionados con el segundo bloque monetario</span></li>
+              <li><b>Órdenes 030–034</b><span>2.618 registros trazables al consolidado de julio</span></li>
+              <li class="review"><b>Agosto · comparación</b><span>6 claves de las órdenes no continúan en agosto; no implica pago</span></li>
+            </ol>
+            <div class="privacy-callout"><strong>Protección aplicada</strong><span>Los Excel originales no se copiaron al proyecto. Solo se guardaron esquemas, reglas y estadísticas agregadas.</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="view" id="approvalsView">
+        <div class="section-intro"><div><p class="eyebrow">DOBLE CONTROL</p><h2>Solicitudes de aprobación</h2><p>Los cambios sensibles nunca se aplican silenciosamente.</p></div></div>
+        <div id="approvalList" class="approval-list"></div>
+      </section>
+
+      <section class="view" id="auditView">
+        <div class="section-intro"><div><p class="eyebrow">TRAZABILIDAD</p><h2>Bitácora inalterable</h2><p>Cada carga, edición, solicitud y decisión queda registrada con usuario y fecha.</p></div><button class="btn secondary" id="auditExport">⇩ Descargar bitácora</button></div>
+        <div class="audit-card"><div id="auditList" class="audit-list"></div></div>
+      </section>
+
+      <section class="view" id="securityView">
+        <div class="section-intro"><div><p class="eyebrow">SEGURIDAD POR DISEÑO</p><h2>Permisos y protección</h2><p>La interfaz refleja el cargo del usuario; el servidor será quien haga cumplir cada permiso.</p></div></div>
+        <div class="security-grid">
+          <article class="panel role-matrix">
+            <h3>Matriz de acceso</h3>
+            <div class="matrix-row header"><span>Acción</span><b>Validador</b><b>Jefe</b><b>Auditor</b><b>Admin.</b></div>
+            <div class="matrix-row"><span>Consultar registros</span><b>✓</b><b>✓</b><b>✓</b><b>✓</b></div>
+            <div class="matrix-row"><span>Corregir datos comunes</span><b>✓</b><b>✓</b><b>—</b><b>✓</b></div>
+            <div class="matrix-row"><span>Cambiar título, identidad o monto</span><b>Solicita</b><b>✓</b><b>—</b><b>✓</b></div>
+            <div class="matrix-row"><span>Aprobar y cerrar lote</span><b>—</b><b>✓</b><b>—</b><b>✓</b></div>
+            <div class="matrix-row"><span>Administrar usuarios</span><b>—</b><b>—</b><b>—</b><b>✓</b></div>
+          </article>
+          <article class="panel safeguards">
+            <h3>Controles obligatorios</h3>
+            <ul>
+              <li><i>✓</i><div><strong>Cifrado</strong><span>HTTPS en tránsito y base cifrada en reposo.</span></div></li>
+              <li><i>✓</i><div><strong>Acceso individual</strong><span>Contraseña segura y segundo factor para jefes y administradores.</span></div></li>
+              <li><i>✓</i><div><strong>Mínimo privilegio</strong><span>Cada usuario ve y modifica solo lo necesario.</span></div></li>
+              <li><i>✓</i><div><strong>Bitácora separada</strong><span>Los usuarios no pueden borrar su propio historial.</span></div></li>
+              <li><i>✓</i><div><strong>Copias y recuperación</strong><span>Respaldos cifrados y pruebas periódicas de restauración.</span></div></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="importModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="importTitle">
+      <button class="modal-close" data-close="importModal" aria-label="Cerrar">×</button>
+      <p class="eyebrow">NUEVA CARGA</p><h2 id="importTitle">Importar base mensual</h2>
+      <p>El archivo se validará antes de guardar cualquier registro.</p>
+      <label class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" />
+        <span class="upload-icon">⇧</span><strong>Selecciona o arrastra el Excel</strong><small>XLSX, XLS o CSV · máximo 250 MB</small>
+      </label>
+      <div class="file-ready" id="fileReady"></div>
+      <div class="modal-actions"><button class="btn secondary" data-close="importModal">Cancelar</button><button class="btn primary" id="validateFileBtn" disabled>Validar archivo</button></div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="editModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="editTitle">
+      <button class="modal-close" data-close="editModal" aria-label="Cerrar">×</button>
+      <p class="eyebrow">CONTROL DE CAMBIO</p><h2 id="editTitle">Editar registro</h2>
+      <div class="form-grid">
+        <label>Campo<select id="editField"><option value="contributor">Contribuyente</option><option value="account">Cuenta de agua</option><option value="title">Título / expediente</option><option value="identity">Identificación</option><option value="amount">Valor total</option></select></label>
+        <label>Nuevo valor<input id="editValue" autocomplete="off" /></label>
+        <label class="full">Motivo del cambio<textarea id="editReason" rows="3" placeholder="Explica brevemente la corrección"></textarea></label>
+      </div>
+      <div class="sensitive-warning" id="sensitiveWarning"></div>
+      <div class="modal-actions"><button class="btn secondary" data-close="editModal">Cancelar</button><button class="btn primary" id="saveEditBtn">Guardar cambio</button></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+{% endblock %}

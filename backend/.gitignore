@@ -1,0 +1,7 @@
+.env
+db.sqlite3
+private-files/
+staticfiles/
+__pycache__/
+*.py[cod]
+
