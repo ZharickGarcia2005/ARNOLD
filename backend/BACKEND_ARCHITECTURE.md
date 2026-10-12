@@ -3,13 +3,16 @@
 ## Decisión
 
 ARNOLD comienza como una arquitectura multiservicio de despliegue con un núcleo
-de negocio modular. Se usa una sola base PostgreSQL porque los lotes, registros,
+de negocio modular. SQLite se usa en desarrollo local y PostgreSQL es el destino
+de despliegue. Se mantiene una sola base de negocio porque los lotes, registros,
 incidencias, aprobaciones y auditoría requieren consistencia transaccional fuerte.
 
 Los servicios iniciales son:
 
-1. **web**: API, autenticación, permisos, administración y flujo de aprobación.
-2. **worker**: lectura aislada de Excel y ejecución de reglas en segundo plano.
+1. **web**: hoy ofrece dashboard, administración y health check; la API,
+   autenticación operativa, permisos y flujo de aprobación son el objetivo.
+2. **worker**: existe el esqueleto Celery; la lectura aislada de Excel y la
+   conexión con el motor siguen pendientes.
 3. **db**: PostgreSQL; único propietario persistente de los datos de negocio.
 4. **redis**: cola de trabajos, nunca fuente de verdad.
 
@@ -56,10 +59,10 @@ o mensajes. Nunca mediante consultas directas a sus tablas.
 
 ## Próximos pasos
 
-1. Crear las migraciones y los grupos de permisos.
-2. Implementar carga en cuarentena y huella SHA-256.
-3. Conectar el motor real de los once controles.
-4. Añadir cifrado de campos y gestión de claves.
+1. Implementar el adaptador Excel de ARNOLD y su carga en cuarentena con SHA-256.
+2. Conectar el núcleo puro de once reglas al worker sin duplicar la lógica.
+3. Completar usuarios, grupos de permisos y doble control operativo.
+4. Completar cifrado de campos y gestión de claves.
 5. Implementar eventos de auditoría con cadena hash.
 6. Publicar endpoints versionados para el frontend.
 7. Añadir proxy HTTPS, MFA, antivirus y respaldos.
