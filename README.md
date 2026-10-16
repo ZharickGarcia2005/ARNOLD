@@ -28,18 +28,28 @@ Luego abra `http://127.0.0.1:8000/`.
 
 ## Alcance de esta versión
 
-Esta versión permite revisar el flujo y la interfaz. El cambio de rol, las cargas y los datos son demostrativos. Antes de utilizar información real se debe conectar un servidor con autenticación, permisos, almacenamiento cifrado, auditoría inalterable y copias de seguridad.
+La hoja preliminar consulta las filas reales del lote seleccionado, en páginas
+de 100 filas, y permite edición con guardado explícito, control de versiones,
+revisión de cambios protegidos y dos descargas XLSX (principal/problemas).
+Sin lotes muestra un estado vacío, sin datos de demostración. La carga mensual
+está conectada al backend: recibe un XLSX autenticado, lo pone en cuarentena,
+crea `Batch`/`Record`/`ValidationRun`, ejecuta el motor y persiste incidencias
+idempotentes. El despliegue productivo continúa bloqueado hasta disponer de MFA,
+antivirus operativo, volumen cifrado, copias y monitoreo.
 
-La pantalla **Fuentes** sí refleja estadísticas agregadas obtenidas de los libros de julio, agosto, la exportación XLS heredada y las órdenes 030–034. Los archivos originales no forman parte del frontend. Véase **docs/SOURCE_ANALYSIS.md** para la reconciliación. El catálogo Python de `backend/apps/validation/rules.py` es la autoridad de reglas; `backend/static/js/validator-config.js` es todavía una presentación heredada que deberá consumir ese catálogo en una fase posterior.
+El análisis agregado de los libros de julio, agosto, la exportación XLS heredada
+y las órdenes 030–034 se conserva en **docs/SOURCE_ANALYSIS.md**. La nueva hoja
+operativa utiliza la base real; el dashboard anterior y su catálogo JavaScript
+quedan como presentación heredada fuera de la ruta principal.
 
 ## Siguiente etapa técnica
 
-1. Adaptador Excel seguro dentro de ARNOLD para construir los contratos del motor.
+1. Probar el adaptador con una copia anonimizada y confirmar el mapa de columnas.
 2. Inicio de sesión individual con segundo factor para cargos sensibles.
-3. Importación y lectura de Excel en segundo plano.
-4. Conectar el motor mediante un adaptador ARDUR separado y aprobado.
-5. Persistir incidencias sin modificar la evidencia RAW.
-6. Conectar el flujo de aprobación de doble control.
+3. Ampliar la consulta de lotes e incidencias con búsqueda y filtros en servidor.
+4. Construir el exportador ARDUR separado y aprobado.
+5. Completar el cierre/aprobación global del lote y la evidencia de pagos.
+6. Ampliar la comparación histórica sobre las correcciones de la hoja.
 7. Despliegue privado con HTTPS, copias de seguridad y monitoreo.
 
 ## Motor financiero
@@ -48,7 +58,7 @@ La primera versión del motor de reglas, comparación mensual y exportación XLS
 está implementada como código Python puro bajo `backend/apps/validation/`. No
 modifica ni importa código de ARDUR-BETA y se prueba únicamente con datos
 ficticios. Puede conservar los identificadores con ceros iniciales cuando el
-futuro adaptador entrega texto o el valor `raw`; emite incidencias cuando un
+adaptador entrega texto o el valor `raw`; emite incidencias cuando un
 `PaymentClaim` no declara doble control, obliga a registrar qué apariciones de
 columnas duplicadas se utilizaron y evita truncar evidencia en Excel. Consulte
 **docs/FINANCIAL_ENGINE.md** para el contrato y sus límites.
@@ -57,9 +67,12 @@ columnas duplicadas se utilizaron y evita truncar evidencia en Excel. Consulte
 
 La base del backend utiliza Django 5.2 LTS. El desarrollo local usa SQLite; el
 despliegue está preparado para PostgreSQL, Celery y Redis como varios servicios
-con una sola base de negocio para mantener consistencia. La API segura, la
-autenticación operativa y la conexión del worker todavía están pendientes. Consulte
-**backend/BACKEND_ARCHITECTURE.md** y **backend/compose.yaml**.
+con una sola base de negocio para mantener consistencia. La API de carga y el
+worker ya están conectados. Consulte **backend/BACKEND_ARCHITECTURE.md**,
+**backend/compose.yaml** y **docs/REAL_DATA_INTEGRATION.md**.
+
+La interfaz de revisión y sus permisos se describen en
+**docs/PRELIMINAR_WORKSHEET.md**.
 
 ## Organización Django
 

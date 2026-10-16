@@ -5,6 +5,22 @@ const users = {
   admin: { name: "Carlos Administrador", initials: "CA", label: "Administrador" }
 };
 
+const shell = document.querySelector(".app-shell");
+const session = {
+  authenticated: shell?.dataset.authenticated === "true",
+  canImport: shell?.dataset.canImport === "true",
+  name: shell?.dataset.userName || "",
+  role: shell?.dataset.userRole || "validator"
+};
+const maxUploadBytes = Number(document.getElementById("importModal")?.dataset.maxUploadBytes || 0);
+let realBatch = null;
+let realPage = 1;
+let realSummary = null;
+let pollGeneration = 0;
+const escapeHtml = value => String(value ?? "").replace(/[&<>'"]/g, character => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
+})[character]);
+
 const records = [
   { id: 1, status: "critical", title: "EXP-DEMO-001", identity: "17••••••01", contributor: "Contribuyente de prueba A", ciu: "CIU-10421", account: "CTA-55031", amount: 486.35, order: "096", issue: "Conflicto de identidad" },
   { id: 2, status: "duplicate", title: "EXP-DEMO-002", identity: "09••••••42", contributor: "Contribuyente de prueba B", ciu: "CIU-22108", account: "CTA-71780", amount: 932.18, order: "096", issue: "Posible repetido" },
@@ -17,7 +33,7 @@ const records = [
 ];
 
 let state = {
-  role: "validator", view: "dashboard", filter: "all", search: "", editingId: null,
+  role: session.authenticated && users[session.role] ? session.role : "validator", view: "dashboard", filter: "all", search: "", editingId: null,
   approvals: [
     { id: 101, recordId: 5, requester: "José Validador", field: "Valor total", oldValue: "$ 1.106,50", newValue: "$ 986,50", reason: "Valor confirmado con respaldo de la entidad", status: "pending" }
   ],
@@ -35,9 +51,9 @@ const money = value => new Intl.NumberFormat("es-EC", { style: "currency", curre
 function permissions() {
   const role = state.role;
   return {
-    canEdit: role === "validator" || role === "supervisor" || role === "admin",
+    canEdit: !realBatch && (role === "validator" || role === "supervisor" || role === "admin"),
     canApprove: role === "supervisor" || role === "admin",
-    canImport: role === "supervisor" || role === "admin",
+    canImport: session.authenticated && session.canImport,
     directSensitiveEdit: role === "supervisor" || role === "admin"
   };
 }
@@ -54,10 +70,13 @@ function setView(view) {
 }
 
 function renderAll() {
-  const user = users[state.role];
+  const user = session.authenticated
+    ? { ...users[state.role], name: session.name || users[state.role].name }
+    : users[state.role];
   document.getElementById("userName").textContent = user.name;
   document.getElementById("userRole").textContent = user.label;
   document.getElementById("avatar").textContent = user.initials;
+  document.getElementById("roleSelect").value = state.role;
   document.querySelectorAll(".can-import").forEach(btn => btn.disabled = !permissions().canImport);
   const critical = records.filter(r => r.status === "critical").length;
   const duplicate = records.filter(r => r.status === "duplicate").length;
@@ -69,6 +88,19 @@ function renderAll() {
   document.getElementById("issueCount").textContent = records.filter(r => r.status !== "ready").length;
   document.getElementById("approvalCount").textContent = state.approvals.filter(a => a.status === "pending").length;
   renderQuality(); renderRecords(); renderApprovals(); renderAudit(); renderPermissionNote(); renderSources();
+  if (realBatch) {
+    document.getElementById("metricTotal").textContent = realSummary?.total ?? 0;
+    document.getElementById("metricCritical").textContent = realSummary?.critical_count ?? 0;
+    document.getElementById("metricDuplicates").textContent = realSummary?.duplicate_count ?? 0;
+    document.getElementById("metricReady").textContent = realSummary?.counts?.ready ?? 0;
+    document.getElementById("issueCount").textContent = realSummary?.issue_count ?? 0;
+    document.querySelector(".hero-card .status-pill").textContent = realBatch.name;
+    document.querySelector(".metric-card em").textContent = "Cartera seleccionada";
+    document.getElementById("permissionNote").textContent = "Datos reales en consulta. Las correcciones y aprobaciones se conectarán en la siguiente fase. Búsqueda y filtros se aplican a la página actual.";
+    document.getElementById("exportBtn").disabled = true;
+    document.getElementById("tableMode").textContent = "Fila original del Excel · consulta sin modificar el archivo";
+    document.getElementById("qualityBars").textContent = `${realSummary?.total ?? 0} filas procesadas · ${realSummary?.issue_count ?? 0} incidencias. Los conteos críticos y repetidos representan incidencias, no personas únicas.`;
+  }
 }
 
 function renderSources() {
@@ -104,7 +136,7 @@ function renderQuality() {
   ];
   document.getElementById("qualityBars").innerHTML = groups.map(([label, status, color]) => {
     const count = records.filter(r => r.status === status).length;
-    const pct = Math.round((count / records.length) * 100);
+    const pct = records.length ? Math.round((count / records.length) * 100) : 0;
     return `<div class="quality-row"><label>${label}</label><div class="bar"><i class="${color}" style="width:${pct}%"></i></div><b>${count}</b></div>`;
   }).join("");
 }
@@ -119,10 +151,10 @@ function renderRecords() {
   document.getElementById("visibleRows").textContent = `${visible.length} registros`;
   const p = permissions();
   document.getElementById("recordsBody").innerHTML = visible.map(r => `<tr>
-    <td><span class="issue-tag ${r.status}">${r.issue}</span></td>
-    <td class="record-title">${r.title}</td><td>${r.identity}</td><td>${r.contributor}</td>
-    <td>${r.ciu}</td><td>${r.account}</td><td class="numeric">${money(r.amount)}</td><td>${r.order}</td>
-    <td><button class="row-action" data-edit="${r.id}" ${p.canEdit ? "" : "disabled"}>Editar</button></td>
+    <td><span class="issue-tag ${escapeHtml(r.status)}">${escapeHtml(r.issue)}</span></td>
+    <td class="record-title">${escapeHtml(r.title)}</td><td>${escapeHtml(r.identity)}</td><td>${escapeHtml(r.contributor)}</td>
+    <td>${escapeHtml(r.ciu)}</td><td>${escapeHtml(r.account)}</td><td class="numeric">${r.amount == null ? "Sin importe válido" : money(r.amount)}</td><td>${escapeHtml(r.order)}</td>
+    <td><button class="row-action" data-edit="${escapeHtml(r.id)}" ${p.canEdit ? "" : "disabled"}>Editar</button></td>
   </tr>`).join("") || `<tr><td colspan="9"><div class="empty-state"><strong>Sin coincidencias</strong>Prueba con otro filtro o búsqueda.</div></td></tr>`;
   document.querySelectorAll("[data-edit]").forEach(btn => btn.addEventListener("click", () => openEdit(Number(btn.dataset.edit))));
 }
@@ -141,13 +173,13 @@ function renderApprovals() {
   const list = document.getElementById("approvalList");
   const pending = state.approvals.filter(a => a.status === "pending");
   if (!pending.length) { list.innerHTML = `<div class="empty-state"><strong>No hay solicitudes pendientes</strong>Las nuevas solicitudes aparecerán aquí.</div>`; return; }
-  list.innerHTML = pending.map(a => `<article class="approval-card"><div><span class="issue-tag duplicate">Cambio protegido</span><h4>${a.field}: ${a.oldValue} → ${a.newValue}</h4><p>${a.reason} · solicitado por ${a.requester}</p></div><div class="approval-actions"><button class="btn reject" data-reject="${a.id}" ${permissions().canApprove ? "" : "disabled"}>Rechazar</button><button class="btn approve" data-approve="${a.id}" ${permissions().canApprove ? "" : "disabled"}>Aprobar</button></div></article>`).join("");
+  list.innerHTML = pending.map(a => `<article class="approval-card"><div><span class="issue-tag duplicate">Cambio protegido</span><h4>${escapeHtml(a.field)}: ${escapeHtml(a.oldValue)} → ${escapeHtml(a.newValue)}</h4><p>${escapeHtml(a.reason)} · solicitado por ${escapeHtml(a.requester)}</p></div><div class="approval-actions"><button class="btn reject" data-reject="${Number(a.id)}" ${permissions().canApprove ? "" : "disabled"}>Rechazar</button><button class="btn approve" data-approve="${Number(a.id)}" ${permissions().canApprove ? "" : "disabled"}>Aprobar</button></div></article>`).join("");
   list.querySelectorAll("[data-approve]").forEach(b => b.onclick = () => decideApproval(Number(b.dataset.approve), true));
   list.querySelectorAll("[data-reject]").forEach(b => b.onclick = () => decideApproval(Number(b.dataset.reject), false));
 }
 
 function renderAudit() {
-  document.getElementById("auditList").innerHTML = state.audit.map(a => `<div class="audit-item"><span class="audit-icon">${a.icon}</span><div><strong>${a.title}</strong><p>${a.detail}</p><span class="muted">${a.user}</span></div><time class="audit-time">${a.time}</time></div>`).join("");
+  document.getElementById("auditList").innerHTML = state.audit.map(a => `<div class="audit-item"><span class="audit-icon">${escapeHtml(a.icon)}</span><div><strong>${escapeHtml(a.title)}</strong><p>${escapeHtml(a.detail)}</p><span class="muted">${escapeHtml(a.user)}</span></div><time class="audit-time">${escapeHtml(a.time)}</time></div>`).join("");
 }
 
 function openEdit(id) {
@@ -226,10 +258,196 @@ document.getElementById("searchInput").addEventListener("input", e => { state.se
 document.getElementById("editField").addEventListener("change", e => { const r = records.find(x => x.id === state.editingId); document.getElementById("editValue").value = r[e.target.value]; updateSensitiveWarning(); });
 document.getElementById("saveEditBtn").addEventListener("click", saveEdit);
 document.getElementById("openAuditBtn").addEventListener("click", () => setView("audit"));
-["importBtn", "importBtnGrid"].forEach(id => document.getElementById(id).addEventListener("click", () => permissions().canImport ? openModal("importModal") : showToast("La carga requiere permiso de jefe de área.")));
-document.getElementById("fileInput").addEventListener("change", e => { const file = e.target.files[0]; document.getElementById("fileReady").textContent = file ? `${file.name} · ${(file.size / 1024 / 1024).toFixed(2)} MB` : ""; document.getElementById("validateFileBtn").disabled = !file; });
-document.getElementById("validateFileBtn").addEventListener("click", () => { closeModal("importModal"); state.audit.unshift({ icon: "⇧", title: "Archivo enviado a validación", detail: "La carga quedó registrada; el procesamiento real se conectará al servidor.", user: users[state.role].name, time: "Ahora" }); renderAll(); showToast("Archivo recibido en el prototipo."); });
+["importBtn", "importBtnGrid"].forEach(id => document.getElementById(id).addEventListener("click", () => permissions().canImport ? openModal("importModal") : showToast(session.authenticated ? "Tu usuario no tiene permiso para cargar carteras." : "Inicia sesión con un usuario autorizado para cargar carteras.")));
+function updateSelectedFile(file) {
+  document.getElementById("uploadFeedback").textContent = "";
+  const valid = file && file.name.toLowerCase().endsWith(".xlsx") && file.size <= maxUploadBytes;
+  document.getElementById("fileReady").textContent = !file ? "" : valid ? `${file.name} · ${(file.size / 1024 / 1024).toFixed(2)} MB` : "Elige un XLSX de hasta 50 MB.";
+  document.getElementById("validateFileBtn").disabled = !valid;
+}
+document.getElementById("fileInput").addEventListener("change", e => updateSelectedFile(e.target.files[0]));
+document.getElementById("dropZone").addEventListener("dragover", event => event.preventDefault());
+document.getElementById("dropZone").addEventListener("drop", event => {
+  event.preventDefault();
+  const file = event.dataTransfer.files[0];
+  if (!file) return;
+  document.getElementById("fileInput").files = event.dataTransfer.files;
+  updateSelectedFile(file);
+});
+
+async function readJsonResponse(response) {
+  const contentType = response.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    throw new Error("El servidor devolvió una respuesta inesperada.");
+  }
+  return response.json();
+}
+
+async function pollBatch(url, displayName) {
+  const generation = ++pollGeneration;
+  try {
+    for (let attempt = 0; attempt < 60; attempt += 1) {
+      const waitMs = Math.min(2000 * (1.12 ** attempt), 15000);
+      await new Promise(resolve => setTimeout(resolve, waitMs));
+      if (generation !== pollGeneration) return;
+      const response = await fetch(url, { headers: { "Accept": "application/json" } });
+      const batch = await readJsonResponse(response);
+      if (!response.ok) throw new Error(batch.error?.message || "No se pudo consultar el lote.");
+      document.getElementById("batchFeedback").textContent = `${displayName}: ${batch.status === "processing" ? "Validando filas; espera sin volver a cargar el archivo." : batch.status}`;
+      if (["ready", "review", "failed"].includes(batch.status)) {
+        const labels = { ready: "lista para aprobación", review: "requiere revisión", failed: "falló" };
+        const errorDetail = batch.status === "failed" && batch.run?.error_message ? ` · ${batch.run.error_message}` : "";
+        state.audit.unshift({ icon: batch.status === "failed" ? "!" : "✓", title: `Validación ${labels[batch.status]}`, detail: `${displayName} · ${batch.row_count} filas · ${batch.run?.issue_count ?? 0} incidencias${errorDetail}`, user: "ARNOLD", time: "Ahora" });
+        renderAll();
+        showToast(`El lote ${labels[batch.status]}.`);
+        await refreshRealBatches(batch.batch_id);
+        return;
+      }
+    }
+    document.getElementById("batchFeedback").textContent = "La validación continúa. Pulsa Actualizar para consultar su estado.";
+  } catch (error) {
+    document.getElementById("batchFeedback").textContent = error.message;
+    showToast(error.message);
+  }
+}
+
+document.getElementById("validateFileBtn").addEventListener("click", async event => {
+  const button = event.currentTarget;
+  const file = document.getElementById("fileInput").files[0];
+  const period = document.getElementById("batchPeriod").value;
+  const sheetName = document.getElementById("batchSheet").value.trim();
+  const feedback = document.getElementById("uploadFeedback");
+  if (!file || !period || !sheetName) {
+    feedback.textContent = "Completa periodo, hoja exacta y archivo antes de cargar.";
+    return;
+  }
+  const form = new FormData();
+  form.append("file", file);
+  form.append("source_type", "cartera_mensual");
+  form.append("period", period);
+  form.append("sheet_name", sheetName);
+  form.append("header_row", document.getElementById("batchHeaderRow").value);
+  form.append("schema_name", document.getElementById("batchSchema").value);
+  form.append("profile_id", document.getElementById("batchProfile").value);
+  const referenceBatchId = document.getElementById("referenceBatchId").value.trim();
+  if (referenceBatchId) form.append("reference_batch_id", referenceBatchId);
+  button.disabled = true;
+  button.textContent = "Cargando…";
+  feedback.textContent = "Enviando el archivo. No cierres esta ventana ni vuelvas a pulsar el botón.";
+  try {
+    const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]")?.value || "";
+    const response = await fetch(button.dataset.uploadUrl, {
+      method: "POST",
+      headers: { "X-CSRFToken": csrfToken, "Accept": "application/json" },
+      body: form
+    });
+    const payload = await readJsonResponse(response);
+    if (!response.ok) {
+      if (payload.existing_batch_id || payload.batch_id) {
+        await refreshRealBatches(payload.existing_batch_id || payload.batch_id);
+      }
+      throw new Error(payload.error?.message || "No se pudo cargar el archivo.");
+    }
+    feedback.textContent = "Archivo recibido y registrado. La validación se ejecutará en segundo plano.";
+    closeModal("importModal");
+    state.audit.unshift({ icon: "⇧", title: "Archivo recibido en cuarentena", detail: `${file.name} · lote ${payload.batch_id.slice(0, 8)}`, user: session.name, time: "Ahora" });
+    renderAll();
+    showToast("Archivo recibido. ARNOLD inició la validación.");
+    await refreshRealBatches(payload.batch_id);
+  } catch (error) {
+    feedback.textContent = `No se completó la carga: ${error.message}`;
+    showToast(error.message);
+  } finally {
+    button.textContent = "Cargar y validar";
+    button.disabled = false;
+  }
+});
 document.getElementById("exportBtn").addEventListener("click", () => { const rows = filteredRecords(); const csv = ["Estado,Titulo,Identificacion,Contribuyente,CIU,Cuenta,Valor,Orden", ...rows.map(r => [r.issue,r.title,r.identity,r.contributor,r.ciu,r.account,r.amount,r.order].map(v => `"${String(v).replaceAll('"','""')}"`).join(","))].join("\n"); downloadText("ARNOLD_incidencias_demo.csv", csv); showToast("Incidencias de demostración exportadas."); });
 document.getElementById("auditExport").addEventListener("click", () => { const csv = ["Evento,Detalle,Usuario,Fecha", ...state.audit.map(a => [a.title,a.detail,a.user,a.time].map(v => `"${String(v).replaceAll('"','""')}"`).join(","))].join("\n"); downloadText("ARNOLD_bitacora_demo.csv", csv); showToast("Bitácora de demostración descargada."); });
 
 renderAll();
+
+async function refreshRealBatches(selectedId) {
+  try {
+    const response = await fetch("/api/v1/batches/", { headers: { Accept: "application/json" } });
+    const payload = await readJsonResponse(response);
+    if (!response.ok) throw new Error(payload.error?.message || "No se pudieron consultar las carteras.");
+    const select = document.getElementById("realBatchSelect");
+    select.replaceChildren();
+    for (const batch of payload.batches) {
+      const option = document.createElement("option");
+      option.value = batch.id;
+      option.textContent = `${batch.name} · ${batch.status_label} · ${batch.row_count} filas`;
+      option.dataset.batch = JSON.stringify(batch);
+      select.append(option);
+    }
+    if (!payload.batches.length) {
+      document.getElementById("batchFeedback").textContent = "Todavía no hay carteras registradas. La tabla inferior es demostrativa hasta que cargues una.";
+      return;
+    }
+    if (selectedId && payload.batches.some(batch => batch.id === selectedId)) select.value = selectedId;
+    await selectRealBatch();
+  } catch (error) {
+    document.getElementById("batchFeedback").textContent = error.message;
+  }
+}
+
+async function selectRealBatch(page = 1) {
+  const option = document.getElementById("realBatchSelect").selectedOptions[0];
+  if (!option) return;
+  ++pollGeneration;
+  const selected = JSON.parse(option.dataset.batch);
+  realBatch = selected;
+  realPage = page;
+  const response = await fetch(`${selected.records_url}?page=${page}`, { headers: { Accept: "application/json" } });
+  const payload = await readJsonResponse(response);
+  if (!response.ok) throw new Error(payload.error?.message || "No se pudieron leer las filas.");
+  if (realBatch.id !== selected.id) return;
+  realSummary = payload;
+  records.splice(0, records.length, ...payload.records.map(row => ({
+    id: row.id, status: row.status === "ready" ? "ready" : "critical",
+    title: row.clave, identity: row.identity, contributor: row.name, ciu: row.ciu,
+    account: "—", amount: row.amount, order: `Fila ${row.source_row}`,
+    issue: row.status === "ready" ? "Sin alertas" : "Requiere revisión"
+  })));
+  document.getElementById("realPagination").hidden = false;
+  document.getElementById("previousRealPage").disabled = page <= 1;
+  document.getElementById("nextRealPage").disabled = !payload.has_next;
+  document.getElementById("realPageLabel").textContent = `Página ${page} · ${payload.total} filas · 50 por página`;
+  const statusResponse = await fetch(selected.status_url);
+  const status = await readJsonResponse(statusResponse);
+  if (!statusResponse.ok) throw new Error(status.error?.message || "No se pudo consultar el estado.");
+  document.getElementById("batchFeedback").textContent = `${selected.name} · ${selected.status_label} · ${payload.total} filas · ${payload.issue_count} incidencias. ${status.run?.error_message || ""}`;
+  const retry = document.getElementById("retryRealBatch");
+  retry.hidden = !session.canImport || !["queue_unavailable", "temporary_processing_error", "unexpected_processing_error"].includes(status.run?.error_code);
+  const list = document.getElementById("realIssues");
+  list.replaceChildren();
+  for (const issue of payload.issues) {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = `${issue.rule_code} · ${issue.severity}: ${issue.message}`;
+    list.append(paragraph);
+  }
+  if (Object.keys(payload.skipped_rules).length) {
+    const note = document.createElement("p");
+    note.textContent = "Controles no ejecutados por falta de fuentes: " + Object.entries(payload.skipped_rules).map(([code, reason]) => `${code}: ${reason}`).join("; ");
+    list.append(note);
+  }
+  renderAll();
+  if (["quarantined", "processing", "received"].includes(status.status)) pollBatch(selected.status_url, selected.name);
+}
+
+document.getElementById("refreshBatches").onclick = () => refreshRealBatches(realBatch?.id);
+document.getElementById("realBatchSelect").onchange = () => selectRealBatch().catch(error => showToast(error.message));
+document.getElementById("previousRealPage").onclick = () => selectRealBatch(realPage - 1).catch(error => showToast(error.message));
+document.getElementById("nextRealPage").onclick = () => selectRealBatch(realPage + 1).catch(error => showToast(error.message));
+document.getElementById("retryRealBatch").onclick = async () => {
+  try {
+    const response = await fetch(`/api/v1/batches/${realBatch.id}/retry/`, {
+      method: "POST", headers: { "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value }
+    });
+    const payload = await readJsonResponse(response);
+    if (!response.ok) throw new Error(payload.error?.message || "No se pudo reintentar.");
+    await refreshRealBatches(realBatch.id);
+  } catch (error) { document.getElementById("batchFeedback").textContent = error.message; }
+};
+refreshRealBatches();

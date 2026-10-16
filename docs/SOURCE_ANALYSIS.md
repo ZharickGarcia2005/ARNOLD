@@ -42,4 +42,7 @@ Las cuatro fuentes ya pueden reconocerse por esquema. La cartera mensual debe in
 
 `backend/static/js/validator-config.js` contiene el catálogo usado por la presentación, los esquemas requeridos, los alias de encabezados y las reglas iniciales. La pantalla “Fuentes” presenta únicamente métricas agregadas y hallazgos seguros.
 
-La lectura real de XLSX/XLS debe implementarse en el backend aislado; el navegador no debe procesar archivos sensibles como mecanismo definitivo.
+La lectura real de `.xlsx` ya está implementada en el backend aislado para una
+hoja mensual explícita; el navegador solo transmite el archivo y no lo procesa.
+El formato heredado `.xls` continúa pendiente y deberá incorporarse mediante
+un adaptador separado, sin macros y con los mismos controles de procedencia.

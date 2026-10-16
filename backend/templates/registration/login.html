@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Ingresar · ARNOLD{% endblock %}
+
+{% block content %}
+  <main class="login-shell">
+    <section class="login-card">
+      <div class="brand login-brand">
+        <div class="brand-mark" aria-hidden="true">A</div>
+        <div><strong>ARNOLD</strong><span>ARDUR S.A.</span></div>
+      </div>
+      <p class="eyebrow">ACCESO PROTEGIDO</p>
+      <h1>Iniciar sesión</h1>
+      <p>Utiliza tu cuenta individual. Las acciones quedarán asociadas a tu usuario y área.</p>
+      {% if form.errors %}<div class="login-error">Usuario o contraseña incorrectos.</div>{% endif %}
+      <form method="post" class="login-form">
+        {% csrf_token %}
+        <label>Usuario{{ form.username }}</label>
+        <label>Contraseña{{ form.password }}</label>
+        {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+        <button class="btn primary" type="submit">Ingresar</button>
+      </form>
+    </section>
+  </main>
+{% endblock %}

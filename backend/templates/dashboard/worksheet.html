@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Preliminar · ARNOLD{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/worksheet.css' %}?v={{ asset_version }}" /><link rel="stylesheet" href="{% static 'css/worksheet-grid.css' %}?v={{ asset_version }}" />{% endblock %}
+{% block content %}
+<div class="sheet-app" id="sheetApp" data-can-import="{{ perms.batches.import_batch|yesno:'true,false' }}" data-max-bytes="{{ max_upload_bytes }}">
+  <aside class="sheet-sidebar" id="sheetSidebar" aria-label="Navegación de ARNOLD">
+    <div class="sheet-brand"><span>A</span><div><strong>ARNOLD</strong><small>ARDUR · Gestión preliminar</small></div></div>
+    <p class="side-caption">ESPACIO DE TRABAJO</p>
+    <button class="side-link active" data-view="grid">▦ Hoja preliminar</button>
+    <button class="side-link" data-view="approvals">✓ Solicitudes de cambio <b id="pendingBadge">0</b></button>
+    <button class="side-link" data-view="history">↺ Historial de cambios</button>
+    <div class="side-bottom"><span class="live-dot"></span> Entorno local de pruebas<br><small>Archivo original conservado</small></div>
+  </aside>
+  <main class="sheet-main" id="sheetMain">
+    <div class="sheet-workspace" id="sheetWorkspace">
+    <header class="sheet-header"><div class="header-lead"><button id="sidebarToggle" type="button" class="sidebar-toggle" aria-label="Ocultar menú" aria-controls="sheetSidebar" aria-expanded="true" title="Ocultar menú"><span aria-hidden="true">☰</span></button><div class="header-title"><h1>ARNOLD · Hoja preliminar</h1></div></div>
+      <div class="sheet-user"><span>{{ request.user.get_full_name|default:request.user.username }}</span><small>{{ request.user.get_role_display }}</small>
+      <form action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="sheet-text" type="submit">Cerrar sesión</button></form></div>
+    </header>
+    <section class="batch-bar"><div><label for="batchSelect">Cartera de trabajo</label><select id="batchSelect" disabled><option>Cargando carteras…</option></select></div>
+      <button class="sheet-btn" id="retryButton" hidden>Reintentar validación</button><button class="sheet-btn" id="refreshButton">Actualizar</button><button class="sheet-btn primary" id="importButton" {% if not perms.batches.import_batch %}disabled{% endif %}>＋ Cargar cartera</button>
+    </section>
+    <div id="globalStatus" class="sheet-status" role="status" aria-live="polite">Conectando con las carteras guardadas…</div>
+    <section id="gridView" class="sheet-view">
+      <div class="sheet-card">
+        <div class="sheet-titlebar"><div class="sheet-caption"><h2>Hoja preliminar</h2><span id="toolbarSaveStatus" class="toolbar-save-status" role="status" aria-live="polite">Sin cambios</span></div><div class="export-actions"><button class="sheet-btn focus-toggle" id="focusToggle" type="button" aria-pressed="false" title="Ampliar la hoja; Esc para salir">⛶ Pantalla completa</button><button class="sheet-btn" id="discardButton" disabled>Descartar</button><button class="sheet-btn primary" id="saveButton">Guardar cambios</button><button class="sheet-btn" id="downloadProblems" title="Descargar todas las filas de revisión, sin limitar por búsqueda o página" disabled>↓ Errores / duplicados .xlsx</button><button class="sheet-btn" id="downloadClean" title="Descargar todo el lote principal, sin limitar por búsqueda o página" disabled>↓ Lote principal .xlsx</button></div></div>
+        <div class="sheet-controls"><div class="sheet-tabs" role="group" aria-label="Conjunto de registros"><button data-scope="clean" class="active">Lote principal <b id="cleanTab">0</b></button><button data-scope="problem">Errores y duplicados <b id="problemTab">0</b></button></div>
+          <form id="searchForm" class="sheet-search"><input id="searchInput" placeholder="CLAVE, cédula/RUC o CIU exactos" aria-label="Buscar en toda la cartera" /><button class="sheet-btn">Buscar</button></form></div>
+        <div class="spreadsheet-wrap" id="gridWrap" tabindex="0" role="region" aria-label="Tabla editable con desplazamiento interno"><table class="spreadsheet" id="dataGrid" role="grid" aria-label="Cartera editable"><thead id="gridHead"></thead><tbody id="gridBody"><tr><td>Esperando cartera…</td></tr></tbody></table></div>
+        <div class="sheet-footer"><span id="pageInfo">Sin filas</span><a class="summary-link" href="#sheetSecondary">Resumen y validaciones ↓</a><div><button class="sheet-btn" id="previousPage" disabled>← Anterior</button><span id="pageNumber">1</span><button class="sheet-btn" id="nextPage" disabled>Siguiente →</button></div></div>
+      </div>
+    </section>
+    <section id="approvalsView" class="sheet-view" hidden><div class="sheet-card"><div class="sheet-titlebar"><h2>Solicitudes de cambio</h2></div><div id="approvalList" class="sheet-list">Seleccione una cartera.</div></div></section>
+    <section id="historyView" class="sheet-view" hidden><div class="sheet-card"><div class="sheet-titlebar"><h2>Historial por usuario</h2><span>Últimos 100 cambios</span></div><div id="historyList" class="sheet-list">Seleccione una cartera.</div></div></section>
+    </div>
+    <section class="sheet-secondary" id="sheetSecondary" aria-labelledby="secondaryTitle">
+      <h2 id="secondaryTitle">Resumen de la cartera</h2>
+      <div class="sheet-stats" id="sheetStats"><article><small>Filas importadas</small><strong id="totalCount">—</strong><span>Una fila por título / CLAVE</span></article><article><small>Lote principal</small><strong id="cleanCount">—</strong><span>Sin problemas detectados</span></article><article class="problem-stat"><small>Separados para revisión</small><strong id="problemCount">—</strong><span id="duplicateCount">Errores y duplicados</span></article><article><small>Estado del guardado</small><strong id="saveBadge" class="save-label">Sin cambios</strong><span id="revisionLabel">Revisión —</span></article></div>
+      <details class="sheet-details"><summary>Alcance de la validación y fuentes pendientes</summary><p>La separación comprueba campos requeridos, cédula, estructura RUC, importes, correo, fecha y CLAVE repetida. Una identificación válida en formato no confirma el estado del contribuyente ni el pago de su deuda.</p><div id="skippedRules"></div></details>
+    </section>
+  </main>
+</div>
+<dialog id="confirmChangesDialog" class="sheet-dialog confirm-changes-dialog" aria-labelledby="confirmChangesTitle" aria-describedby="confirmChangesSummary">
+  <form id="confirmChangesForm">
+    <div class="dialog-head"><h2 id="confirmChangesTitle">Confirmar cambios</h2></div>
+    <p id="confirmChangesSummary"></p>
+    <label for="changeReason">Motivo de los cambios</label>
+    <textarea id="changeReason" rows="3" minlength="3" maxlength="500" required placeholder="Información corregida y verificada con documentación de respaldo."></textarea>
+    <p id="confirmSaveStatus" class="sheet-status" role="status" aria-live="polite"></p>
+    <div class="confirm-actions"><button type="button" class="sheet-btn" id="cancelChanges">Cancelar</button><button type="submit" class="sheet-btn" id="confirmSave" value="save">Guardar cambios</button><button type="submit" class="sheet-btn primary" id="confirmSaveDownload" value="download">Guardar y descargar Excel</button></div>
+  </form>
+</dialog>
+<dialog id="uploadDialog" class="sheet-dialog"><div class="dialog-head"><div><div class="sheet-eyebrow">NUEVA CARTERA</div><h2>Cargar y validar Excel</h2></div><button id="closeUpload" class="sheet-text">Cerrar</button></div>
+  <form id="uploadForm"><div class="upload-fields"><label>Periodo<input type="month" id="uploadPeriod" required /></label><label>Nombre exacto de la hoja<input id="uploadSheet" placeholder="Ej. Sheet 1" required /></label><label>Fila de encabezados<input type="number" id="uploadHeader" min="1" max="100" value="1" required /></label><label>Perfil<select id="uploadProfile"><option value="cartera_mensual_strict">Cartera mensual estricta</option><option value="julio_2026_confirmado">Julio 2026 confirmado</option></select></label><label class="full">Cartera histórica de referencia (opcional)<select id="uploadReference"><option value="">Sin referencia histórica</option></select></label><label class="full upload-file">Archivo .xlsx · hasta 50 MB<input id="uploadFile" type="file" accept=".xlsx" required /></label></div>
+  <p id="uploadStatus" class="sheet-status" role="status" aria-live="polite">El archivo original se conserva. No cierre el Excel si tiene cambios sin guardar.</p><progress id="uploadProgress" max="100" value="0" hidden></progress><button class="sheet-btn primary" id="uploadSubmit">Cargar y validar</button></form>
+</dialog>
+<div id="resizeGuide" class="resize-guide" hidden aria-hidden="true"></div>
+<div class="format-toolbar floating-format" id="formatToolbar" role="toolbar" aria-label="Formato de la selección" hidden>
+  <div class="format-icons">
+    <button type="button" data-format="bold" title="Negrita · Ctrl+B" aria-label="Negrita" aria-pressed="false"><b>B</b></button>
+    <button type="button" data-format="italic" title="Cursiva · Ctrl+I" aria-label="Cursiva" aria-pressed="false"><i>I</i></button>
+    <button type="button" data-format="underline" title="Subrayado · Ctrl+U" aria-label="Subrayado" aria-pressed="false"><u>U</u></button>
+    <span class="format-divider" aria-hidden="true"></span>
+    <button type="button" data-panel="fillPalette" data-format-setting title="Color de fondo" aria-label="Color de fondo" aria-expanded="false" aria-controls="fillPalette"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 12 12M8 4 3 9a2 2 0 0 0 0 3l6 6a2 2 0 0 0 3 0l6-6L8 2M3 21h14M20 14s3 3 3 5a3 3 0 0 1-6 0c0-2 3-5 3-5Z"/></svg></button>
+    <button type="button" data-panel="textPalette" data-format-setting title="Color de texto" aria-label="Color de texto" aria-expanded="false" aria-controls="textPalette"><span class="text-color-icon" aria-hidden="true">A</span></button>
+    <button type="button" data-panel="alignmentPanel" data-format-setting title="Alineación" aria-label="Alineación" aria-expanded="false" aria-controls="alignmentPanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 10h10M4 15h16M4 20h10"/></svg></button>
+    <button type="button" data-panel="sizePanel" title="Texto y tamaños" aria-label="Texto y tamaños" aria-expanded="false" aria-controls="sizePanel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V4h4M4 4l6 6M20 16v4h-4M20 20l-6-6M14 4h6v6M4 14v6h6"/></svg></button>
+    <button type="button" id="copySelection" title="Copiar · Ctrl+C" aria-label="Copiar selección"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V3H3v12h5"/></svg></button>
+    <button type="button" data-panel="morePanel" title="Más opciones" aria-label="Más opciones" aria-expanded="false" aria-controls="morePanel">⋯</button>
+  </div>
+  <div class="format-panel color-panel" id="fillPalette" role="group" aria-label="Paleta de fondo" hidden>
+    <div class="color-swatches">
+      <button type="button" class="format-swatch" data-fill="#FFF2CC" style="--swatch:#fff2cc" title="Amarillo" aria-label="Relleno amarillo"></button><button type="button" class="format-swatch" data-fill="#E2F0D9" style="--swatch:#e2f0d9" title="Verde" aria-label="Relleno verde"></button><button type="button" class="format-swatch" data-fill="#FCE4D6" style="--swatch:#fce4d6" title="Rojo claro" aria-label="Relleno rojo claro"></button><button type="button" class="format-swatch" data-fill="#DDEBF7" style="--swatch:#ddebf7" title="Azul claro" aria-label="Relleno azul claro"></button><button type="button" class="format-swatch" data-fill="#F8CBAD" style="--swatch:#f8cbad" title="Naranja" aria-label="Relleno naranja"></button><button type="button" class="format-swatch" data-fill="#E7E6E6" style="--swatch:#e7e6e6" title="Gris" aria-label="Relleno gris"></button><button type="button" class="format-swatch" data-fill="#FFFFFF" style="--swatch:#fff" title="Blanco" aria-label="Relleno blanco"></button>
+    </div><label>Personalizado<input type="color" id="fillColor" data-format-setting value="#fff2cc" aria-label="Color de relleno personalizado" /></label>
+  </div>
+  <div class="format-panel color-panel" id="textPalette" role="group" aria-label="Paleta de texto" hidden>
+    <div class="color-swatches"><button type="button" class="format-swatch" data-text="#213B4D" style="--swatch:#213b4d" title="Oscuro" aria-label="Texto oscuro"></button><button type="button" class="format-swatch" data-text="#B42318" style="--swatch:#b42318" title="Rojo" aria-label="Texto rojo"></button><button type="button" class="format-swatch" data-text="#13734E" style="--swatch:#13734e" title="Verde" aria-label="Texto verde"></button><button type="button" class="format-swatch" data-text="#215CC5" style="--swatch:#215cc5" title="Azul" aria-label="Texto azul"></button><button type="button" class="format-swatch" data-text="#FFFFFF" style="--swatch:#fff" title="Blanco" aria-label="Texto blanco"></button></div>
+    <label>Personalizado<input type="color" id="textColor" data-format-setting value="#213b4d" aria-label="Color del texto" /></label>
+  </div>
+  <div class="format-panel" id="alignmentPanel" role="group" aria-label="Alineación" hidden><label>Alinear<select id="cellAlignment" data-format-setting aria-label="Alineación del texto"><option value="left">Izquierda</option><option value="center">Centro</option><option value="right">Derecha</option></select></label><button type="button" data-format="wrap" aria-pressed="false" title="Ajustar texto y altura de fila">↵ Ajustar texto</button></div>
+  <div class="format-panel" id="sizePanel" role="group" aria-label="Texto y tamaños" hidden>
+    <div class="format-panel-row"><label>Letra<select id="fontSize" data-format-setting aria-label="Tamaño del texto en píxeles"><option>10</option><option selected>12</option><option>14</option><option>16</option><option>18</option><option>20</option><option>24</option></select></label><label>Zoom<select id="sheetZoom" data-format-setting aria-label="Zoom solo de la hoja"><option value="70">70 %</option><option value="85">85 %</option><option value="100" selected>100 %</option><option value="115">115 %</option><option value="130">130 %</option><option value="150">150 %</option></select></label></div>
+    <button type="button" id="autoWidth" data-format-setting title="Según el contenido de esta página">↔ Ajustar ancho</button><button type="button" id="autoHeight" data-format-setting>↕ Ajustar fila</button><button type="button" id="showFullText">Texto completo</button><button type="button" id="resetSizes" data-format-setting title="Restaurar anchos, alturas y zoom; conserva colores y datos">Restaurar tamaños</button>
+  </div>
+  <div class="format-panel" id="morePanel" role="group" aria-label="Más opciones" hidden>
+    <div class="format-panel-row"><input id="rangeAddress" aria-label="Rango de la página visible" placeholder="D2:F5" title="Rango de esta página. Shift+clic amplía; Ctrl+clic añade rangos." /><button type="button" id="selectRange" title="Seleccionar el rango escrito">Ir</button></div>
+    <div class="format-panel-row"><button type="button" id="selectRow" title="Seleccionar fila completa">Fila</button><button type="button" id="selectColumn" title="Columna completa: formato en todas las páginas">Columna</button></div>
+    <button type="button" id="undoDraft" title="Ctrl+Z: solo borradores de datos aún no guardados" disabled>↶ Deshacer borrador</button><button type="button" id="clearFormat" data-format-setting>Quitar formato</button><button type="button" id="clearSelection">Deseleccionar</button>
+    <hr /><span id="formatStatus" role="status" aria-live="polite">Formato guardado</span><button type="button" id="formatSave" title="Reintentar guardar el formato pendiente" disabled>Guardar formato</button><button type="button" id="formatRefresh" title="Actualizar formato y reaplicar pendientes">Actualizar formato</button>
+  </div>
+</div>
+<div id="gridContextMenu" class="grid-context-menu" role="menu" aria-label="Operaciones sobre la selección" hidden>
+  <button role="menuitem" data-context="copy">Copiar</button><button role="menuitem" data-context="paste">Pegar</button><button role="menuitem" data-context="edit">Editar celda (F2)</button><button role="menuitem" data-context="highlight">Resaltar selección</button><button role="menuitem" data-context="color">Cambiar color</button><button role="menuitem" data-context="bold">Negrita</button><button role="menuitem" data-context="underline">Subrayado</button><button role="menuitem" data-context="width">Ajustar columna</button><button role="menuitem" data-context="height">Ajustar fila</button><button role="menuitem" data-context="clear">Quitar formato</button>
+</div>
+<dialog id="cellTextDialog" class="sheet-dialog"><div class="dialog-head"><h2 id="cellTextTitle">Texto completo</h2><button id="closeCellText" class="sheet-text">Cerrar</button></div><pre id="cellTextContent"></pre></dialog>
+<noscript><p>Activa JavaScript para utilizar la hoja. La cartera permanece guardada en el servidor.</p></noscript>
+{% endblock %}
+{% block extra_js %}<script src="{% static 'js/worksheet-grid-model.js' %}?v={{ asset_version }}" defer></script><script src="{% static 'js/worksheet-grid.js' %}?v={{ asset_version }}" defer></script><script src="{% static 'js/worksheet-app.js' %}?v={{ asset_version }}" defer></script>{% endblock %}

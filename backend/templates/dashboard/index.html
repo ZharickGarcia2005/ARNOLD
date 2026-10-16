@@ -1,7 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <div class="app-shell">
+  <div
+    class="app-shell"
+    data-authenticated="{{ request.user.is_authenticated|yesno:'true,false' }}"
+    data-can-import="{{ perms.batches.import_batch|yesno:'true,false' }}"
+    data-user-name="{{ request.user.get_full_name|default:request.user.username }}"
+    data-user-role="{{ request.user.role|default:'validator' }}"
+  >
     <aside class="sidebar" aria-label="Navegación principal">
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">A</div>
@@ -12,14 +19,14 @@
         <button class="nav-item active" data-view="dashboard"><span>⌂</span>Resumen</button>
         <button class="nav-item" data-view="preliminar"><span>▦</span>Preliminar <b class="nav-count" id="issueCount">0</b></button>
         <button class="nav-item" data-view="sources"><span>⇄</span>Fuentes <b class="nav-count">4</b></button>
-        <button class="nav-item" data-view="approvals"><span>✓</span>Aprobaciones <b class="nav-count" id="approvalCount">0</b></button>
-        <button class="nav-item" data-view="audit"><span>↺</span>Bitácora</button>
+        <button class="nav-item" data-view="approvals"><span>✓</span>Aprobaciones (demo) <b class="nav-count" id="approvalCount">0</b></button>
+        <button class="nav-item" data-view="audit"><span>↺</span>Bitácora (demo)</button>
         <button class="nav-item" data-view="security"><span>◇</span>Seguridad</button>
       </nav>
 
       <div class="sidebar-foot">
         <span class="environment-dot"></span>
-        <div><strong>Entorno protegido</strong><small>Prototipo sin datos reales</small></div>
+        <div><strong>Entorno de pruebas</strong><small>Consulta de carteras cargadas</small></div>
       </div>
     </aside>
 
@@ -30,8 +37,8 @@
           <h1 id="pageTitle">Resumen de validación</h1>
         </div>
         <div class="topbar-actions">
-          <label class="role-picker">Vista de permisos
-            <select id="roleSelect" aria-label="Cambiar rol de demostración">
+          <label class="role-picker">Rol asignado
+            <select id="roleSelect" aria-label="Rol asignado al usuario" disabled>
               <option value="validator">Validador</option>
               <option value="supervisor">Jefe de área</option>
               <option value="auditor">Auditor</option>
@@ -42,12 +49,24 @@
             <div class="avatar" id="avatar">JV</div>
             <div><strong id="userName">José Validador</strong><span id="userRole">Validador</span></div>
           </div>
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button class="text-button" type="submit">Salir</button>
+          </form>
         </div>
       </header>
 
       <div class="demo-banner" role="status">
-        <span>●</span> Prototipo visual: el cambio de rol está habilitado solo para comprobar permisos. En producción cada usuario tendrá un rol fijo.
+        <span>●</span> Sesión individual activa. Los permisos de carga y consulta se comprueban nuevamente en el servidor.
       </div>
+
+      <section class="panel" style="margin-bottom:18px" aria-label="Carteras cargadas">
+        <div class="panel-head"><h3>Carteras cargadas</h3><button class="btn secondary" id="refreshBatches">Actualizar</button></div>
+        <select id="realBatchSelect" aria-label="Seleccionar cartera" style="max-width:100%;padding:10px"></select>
+        <p id="batchFeedback" role="status" aria-live="polite">Consultando carteras…</p>
+        <button class="btn secondary" id="retryRealBatch" hidden>Reintentar validación</button>
+        <div id="realIssues"></div>
+      </section>
 
       <section class="view active" id="dashboardView">
         <div class="hero-card">
@@ -104,7 +123,8 @@
 
         <div class="permission-note" id="permissionNote"></div>
         <div class="table-card">
-          <div class="table-meta"><span id="visibleRows">0 registros</span><span>Los campos protegidos requieren aprobación del jefe</span></div>
+          <div class="table-meta"><span id="visibleRows">0 registros</span><span id="tableMode">Los campos protegidos requieren aprobación del jefe</span></div>
+          <div class="table-meta" id="realPagination" hidden><button id="previousRealPage" class="btn secondary">Anterior</button><span id="realPageLabel"></span><button id="nextRealPage" class="btn secondary">Siguiente</button></div>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Estado</th><th>Título / expediente</th><th>Identificación</th><th>Contribuyente</th><th>CIU</th><th>Cuenta de agua</th><th class="numeric">Valor total</th><th>Orden</th><th>Acciones</th></tr></thead>
@@ -176,17 +196,27 @@
     </main>
   </div>
 
-  <div class="modal-backdrop" id="importModal" aria-hidden="true">
+  <div class="modal-backdrop" id="importModal" aria-hidden="true" data-max-upload-bytes="{{ max_upload_bytes }}">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="importTitle">
       <button class="modal-close" data-close="importModal" aria-label="Cerrar">×</button>
       <p class="eyebrow">NUEVA CARGA</p><h2 id="importTitle">Importar base mensual</h2>
-      <p>El archivo se validará antes de guardar cualquier registro.</p>
+      <p>El archivo se guardará en cuarentena y después se ejecutarán las reglas financieras.</p>
+      {% csrf_token %}
+      <div class="form-grid">
+        <label>Periodo<input type="month" id="batchPeriod" required /></label>
+        <label>Hoja exacta<input id="batchSheet" placeholder="Ej. Cartera" required /></label>
+        <label>Fila de encabezados<input type="number" id="batchHeaderRow" min="1" value="1" required /></label>
+        <label>Tipo de estructura<select id="batchSchema"><option value="carteraMensual">Cartera mensual</option></select></label>
+        <label class="full">Perfil de columnas<select id="batchProfile"><option value="">Sin perfil: bloquear duplicados</option><option value="cartera_mensual_strict">Cartera mensual estricta</option><option value="julio_2026_confirmado">Julio 2026 confirmado</option></select></label>
+        <label class="full">Lote histórico de referencia (opcional)<input id="referenceBatchId" placeholder="UUID del lote validado del mes anterior" /></label>
+      </div>
       <label class="drop-zone" id="dropZone">
-        <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" />
-        <span class="upload-icon">⇧</span><strong>Selecciona o arrastra el Excel</strong><small>XLSX, XLS o CSV · máximo 250 MB</small>
+        <input type="file" id="fileInput" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+        <span class="upload-icon">⇧</span><strong>Selecciona o arrastra el Excel</strong><small>Solo XLSX · máximo 50 MB · una hoja explícita</small>
       </label>
       <div class="file-ready" id="fileReady"></div>
-      <div class="modal-actions"><button class="btn secondary" data-close="importModal">Cancelar</button><button class="btn primary" id="validateFileBtn" disabled>Validar archivo</button></div>
+      <p id="uploadFeedback" role="status" aria-live="polite" style="white-space:pre-wrap"></p>
+      <div class="modal-actions"><button class="btn secondary" data-close="importModal">Cancelar</button><button class="btn primary" id="validateFileBtn" data-upload-url="{% url 'batches:upload' %}" disabled>Cargar y validar</button></div>
     </div>
   </div>
 
@@ -205,4 +235,9 @@
   </div>
 
   <div class="toast" id="toast" role="status"></div>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'js/validator-config.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
 {% endblock %}

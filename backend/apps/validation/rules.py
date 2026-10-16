@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from datetime import date, datetime
 from hashlib import sha256
 from itertools import islice
+import re
 from typing import Callable, Iterable, Mapping
 import unicodedata
 
@@ -162,6 +163,19 @@ HEADER_ALIASES: Mapping[str, str] = {
     "PARROQ": "COD_PARROQUIA",
 }
 
+# Estos nombres son equivalentes solamente dentro de ciertos esquemas. Un
+# alias global convertiría el RECARGO propio de ordenPreliminar en otro campo.
+SCHEMA_HEADER_ALIASES: Mapping[str, Mapping[str, str]] = {
+    "carteraMensual": {
+        "RECARGO": "TOTAL_RECARGO",
+        "T_RECARGO": "TOTAL_RECARGO",
+    },
+    "carteraUnificada": {
+        "RECARGO": "TOTAL_RECARGO",
+        "T_RECARGO": "TOTAL_RECARGO",
+    },
+}
+
 SOURCE_PROFILES: Mapping[str, SourceProfile] = {
     "cartera_mensual_strict": SourceProfile(
         "cartera_mensual_strict", "carteraMensual", {}
@@ -274,20 +288,23 @@ class SchemaRecognition:
     duplicate_headers: Mapping[str, int]
 
 
-def normalize_header(value: object) -> str:
+def normalize_header(value: object, schema_name: str | None = None) -> str:
     text = "" if value is None else str(value)
     text = unicodedata.normalize("NFD", text)
     text = "".join(char for char in text if unicodedata.category(char) != "Mn")
-    clean = "_".join(text.strip().upper().split())
-    return HEADER_ALIASES.get(clean, clean)
+    clean = re.sub(r"[^A-Z0-9]+", "_", text.strip().upper()).strip("_")
+    normalized = HEADER_ALIASES.get(clean, clean)
+    return SCHEMA_HEADER_ALIASES.get(schema_name or "", {}).get(normalized, normalized)
 
 
-def make_unique_headers(headers: Iterable[object]) -> tuple[HeaderOccurrence, ...]:
+def make_unique_headers(
+    headers: Iterable[object], schema_name: str | None = None
+) -> tuple[HeaderOccurrence, ...]:
     seen: Counter[str] = Counter()
     result: list[HeaderOccurrence] = []
     for original_value in headers:
         original = "" if original_value is None else str(original_value)
-        base = normalize_header(original_value) or "SIN_ENCABEZADO"
+        base = normalize_header(original_value, schema_name) or "SIN_ENCABEZADO"
         seen[base] += 1
         occurrence = seen[base]
         unique_name = base if occurrence == 1 else f"{base}__{occurrence}"
@@ -295,15 +312,22 @@ def make_unique_headers(headers: Iterable[object]) -> tuple[HeaderOccurrence, ..
     return tuple(result)
 
 
-def recognize_schema(headers: Iterable[object]) -> SchemaRecognition:
-    occurrences = make_unique_headers(headers)
-    counts = Counter(item.normalized for item in occurrences)
-    available = set(counts)
-    candidates: list[tuple[int, str, tuple[str, ...]]] = []
+def recognize_schema(
+    headers: Iterable[object], schema_name: str | None = None
+) -> SchemaRecognition:
+    header_values = tuple(headers)
+    candidates: list[tuple[int, str, tuple[str, ...], Counter[str]]] = []
     for name, schema in SCHEMAS.items():
+        if schema_name and name != schema_name:
+            continue
+        occurrences = make_unique_headers(header_values, name)
+        counts = Counter(item.normalized for item in occurrences)
+        available = set(counts)
         missing = tuple(field for field in schema["required"] if field not in available)
-        candidates.append((len(missing), name, missing))
-    _, name, missing = min(candidates, key=lambda item: (item[0], item[1]))
+        candidates.append((len(missing), name, missing, counts))
+    if not candidates:
+        return SchemaRecognition(None, False, (), {})
+    _, name, missing, counts = min(candidates, key=lambda item: (item[0], item[1]))
     duplicates = {field: count for field, count in counts.items() if count > 1}
     return SchemaRecognition(name, not missing, missing, duplicates)
 
@@ -394,10 +418,11 @@ def _schema_001(data: ValidationInput) -> list[RuleResult]:
     for dataset in _all_datasets(data):
         is_current = dataset is data.current
         severity = Severity.CRITICAL if is_current else Severity.WARNING
-        recognition = recognize_schema(dataset.original_headers)
+        recognition = recognize_schema(dataset.original_headers, dataset.schema_name)
         schema = SCHEMAS.get(dataset.schema_name)
         available = {
-            item.normalized for item in make_unique_headers(dataset.original_headers)
+            item.normalized
+            for item in make_unique_headers(dataset.original_headers, dataset.schema_name)
         }
         if schema is None:
             missing = recognition.missing
@@ -477,7 +502,7 @@ def _schema_001(data: ValidationInput) -> list[RuleResult]:
 def _schema_002(data: ValidationInput) -> list[RuleResult]:
     results: list[RuleResult] = []
     for dataset in _all_datasets(data):
-        recognition = recognize_schema(dataset.original_headers)
+        recognition = recognize_schema(dataset.original_headers, dataset.schema_name)
         duplicates = recognition.duplicate_headers
         if not duplicates:
             continue

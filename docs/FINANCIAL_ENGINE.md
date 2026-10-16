@@ -3,8 +3,10 @@
 ## Alcance
 
 Esta primera versión implementa el núcleo de validación sin modificar ni
-importar código de ARDUR-BETA. Trabaja con objetos inmutables en memoria y no
-accede a modelos Django, usuarios, archivos privados, auditoría o Celery.
+importar código de ARDUR-BETA. El núcleo puro trabaja con objetos inmutables en
+memoria y no accede directamente a modelos Django, usuarios, archivos privados,
+auditoría o Celery; esas responsabilidades se conectan desde servicios externos
+al núcleo.
 
 Su objetivo es fijar un contrato estable para que ambos proyectos puedan
 integrarse después mediante un adaptador pequeño y revisable.
@@ -18,9 +20,10 @@ integrarse después mediante un adaptador pequeño y revisable.
 - `exporters.py`: creación de un XLSX en memoria con `Resumen` e `Incidencias`.
 - `tests/`: pruebas puras con datos ficticios, sin base de datos.
 
-Estos cuatro módulos forman el núcleo puro. La app `validation` también contiene
-modelos y tareas Django preexistentes, pero todavía no están conectados al
-motor.
+Estos cuatro módulos forman el núcleo puro. La app `validation` ya conecta el
+adaptador XLSX, `ValidationRun`, la tarea Celery, los registros cifrados y las
+incidencias persistidas mediante `services.py`, sin introducir dependencias de
+Django dentro de las reglas.
 
 ## Límites de seguridad
 
@@ -35,9 +38,10 @@ motor.
   aprobador diferente del solicitante. Los identificadores se comparan sin
   depender de mayúsculas o espacios.
 - Ese control opera únicamente sobre los `PaymentClaim` entregados al motor.
-  El futuro backend deberá autenticar a los usuarios, comprobar permisos y la
-  existencia real de la evidencia, y crear un claim por cada cambio sensible;
-  los valores declarados en memoria no constituyen autorización por sí solos.
+  La carga ya autentica usuarios y comprueba permisos, pero la futura capa de
+  revisión deberá comprobar la existencia real de la evidencia y crear un
+  claim por cada cambio sensible; los valores declarados en memoria no
+  constituyen autorización por sí solos.
 - Los importes vacíos, no numéricos, infinitos o `NaN` generan incidencia; el
   valor cero sí se considera válido. En la cartera actual bloquean, mientras
   que en una fuente auxiliar `SCHEMA-001` los reporta como alerta.
@@ -170,14 +174,15 @@ payload = render_issues_xlsx(report, metadata)
 
 `render_issues_xlsx()` verifica el libro antes de devolver sus bytes.
 
-La integración futura se divide deliberadamente en dos piezas:
+La integración se divide deliberadamente en dos piezas:
 
-1. **Adaptador Excel de ARNOLD**: siguiente paso dentro de este repositorio;
+1. **Adaptador Excel de ARNOLD**: ya implementado para el primer corte;
    lee libros en cuarentena y construye `DatasetInput`, preservando `raw`,
    `kind`, encabezados, `profile_id` y `selected_occurrences`.
-2. **Adaptador ARDUR**: mapea RAW/Staging/modelos al mismo contrato y persiste
-   incidencias. Solo debe implementarse con aprobación del responsable de
-   ARDUR-BETA y sin copiar sus modelos.
+2. **Puente ARDUR**: aún pendiente; exportará el contrato de 13 columnas para
+   que ARDUR lo reciba mediante su propio flujo RAW/Staging/modelos. Solo debe
+   implementarse con aprobación del responsable de ARDUR-BETA y sin copiar sus
+   modelos ni escribir directamente en su base.
 
 `RULE_CATALOG` en Python es la fuente normativa. La configuración JavaScript
 actual es solo presentación heredada y deberá consumir ese catálogo para no
