@@ -66,9 +66,9 @@ class PresentationTests(TestCase):
         stream, _ = export_sheet(self.batch, self.boss, "clean", expected_revision=1)
         try:
             book = load_workbook(BytesIO(stream.read()))
-            data = book["Principal"]
+            data = book["030-SAN CARLOS (LISTA)"]
             self.assertEqual(data.max_row, 103)
-            cell = data["C103"]
+            cell = data["E103"]
             self.assertEqual(cell.value, "Persona sintética")
             self.assertEqual(cell.fill.fgColor.rgb[-6:], "FFF2CC")
             self.assertEqual(cell.font.color.rgb[-6:], "123456")
@@ -77,10 +77,11 @@ class PresentationTests(TestCase):
             self.assertEqual(cell.font.sz, 12)
             self.assertEqual(cell.alignment.horizontal, "center")
             self.assertTrue(cell.alignment.wrap_text)
-            self.assertAlmostEqual(data.column_dimensions["C"].width, 42.14, places=2)
+            self.assertAlmostEqual(data.column_dimensions["E"].width, 42.14, places=2)
             self.assertEqual(data.row_dimensions[103].height, 48)
-            self.assertEqual(data["D103"].value, "000101")
-            self.assertEqual(data["I103"].value, 10)
+            values = dict(zip(next(data.values), list(data.values)[102]))
+            self.assertEqual(values["CLAVE"], "000101")
+            self.assertEqual(values["TOTAL_EMISION"], 10)
             book.close()
         finally:
             stream.close()
@@ -92,8 +93,8 @@ class PresentationTests(TestCase):
         stream, _ = export_sheet(self.batch, self.boss, "problem", expected_revision=1)
         try:
             book = load_workbook(BytesIO(stream.read()))
-            self.assertEqual(book["Problemas"].max_row, 2)
-            self.assertEqual(book["Problemas"]["C2"].font.underline, "single")
+            self.assertEqual(book["INCONSISTENCIAS"].max_row, 2)
+            self.assertEqual(book["INCONSISTENCIAS"]["E2"].font.underline, "single")
             book.close()
         finally:
             stream.close()

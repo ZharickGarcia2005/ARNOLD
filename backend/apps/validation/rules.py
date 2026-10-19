@@ -51,7 +51,7 @@ SCHEMAS: Mapping[str, Mapping[str, tuple[str, ...]]] = {
             "TOTAL_RECARGO",
             "MESES_DEUDA",
         ),
-        "optional": ("DIRECCION", "PARROQUIA", "TELEF", "CORREO"),
+        "optional": ("CATASTRO", "TITULO", "DIRECCION", "PARROQUIA", "TELEF", "CORREO"),
     },
     "carteraUnificada": {
         "required": (
@@ -158,7 +158,6 @@ HEADER_ALIASES: Mapping[str, str] = {
     "CONTRIBUYENTE": "NOMBRES",
     "PREDIO_MUNICIPAL": "PREDIO_MUN",
     "ID_PLAN": "ID_PLAN",
-    "TITULO": "TITULOS",
     "MZ": "MANZANA",
     "PARROQ": "COD_PARROQUIA",
 }

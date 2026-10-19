@@ -15,8 +15,9 @@
     canFormat() { return !!this.context().data?.capabilities.format && !this.context().busy && !this.context().fetching; }
     rendered(data, columns) {
       this.hideFloating(); this.editing = false;
-      const batch = this.context().batch.id;
-      if (batch !== this.batch) { this.selection.clear(); this.batch = batch; }
+      const batch = this.context().batch.id, selectionScope = `${batch}:${data.order || "030"}`;
+      if (selectionScope !== this.selectionScope) { this.selection.clear(); this.selectionScope = selectionScope; }
+      this.batch = batch;
       this.columns = columns;
       this.selection.setRows(data.rows, columns);
       if (!this.pending()) this.doc = structuredClone(data.presentation || M.blank());
@@ -343,7 +344,7 @@
         }
         const point = this.point(event.target); if (!point) return;
         this.editing = false;
-        if (point.c === 0) {
+        if (event.target.closest(".row-indicator") || this.columns[point.c]?.field === "#") {
           event.preventDefault(); this.selection.selectRows(event.shiftKey && this.selection.active ? this.selection.active.r : point.r, point.r, event.ctrlKey || event.metaKey);
           wrap.focus({preventScroll: true}); this.pointerSelection = true; this.paintSelection(); return;
         }

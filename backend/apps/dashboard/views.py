@@ -7,8 +7,8 @@ from django.shortcuts import render
 @login_required
 def index(request):
     resources = [settings.BASE_DIR / "static" / name for name in (
-        "js/worksheet-app.js", "js/worksheet-grid-model.js", "js/worksheet-grid.js",
-        "css/worksheet.css", "css/worksheet-grid.css",
+        "js/worksheet-app.js", "js/worksheet-grid-model.js", "js/worksheet-grid.js", "js/worksheet-download.js",
+        "css/worksheet.css", "css/worksheet-grid.css", "css/worksheet-orders.css",
     )]
     response = render(
         request,

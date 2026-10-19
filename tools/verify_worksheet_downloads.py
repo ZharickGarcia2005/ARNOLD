@@ -1,77 +1,63 @@
-"""Comprobación de descargas existentes, sin escribir ni modificar los Excel."""
-
+"""Verifica las dos descargas por orden sin escribir ni modificar los XLSX."""
 import argparse
 from decimal import Decimal
 import json
 from pathlib import Path
 from zipfile import ZipFile
-
 from openpyxl import load_workbook
+from openpyxl.utils import get_column_letter
 
+ROOT = Path(__file__).resolve().parent.parent
+MANIFEST = json.loads((ROOT / "backend/apps/workflow/order_manifest.json").read_text(encoding="utf-8"))
 
-SOURCE_HEADERS = ["CIU", "CEDULA_RUC", "NOMBRES", "CLAVE", "DIRECCION", "PARROQUIA",
-                  "TELEF", "CORREO", "TOTAL_EMISION", "TOTAL_INTERES", "TOTAL_COACTIVA",
-                  "TOTAL_RECARGO", "MESES_DEUDA"]
-MONEY = SOURCE_HEADERS[8:12]
-
-
-def inspect_download(path, scope, expected):
+def inspect_download(path, scope, expected, *, revision, expected_headers=None):
     with ZipFile(path) as archive:
-        assert archive.testzip() is None, "Contenedor ZIP dañado"
-    book = load_workbook(path, read_only=True, data_only=False)
+        assert archive.testzip() is None, "ZIP dañado"
+        assert not any("externalLink" in name for name in archive.namelist())
+    templates = [s for s in MANIFEST["sheets"] if (s["id"] == "issues") == (scope == "problem")]
+    book = load_workbook(path, data_only=False)
     try:
-        name = "Principal" if scope == "clean" else "Problemas"
-        assert book.sheetnames == [name, "Trazabilidad"], "Conjuntos mezclados o incompletos"
-        rows = book[name].iter_rows()
-        header = [cell.value for cell in next(rows)]
-        assert header[:len(SOURCE_HEADERS)] == SOURCE_HEADERS, "Encabezados originales alterados"
-        columns = {field: header.index(field) for field in header}
-        source_rows, count, numeric, formulas = set(), 0, 0, 0
-        totals = dict.fromkeys(MONEY, Decimal(0))
-        for row in rows:
-            count += 1
-            source = row[columns["FILA_ORIGEN"]].value
-            assert source not in source_rows, "Fila de origen repetida en la exportación"
-            source_rows.add(source)
-            assert row[columns["ESTADO_REVISION"]].value == scope, "Clasificación mezclada"
-            for field in ("CIU", "CEDULA_RUC", "CLAVE", "TELEF"):
-                cell = row[columns[field]]
-                assert cell.value is None or isinstance(cell.value, str), "Identificador convertido a número"
-                assert cell.number_format == "@", "Formato de identificador perdido"
-            amounts = []
-            for field in MONEY:
-                cell = row[columns[field]]
-                assert cell.number_format == "#,##0.00", "Formato monetario perdido"
-                if cell.data_type == "n" and cell.value is not None:
-                    numeric += 1
-                    amount = Decimal(str(cell.value)); totals[field] += amount; amounts.append(amount)
-            total = row[columns["MONTO_PENDIENTE"]].value
-            if len(amounts) == 4 and isinstance(total, (int, float)):
-                assert sum(amounts) == Decimal(str(total)), "Total financiero inconsistente"
-            formulas += sum(cell.data_type == "f" for cell in row)
-        meta = dict(book["Trazabilidad"].values)
-        assert count == expected == meta["Filas"], "Cantidad de registros incompleta"
-        assert meta["Conjunto"] == scope and meta["Revisión"] == 2
-        assert not formulas, "Contenido ejecutable en el archivo"
-        return {"file": str(Path(path).resolve()), "rows": count, "original_headers": True,
-                "xlsx_crc": "ok", "numeric_money_cells": numeric,
-                "financial_totals": {field: str(total) for field, total in totals.items()},
-                "revision": meta["Revisión"]}, source_rows
-    finally:
-        book.close()
-
+        assert book.sheetnames[:len(templates)] == [s["name"] for s in templates]
+        assert all(name.startswith("Trazabilidad") for name in book.sheetnames[len(templates):])
+        count = 0; totals = dict.fromkeys(("EMISION", "INTERES", "RECARGO", "TOTAL_COACTIVA"), Decimal(0))
+        for template in templates:
+            sheet = book[template["name"]]
+            headers = [cell.value or "" for cell in sheet[1]]
+            assert headers[:len(template["columns"])] == [col["label"] for col in template["columns"]]
+            for index, col in enumerate(template["columns"], 1):
+                assert sheet.column_dimensions[get_column_letter(index)].hidden == col["hidden"]
+            fields = {value: i for i, value in enumerate(headers)}
+            for row in sheet.iter_rows(min_row=2):
+                count += 1
+                for field in ("CLAVE", "CIU", "CEDULA"):
+                    cell = row[fields[field]]
+                    assert cell.value is None or isinstance(cell.value, str)
+                    assert cell.number_format == "@"
+                assert not any(cell.data_type in ("f", "e") for cell in row)
+                for field in totals:
+                    if field in fields and row[fields[field]].data_type == "n" and row[fields[field]].value is not None:
+                        totals[field] += Decimal(str(row[fields[field]].value))
+            assert sheet.freeze_panes == "A2"
+        meta = {}
+        for name in book.sheetnames[len(templates):]: meta.update(dict(book[name].values))
+        assert count == expected == meta["Filas"]
+        assert meta["Conjunto"] == scope and meta["Revisión"] == revision
+        ids = {key for key in meta if str(key).startswith("Record ")}
+        assert len(ids) == count
+        return {"file":str(Path(path).resolve()), "rows":count, "sheets":[s["name"] for s in templates],
+                "financial_totals":{k:str(v) for k,v in totals.items()}, "revision":revision, "xlsx_crc":"ok"}, ids
+    finally: book.close()
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("clean"); parser.add_argument("problems")
+    parser.add_argument("--clean-count", type=int, required=True)
+    parser.add_argument("--problem-count", type=int, required=True)
+    parser.add_argument("--revision", type=int, required=True)
     args = parser.parse_args()
-    clean, clean_ids = inspect_download(args.clean, "clean", 35106)
-    problems, problem_ids = inspect_download(args.problems, "problem", 2936)
-    assert not clean_ids.intersection(problem_ids), "Conjuntos solapados"
-    assert len(clean_ids | problem_ids) == 38042, "Faltan registros importados"
-    print(json.dumps({"clean": clean, "problems": problems, "disjoint": True,
-                      "total": 38042}, ensure_ascii=False, indent=2))
+    clean, first = inspect_download(args.clean, "clean", args.clean_count, revision=args.revision)
+    problems, second = inspect_download(args.problems, "problem", args.problem_count, revision=args.revision)
+    assert not first & second
+    print(json.dumps({"clean":clean,"problems":problems,"disjoint":True,"total":len(first | second)}, ensure_ascii=False, indent=2))
 
-
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()

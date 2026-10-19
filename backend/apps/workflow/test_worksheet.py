@@ -31,13 +31,14 @@ class WorksheetTests(TestCase):
         self.worker.user_permissions.add(*Permission.objects.filter(codename__in=("view_batch", "change_record", "export_batch")))
         self.batch = Batch.objects.create(display_name="sintetica.xlsx", sha256="c" * 64, period=date(2026, 8, 1),
                                           source_type="cartera_mensual", schema_name="carteraMensual", owner_area="Financiera",
-                                          status=Batch.Status.READY, uploaded_by=self.boss)
+                                          status=Batch.Status.READY, uploaded_by=self.boss, original_headers=list(FIELDS))
         self.run = ValidationRun.objects.create(current_batch=self.batch, created_by=self.boss, input_digest="f" * 64,
                                                  engine_version="test", adapter_version="test", status="succeeded")
 
     def add_record(self, key="000123", **overrides):
         values = dict.fromkeys(FIELDS, "")
         values.update(CIU="000042", CEDULA_RUC="1710034065", NOMBRES="Persona sintética", CLAVE=key,
+                      CATASTRO="0000550044", TITULO="0007", ORDEN_PRELIMINAR="030",
                       TOTAL_EMISION="10.00", TOTAL_INTERES="2.00", TOTAL_COACTIVA="3.00", TOTAL_RECARGO="4.00", MESES_DEUDA="1")
         values.update(overrides)
         record_id = uuid.uuid4()
@@ -158,14 +159,15 @@ class WorksheetTests(TestCase):
         stream, _ = export_sheet(self.batch, self.boss, "clean", expected_revision=2)
         try:
             workbook = load_workbook(BytesIO(stream.read()), data_only=False)
-            rows = list(workbook["Principal"].values)
+            rows = list(workbook["030-SAN CARLOS (LISTA)"].values)
             self.assertEqual(len(rows), 103)
-            self.assertEqual(rows[-1][2], "Última fila revisada")
-            self.assertEqual(rows[-1][3], "000101")
-            self.assertEqual(rows[-1][8], 10)
-            self.assertEqual(rows[-1][14], 19)
-            self.assertIsInstance(rows[-1][13], datetime)
-            self.assertEqual(rows[-1][13].date(), date(2026, 8, 31))
+            self.assertEqual(rows[-1][4], "Última fila revisada")
+            values = dict(zip(rows[0], rows[-1]))
+            self.assertEqual(values["CLAVE"], "000101")
+            self.assertEqual(values["TOTAL_EMISION"], 10)
+            self.assertEqual(values["EMISION"] + values["INTERES"] + values["RECARGO"] + values["TOTAL_COACTIVA"], 19)
+            self.assertIsInstance(values["FECHA_VENCIMIENTO"], datetime)
+            self.assertEqual(values["FECHA_VENCIMIENTO"].date(), date(2026, 8, 31))
             workbook.close()
         finally:
             stream.close()
@@ -176,10 +178,11 @@ class WorksheetTests(TestCase):
         stream, _ = export_sheet(self.batch, self.boss, "problem", expected_revision=1)
         try:
             workbook = load_workbook(BytesIO(stream.read()), data_only=False)
-            self.assertEqual(workbook["Problemas"].max_row, 2)
-            self.assertEqual(workbook["Problemas"]["C2"].data_type, "s")
-            self.assertTrue(workbook["Problemas"]["C2"].value.startswith("'="))
-            self.assertIn("fórmula", workbook["Problemas"]["R2"].value)
+            self.assertEqual(workbook["INCONSISTENCIAS"].max_row, 2)
+            self.assertEqual(workbook["INCONSISTENCIAS"]["E2"].data_type, "s")
+            self.assertTrue(workbook["INCONSISTENCIAS"]["E2"].value.startswith("'="))
+            values = dict(zip(next(workbook["INCONSISTENCIAS"].values), list(workbook["INCONSISTENCIAS"].values)[1]))
+            self.assertIn("fórmula", values["MOTIVOS"])
             workbook.close()
         finally:
             stream.close()
@@ -208,7 +211,7 @@ class WorksheetTests(TestCase):
         for number in range(104):
             self.add_record(f"{number:06}", CEDULA_RUC="123" if number > 100 else "1710034065")
         self.prepare()
-        for scope, name, count in (("clean", "Principal", 101), ("problem", "Problemas", 3)):
+        for scope, name, count in (("clean", "030-SAN CARLOS (LISTA)", 101), ("problem", "INCONSISTENCIAS", 3)):
             response = self.post("download", {"scope": scope, "revision": 1})
             self.assertEqual(response.status_code, 200)
             self.assertEqual(response["Content-Type"], "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
@@ -248,12 +251,16 @@ class WorksheetTests(TestCase):
         stream, _ = export_sheet(self.batch, self.boss, "clean", expected_revision=2)
         try:
             book = load_workbook(stream)
-            data = book["Principal"]
-            self.assertEqual([cell.value for cell in data[1]][:4], headers)
-            self.assertEqual([cell.value for cell in data[2]][:4], ["'=NO_EJECUTAR()", "Origen alterno", 10, "Nombre aprobado"])
-            self.assertEqual(data["C2"].number_format, "#,##0.00")
+            data = book["030-SAN CARLOS (LISTA)"]
+            labels = [cell.value for cell in data[1]]
+            for label in headers: self.assertIn(label, labels)
+            names = [data.cell(2, i + 1).value for i, label in enumerate(labels) if label == "Nombres"]
+            self.assertEqual(names, ["Origen alterno", "Persona sintética"])
+            self.assertEqual(data.cell(2, labels.index("CONTRIBUYENTE") + 1).value, "Nombre aprobado")
+            self.assertEqual(data.cell(2, labels.index("Nota municipal") + 1).value, "'=NO_EJECUTAR()")
+            self.assertEqual(data.cell(2, labels.index("  TOTAL EMISION  ") + 1).number_format, "#,##0.00")
             self.assertEqual(data.auto_filter.ref, f"A1:{data.cell(1, data.max_column).column_letter}2")
-            self.assertEqual(data["A2"].data_type, "s")
+            self.assertEqual(data.cell(2, labels.index("Nota municipal") + 1).data_type, "s")
             book.close()
         finally:
             stream.close()
@@ -268,4 +275,6 @@ class WorksheetTests(TestCase):
         self.assertEqual(len(result["pending"]), 1)
         response = self.post("download", {"scope": "clean", "revision": result["summary"]["revision"]}, self.worker)
         book = load_workbook(BytesIO(b"".join(response.streaming_content)))
-        response.close(); self.assertEqual(book["Principal"]["I2"].value, 10); book.close()
+        response.close()
+        values = dict(zip(next(book["030-SAN CARLOS (LISTA)"].values), list(book["030-SAN CARLOS (LISTA)"].values)[1]))
+        self.assertEqual(values["TOTAL_EMISION"], 10); book.close()

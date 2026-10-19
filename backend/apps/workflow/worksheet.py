@@ -1,7 +1,7 @@
 """Hoja revisable cifrada. La evidencia RAW y el resultado original no se editan."""
 
 from collections import Counter
-from datetime import date
+from datetime import date, datetime, time
 from decimal import Decimal, InvalidOperation
 import re
 
@@ -16,16 +16,13 @@ from apps.validation.models import ValidationRun
 from apps.validation.services import _load_record
 
 from .models import ChangeRequest, Worksheet, WorksheetEdit, WorksheetRow
+from .columns import WORKING_FIELDS, MONEY_FIELDS, PROTECTED_FIELDS, SHEETS, canonical, original_payload, original_record_payload
 
 
-FIELDS = (
-    "CIU", "CEDULA_RUC", "NOMBRES", "CLAVE", "DIRECCION", "PARROQUIA", "TELEF", "CORREO",
-    "TOTAL_EMISION", "TOTAL_INTERES", "TOTAL_COACTIVA", "TOTAL_RECARGO", "MESES_DEUDA",
-    "FECHA_VENCIMIENTO",
-)
-MONEY = FIELDS[8:12]
-PROTECTED = frozenset(("CIU", "CEDULA_RUC", "CLAVE", *MONEY, "MESES_DEUDA"))
-VALIDATOR_VERSION = "worksheet-2026.10.15.2"
+FIELDS = WORKING_FIELDS
+MONEY = MONEY_FIELDS
+PROTECTED = PROTECTED_FIELDS
+VALIDATOR_VERSION = "worksheet-2026.10.19.2"
 
 
 class SheetError(ValueError):
@@ -58,10 +55,11 @@ def valid_cedula(value):
     return (10 - total % 10) % 10 == int(value[-1])
 
 
-def check_values(values):
+def check_values(values, schema_name="carteraMensual"):
     """Controles locales; RUC es estructural, no consulta de registro oficial."""
     errors = []
-    for field in ("NOMBRES", "CLAVE", "CIU", "CEDULA_RUC"):
+    required = ("NOMBRES", "CLAVE", "CIU", "CEDULA_RUC")
+    for field in required:
         if not values.get(field, "").strip():
             errors.append({"field": field, "code": "REQUIRED", "message": f"Falta {field}."})
     identity = values.get("CEDULA_RUC", "")
@@ -73,7 +71,9 @@ def check_values(values):
         )
         if not valid:
             errors.append({"field": "CEDULA_RUC", "code": "IDENTITY", "message": "Identificación inválida: revise cédula (10 dígitos y verificador) o estructura RUC (13 dígitos)."})
-    for field in MONEY:
+    required_money = MONEY if schema_name != "ordenPreliminar" else ("TOTAL_EMISION", "TOTAL_INTERES", "TOTAL_RECARGO", "SOURCE_TOTAL")
+    for field in (*MONEY, "SOURCE_TOTAL", "SUBTOTAL"):
+        if field not in required_money and not values.get(field): continue
         try:
             amount = Decimal(values.get(field, ""))
             if not amount.is_finite() or amount < 0 or amount != amount.quantize(Decimal("0.01")) or amount > Decimal("999999999999.99"):
@@ -81,7 +81,7 @@ def check_values(values):
         except (InvalidOperation, ValueError):
             errors.append({"field": field, "code": "MONEY", "message": f"{field} debe ser no negativo, con máximo 2 decimales."})
     months = values.get("MESES_DEUDA", "")
-    if not re.fullmatch(r"\d{1,6}(?:\.0+)?", months):
+    if (schema_name != "ordenPreliminar" or months) and not re.fullmatch(r"\d{1,6}(?:\.0+)?", months):
         errors.append({"field": "MESES_DEUDA", "code": "MONTHS", "message": "MESES_DEUDA debe ser un entero no negativo."})
     email = values.get("CORREO", "")
     if email and not re.fullmatch(r"[^\s@]+@[^\s@]+\.[^\s@]+", email):
@@ -92,6 +92,12 @@ def check_values(values):
             date.fromisoformat(due)
         except ValueError:
             errors.append({"field": "FECHA_VENCIMIENTO", "code": "DATE", "message": "Fecha de vencimiento inválida. Use AAAA-MM-DD."})
+    if values.get("FECHA"):
+        try: datetime.fromisoformat(values["FECHA"])
+        except ValueError: errors.append({"field": "FECHA", "code": "DATE", "message": "FECHA inválida. Use AAAA-MM-DD."})
+    if values.get("HORA"):
+        try: time.fromisoformat(values["HORA"])
+        except ValueError: errors.append({"field": "HORA", "code": "TIME", "message": "HORA inválida. Use HH:MM:SS."})
     for field, value in values.items():
         if field == "TELEF" and re.fullmatch(r"\+?[\d\s()\-]+", value):
             continue
@@ -105,7 +111,7 @@ def revalidate_worksheet(sheet):
     sheet = Worksheet.objects.select_for_update().get(pk=sheet.pk)
     buffer = []
     for row in sheet.rows.iterator(chunk_size=500):
-        row.errors = check_values(values_of(row)) + row.source_errors
+        row.errors = check_values(values_of(row), sheet.batch.schema_name) + row.source_errors
         buffer.append(row)
         if len(buffer) == 500:
             WorksheetRow.objects.bulk_update(buffer, ("errors",))
@@ -151,13 +157,23 @@ def prepare_worksheet(batch):
         item = _load_record(record, str(batch.id))
         values = {}
         for field in FIELDS:
-            cell = item.cell(field)
+            source = next((name for name in item.fields if canonical(name) == field and "__" not in name), field)
+            if field == "ORDEN_PRELIMINAR" and "ORDEN" in item.fields: source = "ORDEN"
+            cell = item.cell(source)
             value = cell.raw if cell.raw is not None else cell.value
             values[field] = str(value).strip() if value is not None else ""
         source_errors = engine_errors.get(str(record.id), []) + engine_errors.get("batch", [])
+        if batch.source_type == "orden_preliminar":
+            origin = original_record_payload(record).get("origin", {})
+            source_order = next((code for code, template in SHEETS.items() if template["name"] == origin.get("sheet")), None)
+            if source_order and source_order != "issues" and not values.get("ORDEN_PRELIMINAR"):
+                values["ORDEN_PRELIMINAR"] = source_order
+            if source_order == "issues":
+                source_errors = [*source_errors, {"field": "ORDEN_PRELIMINAR", "code": "SOURCE_REVIEW",
+                    "message": "Registro recibido en INCONSISTENCIAS; requiere revisión, no se aprobó automáticamente."}]
         row = WorksheetRow(record=record, worksheet=sheet, clave_hmac=index(values["CLAVE"]),
                            identifier_hmac=index(values["CEDULA_RUC"]), ciu_hmac=index(values["CIU"]),
-                           source_errors=source_errors, errors=check_values(values) + source_errors)
+                           source_errors=source_errors, errors=check_values(values, batch.schema_name) + source_errors)
         row.data_ciphertext = encrypt_json(values, associated_data=aad(row))
         buffer.append(row)
         if len(buffer) == 500:
@@ -177,6 +193,9 @@ def row_payload(row, include_values=True):
         problems.append({"field": "CLAVE", "code": "DUPLICATE_KEY", "message": "La CLAVE aparece en más de una fila; se separaron todas sus apariciones."})
     result = {"id": str(row.record_id), "source_row": row.record.source_row,
               "version": row.version, "quality": row.quality, "errors": problems}
+    origin = original_payload(row).get("origin", {})
+    if origin:
+        result.update(source_sheet=origin.get("sheet", ""), source_excel_row=origin.get("excel_row", row.record.source_row))
     if include_values:
         values = values_of(row)
         amounts = []
@@ -189,7 +208,8 @@ def row_payload(row, include_values=True):
             except (InvalidOperation, ValueError):
                 amounts = []
                 break
-        result.update(values=values, total=str(sum(amounts)) if amounts else None)
+        result.update(values={**dict.fromkeys(FIELDS, ""), **values}, stored_fields=list(values), total=str(sum(amounts)) if amounts else None,
+                      identifier_validation="executed" if "CATASTRO" in values else "not_executed_legacy")
     return result
 
 
@@ -242,7 +262,7 @@ def apply_row(row, updates, actor, reason):
     log.save()
     row.data_ciphertext = encrypt_json(new, associated_data=aad(row))
     row.clave_hmac, row.identifier_hmac, row.ciu_hmac = index(new["CLAVE"]), index(new["CEDULA_RUC"]), index(new["CIU"])
-    row.errors = check_values(new) + row.source_errors
+    row.errors = check_values(new, row.worksheet.batch.schema_name) + row.source_errors
     row.version += 1
     row.updated_by = actor
     row.save()

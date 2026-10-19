@@ -11,6 +11,8 @@ from apps.batches.views import _read_denied, _visible_batches
 
 from .models import ChangeRequest, Worksheet, WorksheetEdit
 from .sheet_exports import export_sheet
+from .columns import CONTRACT_VERSION, SHEETS, cell_value, columns_for, source_values
+from .order_projection import decorate, routes, selected_ids, presentation_counts
 from .presentation import page_presentation, save_presentation
 from .worksheet import FIELDS, SheetError, can_direct_protected, can_edit, decide_change, filter_rows, row_payload, save_changes, summary
 
@@ -52,15 +54,38 @@ def body(request):
 def sheet_data(request, batch, sheet, data):
     page = max(1, int(data.get("page", 1)))
     scope, search = data.get("scope", "clean"), str(data.get("search", "")).strip()[:120]
-    query = filter_rows(sheet, scope, search)
-    count = query.count()
+    if scope not in ("clean", "problem"): raise SheetError("invalid_scope", "Seleccione principal o inconsistencias.")
+    order = data.get("order", "issues" if scope == "problem" else "030")
+    if order not in SHEETS: raise SheetError("invalid_order", "La pestaña no existe.")
+    scope = "problem" if order == "issues" else "clean"
+    ids = selected_ids(sheet, scope, search, order)
+    count = len(ids)
     page = min(page, max(1, (count + 99) // 100))
-    rows = [row_payload(row) for row in query[(page - 1) * 100:page * 100]]
+    columns = columns_for(batch, order)
+    query = sheet.rows.select_related("record").filter(pk__in=ids[(page - 1) * 100:page * 100]).order_by("record__source_row")
+    rows = []
+    mapping = routes(sheet)
+    for row in query:
+        payload = decorate({**row_payload(row), "source_values": source_values(row, columns)}, mapping[str(row.pk)])
+        payload["values"].update({col.field: cell_value(payload, col) for col in columns if col.working})
+        payload["missing_fields"] = [col.label for col in columns if col.working and not payload["values"].get(col.field)]
+        payload["presentation_observations"] = [{"field": col.field, "code": "MISSING_PRESENTATION_VALUE", "severity": "warning",
+                                                  "message": f"{col.label}: sin dato de origen o vacío guardado; no se completó automáticamente."}
+                                                 for col in columns if col.working and not payload["values"].get(col.field)]
+        rows.append(payload)
+    counts = presentation_counts(sheet)
+    totals = summary(sheet)
+    totals.update(clean=totals["total"] - counts["issues"], problem=counts["issues"])
     original_run = batch.validation_runs.order_by("-created_at").first()
     return JsonResponse({
         "batch_id": str(batch.id), "name": batch.display_name, "status": batch.status,
-        "summary": summary(sheet), "page": page, "page_size": 100, "filtered_total": count,
-        "has_next": page * 100 < count, "rows": rows, "fields": FIELDS,
+        "summary": totals, "validation_summary": summary(sheet), "page": page, "page_size": 100, "filtered_total": count,
+        "order": order, "tabs": [{"id": code, "name": definition["name"], "count": counts[code]} for code, definition in SHEETS.items()],
+        "appearance": {key: SHEETS[order][key] for key in ("header_fill", "stripe_fill", "border_color")},
+        "unassigned_count": sum(bool(error) for code, error in mapping.values()),
+        "has_next": page * 100 < count, "rows": rows, "fields": [col.field for col in columns if col.editable],
+        "columns": [col.payload(i) for i, col in enumerate(columns)], "column_contract": CONTRACT_VERSION,
+        "compatibility_notice": "Lote histórico conservado. La distribución por órdenes es una vista: no se revalidaron ni modificaron sus registros originales." if any(row["identifier_validation"] != "executed" for row in rows) else "",
         "presentation": page_presentation(sheet, request.user, [row["id"] for row in rows]),
         "capabilities": {"edit": can_edit(request.user) and batch.status not in ("approved", "exported", "rejected"), "protected": can_direct_protected(request.user),
                          "export": request.user.has_perm("batches.export_batch"),
@@ -108,11 +133,12 @@ def download(request, batch, sheet):
     if not request.user.has_perm("batches.export_batch"):
         raise SheetError("permission_denied", "No tiene permiso para descargar lotes.", 403)
     data = body(request)
-    stream, filename = export_sheet(batch, request.user, data.get("scope"), str(data.get("search", ""))[:120], data.get("revision"))
+    stream, filename = export_sheet(batch, request.user, data.get("scope"), expected_revision=data.get("revision"))
     response = FileResponse(stream, as_attachment=True, filename=filename,
                             content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     response["X-ARNOLD-Export-Rows"] = str(stream.arnold_export_rows)
     response["X-ARNOLD-Export-Revision"] = str(stream.arnold_export_revision)
+    response["X-ARNOLD-Export-Batch"] = str(batch.pk)
     response["X-Content-Type-Options"] = "nosniff"
     return response
 

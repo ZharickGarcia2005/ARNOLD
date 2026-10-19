@@ -168,6 +168,20 @@ class ExcelAdapterTests(SimpleTestCase):
         self.assertEqual(record.text("CEDULA_RUC"), "123456789")
         self.assertEqual(record.text("CLAVE"), "123")
 
+    def test_catastro_title_and_plural_counts_remain_independent(self):
+        def configure(sheet):
+            sheet["J2"].number_format = "000000000"
+            sheet["K2"].number_format = "0000"
+        source = self._workbook(MONTHLY_HEADERS + ("CATASTRO", "TITULO", "TITULOS"),
+                                ("000042", "0123456789", "Persona sintética", "000123", 10, 2, 3, 4, 1, 99, 7, 12),
+                                configure_cells=configure)
+        record = self._parse(source).records[0]
+        self.assertEqual(record.text("CLAVE"), "000123")
+        self.assertEqual(record.text("CATASTRO"), "000000099")
+        self.assertEqual(record.text("TITULO"), "0007")
+        self.assertEqual(record.cell("TITULOS").value, 12)
+        self.assertEqual(record.cell("MESES_DEUDA").value, 1)
+
     def test_recargo_alias_is_contextual_and_preserves_order_schema(self):
         headers = (
             "PREDIO_MUN", "NOMBRES", "CEDULA_RUC", "CLAVE", "CIU",
@@ -183,6 +197,17 @@ class ExcelAdapterTests(SimpleTestCase):
 
         self.assertEqual(record.cell("RECARGO").value, 3)
         self.assertNotIn("TOTAL_RECARGO", record.fields)
+
+    def test_order_property_and_location_codes_preserve_zero_formats(self):
+        extra = ("PREDIO MUNICIPAL", "PARROQ", "ZONA", "MZ", "ID PLAN")
+        def configure(sheet):
+            for cells in sheet.iter_rows(min_row=2, min_col=10, max_col=14):
+                for cell in cells: cell.number_format = "0000"
+        source = self._workbook(MONTHLY_HEADERS + extra,
+                                ("000042", "0123456789", "Persona sintética", "000123", 10, 2, 3, 4, 1, 5, 6, 7, 8, 9), configure_cells=configure)
+        record = self._parse(source).records[0]
+        self.assertEqual([record.text(field) for field in ("PREDIO_MUN", "COD_PARROQUIA", "ZONA", "MANZANA", "ID_PLAN")],
+                         ["0005", "0006", "0007", "0008", "0009"])
 
     def test_archive_preflight_rejects_active_content_case_insensitively(self):
         source = self._workbook(

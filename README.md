@@ -74,6 +74,14 @@ worker ya están conectados. Consulte **backend/BACKEND_ARCHITECTURE.md**,
 La interfaz de revisión y sus permisos se describen en
 **docs/PRELIMINAR_WORKSHEET.md**.
 
+La presentación vigente POR ORDEN y las dos descargas multihoja se documentan en
+**docs/ORDER_WORKBOOK_PRESENTATION.md**. El análisis anterior del contrato genérico
+queda como antecedente en **docs/WORKSHEET_COLUMN_CORRECTION.md**. La única
+referencia para esa corrección es el libro de órdenes con **(1)**; no se importa
+automáticamente al iniciar el programa ni se crea una tercera descarga. La carga
+explícita del libro operativo completo se realiza con el comando administrativo
+`import_order_workbook`, documentado en ese informe, sin reemplazar carteras previas.
+
 ## Organización Django
 
 - **backend/core/**: configuración, URLs, ASGI, WSGI y Celery.

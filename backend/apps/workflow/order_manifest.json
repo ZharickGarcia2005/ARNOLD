@@ -1,0 +1,3750 @@
+{
+  "version": "order-book-2026.10.19.1",
+  "sha256": "c1527fbbca77b4d92f38f420f284de65851b9f3bac68a58d33e9c25109dda29f",
+  "sheets": [
+    {
+      "id": "030",
+      "name": "030-SAN CARLOS (LISTA)",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": true,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 37.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": true,
+          "outline": 0,
+          "width": 13.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": true,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": true,
+          "outline": 0,
+          "width": 6.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": true,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": false,
+          "outline": 0,
+          "width": 12.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": true,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": true,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.25,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 23,
+          "label": "EMI LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INT LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "SUBTOTAL",
+          "hidden": true,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TITULOS",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 10.88,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.0,
+          "source_number_format": "dd/mm/yyyy"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#A2C4C9",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "031",
+      "name": "031-(24 DE MAYO) LISTA",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 37.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": false,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": true,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": true,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.25,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 23,
+          "label": "EMI LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 24,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INT LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 26,
+          "label": "SUBTOTAL",
+          "hidden": true,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 28,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 30,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 32,
+          "label": "TITULOS",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#A2C4C9",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "032",
+      "name": "032-SAN CRISTOBAL(LISTA)",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 37.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 14.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": false,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": false,
+          "outline": 0,
+          "width": 12.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.5,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 23,
+          "label": "EMI LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.25,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INT LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "SUBTOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.5,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TITULOS",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.25,
+          "source_number_format": "General"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 27.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#D9D2E9",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "033",
+      "name": "033-GUAYACAN(LISTA)",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 37.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": false,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": false,
+          "outline": 0,
+          "width": 30.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.25,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 23,
+          "label": "EMI LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INT LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "SUBTOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TITULO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#F7CB4D",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "034",
+      "name": "034-GUAYACAN(LISTA)",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 37.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": false,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": false,
+          "outline": 0,
+          "width": 30.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.25,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 23,
+          "label": "EMI LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INT LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "SUBTOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TITULO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#F7CB4D",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "035",
+      "name": "035-NICOLAS ALTA(LISTA)",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 37.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 12.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": false,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": false,
+          "outline": 0,
+          "width": 30.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": false,
+          "outline": 0,
+          "width": 12.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": false,
+          "outline": 0,
+          "width": 12.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.25,
+          "source_number_format": "General"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": false,
+          "outline": 0,
+          "width": 16.88,
+          "source_number_format": "General"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 23,
+          "label": "EMI LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INT LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "SUBTOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TITULO",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.25,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 20.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 38,
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 19.25,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#F7CB4D",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "036",
+      "name": "036-RUTA DEL RIO(LISTA)",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 37.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": false,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": false,
+          "outline": 0,
+          "width": 30.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "TITULOS",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.25,
+          "source_number_format": "General"
+        },
+        {
+          "position": 23,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "EMI LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "INT LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "RECARGO EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.25,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 20.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 38,
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 19.25,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#F7CB4D",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "037",
+      "name": "037-VIVA ALFARO(LISTA)",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 37.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": false,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": false,
+          "outline": 0,
+          "width": 30.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "TITULOS VENCIDOS",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 23,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "EMI LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "INT LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "RECARGO EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.25,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 11.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.88,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 20.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 46.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 38,
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 19.25,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#78909C",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "038",
+      "name": "038- VENUS",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 37.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": false,
+          "outline": 0,
+          "width": 6.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": false,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": false,
+          "outline": 0,
+          "width": 30.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "TITULOS VENC.",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.88,
+          "source_number_format": "General"
+        },
+        {
+          "position": 23,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "EMI LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "INT LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "RECARGO EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.25,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TOTAL EN LETRA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 20.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 43.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 38,
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 19.25,
+          "source_number_format": "General"
+        },
+        {
+          "position": 39,
+          "label": "UNIDAD ",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 40,
+          "label": "FE",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 41,
+          "label": "REGISTRADO",
+          "hidden": false,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#78909C",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "039",
+      "name": "039-VENUS",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": true,
+          "outline": 0,
+          "width": 5.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 5.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 22.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 39.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": true,
+          "outline": 0,
+          "width": 6.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": true,
+          "outline": 0,
+          "width": 6.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": true,
+          "outline": 0,
+          "width": 40.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": true,
+          "outline": 0,
+          "width": 30.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": true,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": true,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": true,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": true,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": true,
+          "outline": 0,
+          "width": 5.5,
+          "source_number_format": "00"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": true,
+          "outline": 0,
+          "width": 13.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": true,
+          "outline": 0,
+          "width": 13.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "TITULOS VENC.",
+          "hidden": false,
+          "outline": 0,
+          "width": 10.5,
+          "source_number_format": "General"
+        },
+        {
+          "position": 23,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "EMI LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.38,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "INT LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL",
+          "hidden": true,
+          "outline": 0,
+          "width": 15.13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 8.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "RECARGO EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.25,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TOTAL EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 7.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.38,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 20.0,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": true,
+          "outline": 0,
+          "width": 21.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 38,
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 19.25,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#78909C",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "040",
+      "name": "040-VENUS",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 49.25,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": true,
+          "outline": 0,
+          "width": 25.88,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "00"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "00"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "00"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "00"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "00"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "TITULOS VENC.",
+          "hidden": false,
+          "outline": 0,
+          "width": 9.88,
+          "source_number_format": "General"
+        },
+        {
+          "position": 23,
+          "label": "EMISION",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "EMI LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INTERES",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "INT LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "RECARGO EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TOTAL EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 38,
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#D9EAD3",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    },
+    {
+      "id": "issues",
+      "name": "INCONSISTENCIAS",
+      "columns": [
+        {
+          "position": 1,
+          "label": "NO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 2,
+          "label": "TP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 3,
+          "label": "EXP",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 4,
+          "label": "PREDIO MUNICIPAL",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 5,
+          "label": "CONTRIBUYENTE",
+          "hidden": false,
+          "outline": 0,
+          "width": 31.75,
+          "source_number_format": "General"
+        },
+        {
+          "position": 6,
+          "label": "CEDULA",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 7,
+          "label": "OP",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 8,
+          "label": "OC",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 9,
+          "label": "DIGIT",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 10,
+          "label": "CLAVE",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 11,
+          "label": "CIU",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 12,
+          "label": "DIRECCION",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 13,
+          "label": "PARROQUIA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 14,
+          "label": "PARROQ",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "00"
+        },
+        {
+          "position": 15,
+          "label": "ZONA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 16,
+          "label": "SECTOR ",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 17,
+          "label": "MZ",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 18,
+          "label": "PREDIO",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 19,
+          "label": "ID PLAN",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 20,
+          "label": "TELEFONO",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 21,
+          "label": "CORREO",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 22,
+          "label": "EMISION",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 23,
+          "label": "EMI LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 24,
+          "label": "INTERES",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 25,
+          "label": "INT LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 26,
+          "label": "SUBTOTAL",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 27,
+          "label": "SUBTOTAL EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 28,
+          "label": "RECARGO",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 29,
+          "label": "RECARGO EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 30,
+          "label": "TOTAL",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 31,
+          "label": "TOTAL EN LETRA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "\"$\"#,##0.00"
+        },
+        {
+          "position": 32,
+          "label": "TITULOS",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 33,
+          "label": "DIGITADOR",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 34,
+          "label": "FECHA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 35,
+          "label": "HORA",
+          "hidden": true,
+          "outline": 0,
+          "width": 12.63,
+          "source_number_format": "General"
+        },
+        {
+          "position": 36,
+          "label": "NOVEDAD",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        },
+        {
+          "position": 37,
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "hidden": false,
+          "outline": 0,
+          "width": 13,
+          "source_number_format": "General"
+        }
+      ],
+      "source_header_fill": "#D9D2E9",
+      "header_fill": "#A2C4C9",
+      "stripe_fill": "#DEEAF6",
+      "border_color": "#B8C9DB"
+    }
+  ]
+}

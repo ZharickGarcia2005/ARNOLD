@@ -5,16 +5,16 @@
   let grid = null;
   const undo = new window.ArnoldSheetModel.DraftUndo();
   const labels = {
-    CIU: "CIU", CEDULA_RUC: "Cédula / RUC", NOMBRES: "Nombres", CLAVE: "CLAVE / título",
+    CIU: "CIU", CEDULA_RUC: "Cédula / RUC", NOMBRES: "Nombres", CLAVE: "CLAVE", CATASTRO: "CATASTRO", TITULO: "TITULO",
     DIRECCION: "Dirección", PARROQUIA: "Parroquia", TELEF: "Teléfono", CORREO: "Correo",
     TOTAL_EMISION: "Emisión", TOTAL_INTERES: "Interés", TOTAL_COACTIVA: "Coactiva",
     TOTAL_RECARGO: "Recargo", MESES_DEUDA: "Meses deuda", FECHA_VENCIMIENTO: "Vencimiento"
   };
   const monetary = ["TOTAL_EMISION", "TOTAL_INTERES", "TOTAL_COACTIVA", "TOTAL_RECARGO"];
-  const protectedFields = new Set(["CIU", "CEDULA_RUC", "CLAVE", ...monetary, "MESES_DEUDA"]);
-  const state = { batch: null, batches: [], scope: "clean", search: "", page: 1, data: null,
+  const protectedFields = new Set(["CIU", "CEDULA_RUC", "CLAVE", "CATASTRO", "TITULO", ...monetary, "MESES_DEUDA"]);
+  const state = { batch: null, batches: [], scope: "clean", order: "030", showHidden: false, search: "", page: 1, data: null,
     dirty: new Map(), busy: false, fetching: false, requestId: 0, view: "grid", focusMode: false,
-    gridRestore: null, resetGridPosition: false };
+    gridRestore: null, resetGridPosition: false, choosePopulatedTab: true };
   const money = value => new Intl.NumberFormat("es-EC", { style: "currency", currency: "USD" }).format(value);
   const csrf = () => document.querySelector("[name=csrfmiddlewaretoken]")?.value || "";
   const base = () => `/api/v1/worksheets/${state.batch.id}/`;
@@ -97,6 +97,7 @@
     $("refreshButton").disabled = state.busy || state.fetching || !!dirty || visualPending;
     $("retryButton").disabled = state.busy || state.fetching;
     $("undoDraft").disabled = state.busy || state.fetching || !state.data?.capabilities.edit || !undo.available;
+    if (state.busy || state.fetching) $("rowOrderInput").disabled = true;
     grid?.updateStatus();
   }
 
@@ -129,7 +130,7 @@
         status("No hay carteras registradas para tu área. Usa Cargar cartera.");
       } else {
         select.value = state.batch.id; localStorage.setItem("arnold.selectedBatch", state.batch.id);
-        state.page = 1;
+        state.page = 1; state.choosePopulatedTab = true;
       }
     } catch (error) { status(error.message, "error"); }
     finally { state.fetching = false; controls(); }
@@ -139,42 +140,56 @@
   function renderSummary() {
     if (!state.data) return;
     const summary = state.data.summary;
-    for (const [id, key] of [["totalCount", "total"], ["cleanCount", "clean"], ["problemCount", "problem"], ["cleanTab", "clean"], ["problemTab", "problem"], ["pendingBadge", "pending_approvals"]]) $(id).textContent = summary[key].toLocaleString("es-EC");
+    for (const [id, key] of [["totalCount", "total"], ["cleanCount", "clean"], ["problemCount", "problem"], ["pendingBadge", "pending_approvals"]]) $(id).textContent = summary[key].toLocaleString("es-EC");
+    $("orderTabs").replaceChildren();
+    for (const tab of state.data.tabs || []) {
+      const button = document.createElement("button"); button.type = "button"; button.role = "tab";
+      button.textContent = `${tab.name} (${tab.count})`; button.setAttribute("aria-selected", String(tab.id === state.order)); button.dataset.order = tab.id;
+      button.onclick = async () => { if (!canNavigate()) return; state.order = tab.id; state.scope = tab.id === "issues" ? "problem" : "clean"; state.page = 1; state.resetGridPosition = true; await loadRows(); };
+      $("orderTabs").append(button);
+    }
+    $("activeOrderName").textContent = state.data.tabs?.find(tab => tab.id === state.order)?.name || "Hoja preliminar";
+    for (const [key, name] of [["header_fill", "--order-header"], ["stripe_fill", "--order-stripe"], ["border_color", "--order-border"]]) {
+      if (state.data.appearance?.[key]) $("dataGrid").style.setProperty(name, state.data.appearance[key]);
+    }
     $("duplicateCount").textContent = `${summary.duplicates.toLocaleString("es-EC")} filas con CLAVE repetida`;
     $("revisionLabel").textContent = `Revisión ${summary.revision}`;
     $("pageNumber").textContent = state.page;
     const total = state.data.filtered_total;
     $("pageInfo").textContent = total ? `${(state.page - 1) * 100 + 1}–${Math.min(state.page * 100, total)} de ${total.toLocaleString("es-EC")} filas${state.search ? " · búsqueda exacta" : ""}` : "Sin coincidencias en este conjunto";
     $("skippedRules").replaceChildren();
+    $("legacyNotice").textContent = [state.data.compatibility_notice, state.data.unassigned_count ? `Registros sin orden confirmada: ${state.data.unassigned_count.toLocaleString("es-EC")}. Se muestran en INCONSISTENCIAS. No se asignaron por parroquia ni se modificaron sus importes.` : ""].filter(Boolean).join(" ");
+    $("legacyNotice").hidden = !$("legacyNotice").textContent;
     for (const [code, reason] of Object.entries(state.data.skipped_rules)) {
       const p = document.createElement("p"); p.textContent = `${code}: ${reason}`; $("skippedRules").append(p);
     }
   }
 
   function buildHead() {
-    const fields = state.data.fields;
-    const columns = [{ field: "#", label: "Fila", width: 55 }, { field: "QUALITY", label: "Revisión", width: 130 },
-      ...fields.map(field => ({ field, label: labels[field] || field, width: field === "NOMBRES" || field === "DIRECCION" ? 250 : field === "CORREO" ? 210 : 130 })),
-      { field: "TOTAL", label: "Monto pendiente", width: 140 }, { field: "ERRORS", label: "Problemas detectados", width: 400 }];
+    const columns = state.data.columns.filter(column => state.showHidden || !column.hidden);
     const tr = document.createElement("tr");
     columns.forEach((column, position) => {
       const th = document.createElement("th"); th.style.width = `${column.width}px`; th.scope = "col";
-      const letter = document.createElement("span"); letter.textContent = position ? String.fromCharCode(64 + position) : "";
+      if (column.editable) labels[column.field] = column.label;
+      const letter = document.createElement("span");
+      letter.textContent = column.letter || "";
+      th.dataset.field = column.field;
       const b = document.createElement("b"); b.textContent = column.label; th.append(letter, b); tr.append(th);
     });
     $("gridHead").replaceChildren(tr);
     return columns;
   }
 
-  function valueFor(row, field) { return state.dirty.get(row.id)?.values[field] ?? row.values[field] ?? ""; }
+  function valueFor(row, field) { return state.dirty.get(row.id)?.values[field] ?? row.values[field] ?? row.source_values?.[field] ?? ""; }
   function locallyInvalid(field, value) {
-    if (["NOMBRES", "CIU", "CLAVE", "CEDULA_RUC"].includes(field) && !value.trim()) return true;
+    if (["NOMBRES", "CIU", "CLAVE", "CATASTRO", "CEDULA_RUC"].includes(field) && !value.trim()) return true;
     if (monetary.includes(field)) return !/^\d+(\.\d{1,2})?$/.test(value);
     if (field === "CEDULA_RUC") return !/^(\d{10}|\d{13})$/.test(value);
     if (field === "MESES_DEUDA") return !/^\d{1,6}$/.test(value);
     return false;
   }
   function editCell(row, field, value, input, remember = true) {
+    if (["FECHA", "FECHA_VENCIMIENTO"].includes(field) && /^\d{2}\/\d{2}\/\d{4}$/.test(value)) value = `${value.slice(6)}-${value.slice(3,5)}-${value.slice(0,2)}`;
     if (remember) undo.record([{id: row.id, field, before: valueFor(row, field), after: value}], `${row.id}:${field}`);
     let change = state.dirty.get(row.id) || { id: row.id, version: row.version, values: {} };
     if (value === row.values[field]) delete change.values[field]; else change.values[field] = value;
@@ -193,10 +208,11 @@
     if (state.busy || state.fetching || !state.data?.capabilities.edit) return;
     const changes = undo.take();
     for (const change of changes) {
-      const r = state.data.rows.findIndex(row => row.id === change.id), c = state.data.fields.indexOf(change.field);
-      if (r < 0 || c < 0) continue;
-      const input = $("gridBody").rows[r].cells[c + 2].querySelector(".cell-editor");
-      input.value = change.before; editCell(state.data.rows[r], change.field, change.before, input, false);
+      const r = state.data.rows.findIndex(row => row.id === change.id), c = grid.columns.findIndex(col => col.field === change.field);
+      if (r < 0) continue;
+      const input = c < 0 ? null : $("gridBody").rows[r].cells[c]?.querySelector(".cell-editor");
+      if (input) input.value = change.before;
+      editCell(state.data.rows[r], change.field, change.before, input, false);
     }
     controls();
     status(changes.length ? "Borrador deshecho. Los cambios ya guardados o aprobados no se revierten." : "No hay borradores que deshacer. Los guardados y formatos no se revierten con Ctrl+Z.");
@@ -204,6 +220,8 @@
 
   function renderRows() {
     if (!state.data) return;
+    $("rowContextText").textContent = "Selecciona una fila para ver su origen, incidencias y campos no recibidos.";
+    $("rowOrderInput").value = ""; $("rowOrderInput").disabled = true; $("rowOrderInput").oninput = null;
     undo.clear();
     let position = state.gridRestore || gridPosition();
     if (!$("gridWrap").inert) state.gridRestore = null;
@@ -213,34 +231,46 @@
     const fragment = document.createDocumentFragment();
     for (const [position, row] of state.data.rows.entries()) {
       const tr = document.createElement("tr"); tr.dataset.row = row.id;
-      const number = document.createElement("td"); number.className = "row-number"; number.textContent = row.source_row; tr.append(number);
-      const badge = document.createElement("td"); const tag = document.createElement("span");
-      tag.className = `quality-badge ${row.quality}`; tag.textContent = row.quality === "clean" ? "Sin observaciones" : "Requiere revisión"; badge.append(tag); tr.append(badge);
-      for (const [column, field] of state.data.fields.entries()) {
+      tr.classList.toggle("has-issues", row.presentation_quality === "problem");
+      tr.title = `Fila original ${row.source_row} · ${row.errors.map(e => e.message).join(" · ") || "Sin incidencias de las reglas ejecutadas"}`;
+      for (const [positionInGrid, definition] of columns.entries()) {
+        const field = definition.field;
+        if (definition.control || !definition.editable) {
+          const td = document.createElement("td"), span = document.createElement("span");
+          span.textContent = field === "#" ? row.source_row : field === "QUALITY" ? row.presentation_quality : field === "ORDER" ? row.order : field === "ERRORS" ? row.errors.map(e => e.message).join(" · ") || "—" : valueFor(row, field);
+          span.title = span.textContent; td.append(span); tr.append(td); continue;
+        }
+        const column = state.data.fields.indexOf(field);
         const td = document.createElement("td"); const input = document.createElement("textarea");
         input.rows = 1; input.className = "cell-editor"; input.value = valueFor(row, field); input.maxLength = 1000;
+        if (definition.type === "money" && input.value.trim() && Number.isFinite(Number(input.value))) input.value = Number(input.value).toFixed(2);
+        if (definition.type === "date" && /^\d{4}-\d{2}-\d{2}/.test(input.value)) input.value = input.value.slice(0, 10);
+        if (definition.type === "date" && definition.number_format.includes("dd/mm/yyyy") && /^\d{4}-\d{2}-\d{2}$/.test(input.value)) input.value = `${input.value.slice(8)}\u002f${input.value.slice(5,7)}\u002f${input.value.slice(0,4)}`;
+        if (definition.type === "money" && definition.number_format.includes("$")) { td.classList.add("money-cell"); td.dataset.currency = "$"; }
         input.autocomplete = "off"; input.spellcheck = false; input.readOnly = !state.data.capabilities.edit;
-        input.setAttribute("aria-label", `${labels[field]} · fila ${row.source_row}`);
+        input.setAttribute("aria-label", `${definition.label} · fila ${row.source_row}`);
         input.dataset.position = position; input.dataset.column = column;
-        if (monetary.includes(field)) { input.classList.add("numeric"); input.inputMode = "decimal"; }
+        if (definition.type === "money") { input.classList.add("numeric"); input.inputMode = "decimal"; }
         const errors = row.errors.filter(error => error.field === field);
         if (errors.length) { td.classList.add("cell-error"); input.title = errors.map(error => error.message).join(" "); }
-        else if (protectedFields.has(field) && !state.data.capabilities.protected) input.title = "Este cambio se enviará a un jefe para aprobación.";
+        else if ((definition.protected || protectedFields.has(field)) && !state.data.capabilities.protected) input.title = "Este cambio se enviará a un jefe para aprobación.";
         if (state.dirty.get(row.id)?.values[field] !== undefined) td.classList.add("dirty");
         input.addEventListener("input", () => editCell(row, field, input.value, input));
         td.append(input); tr.append(td);
       }
-      const total = document.createElement("td"); const amount = document.createElement("span"); amount.dataset.total = "true"; amount.className = "numeric";
-      amount.textContent = row.total == null ? "Revisar importes" : money(row.total); total.append(amount); tr.append(total);
-      const errors = document.createElement("td"); const text = document.createElement("span");
-      text.textContent = row.errors.map(error => error.message).join(" · ") || "—"; text.title = text.textContent; errors.append(text); tr.append(errors);
+      if (tr.cells.length) {
+        tr.cells[0].classList.add("row-anchor");
+        const indicator = document.createElement("button"); indicator.type = "button"; indicator.className = "row-indicator"; indicator.textContent = "⋮";
+        indicator.title = tr.title; indicator.setAttribute("aria-label", `Revisar fila ${row.source_row}`); tr.cells[0].prepend(indicator);
+      }
+      tr.addEventListener("click", () => showRowContext(row));
       fragment.append(tr);
     }
     $("gridBody").replaceChildren(fragment);
     if (!state.data.rows.length) {
       const tr = document.createElement("tr"); const td = document.createElement("td");
-      td.colSpan = 18; td.className = "sheet-empty";
-      td.textContent = state.scope === "clean" ? "No hay registros limpios para esta selección. Revisa el conjunto Errores y duplicados." : "No hay registros con problemas para esta selección.";
+      td.colSpan = columns.length; td.className = "sheet-empty";
+      td.textContent = state.scope === "clean" ? "Esta orden no tiene registros asignados. Las filas sin orden confirmada se encuentran en INCONSISTENCIAS." : "No hay inconsistencias para esta selección.";
       tr.append(td); $("gridBody").append(tr);
     }
     restoreGridPosition(position);
@@ -253,8 +283,18 @@
     state.fetching = true;
     if (!quiet) { status("Cargando filas de la cartera…"); controls(); }
     try {
-      const data = await api(`${url}query/`, { page: state.page, scope: state.scope, search: state.search });
+      let data = await api(`${url}query/`, { page: state.page, scope: state.scope, order: state.order, search: state.search });
       if (token !== state.requestId) return;
+      if (state.choosePopulatedTab && !state.search && !state.dirty.size) {
+        state.choosePopulatedTab = false;
+        const current = data.tabs.find(tab => tab.id === state.order);
+        const populated = data.tabs.find(tab => tab.count > 0);
+        if (!current?.count && populated) {
+          state.order = populated.id; state.scope = populated.id === "issues" ? "problem" : "clean"; state.page = 1;
+          data = await api(`${url}query/`, { page: 1, scope: state.scope, order: state.order, search: "" });
+          if (token !== state.requestId) return;
+        }
+      }
       const needsRender = !quiet || !state.data || data.summary.revision !== state.data.summary.revision;
       if (quiet && state.dirty.size) return;
       state.data = data;
@@ -273,6 +313,13 @@
         status(batchStatus?.run?.error_message || "La cartera está guardada y se está validando o preparando. Se actualizará automáticamente.", batchStatus?.status === "failed" ? "error" : "");
       } else status(error.message, "error");
     } finally { if (token === state.requestId) { state.fetching = false; controls(); } }
+  }
+
+  function showRowContext(row) {
+    $("rowContextText").textContent = `${row.source_sheet ? `Hoja ${row.source_sheet} · ` : ""}Fila original ${row.source_excel_row || row.source_row} · Versión ${row.version} · Orden ${row.order || "sin confirmar"} · ${row.errors.map(e => e.message).join(" · ") || "Sin incidencias de las reglas ejecutadas"}. Campos no recibidos o vacíos: ${(row.missing_fields || []).join(", ") || "ninguno"}.`;
+    const input = $("rowOrderInput"); input.value = valueFor(row, "ORDEN_PRELIMINAR") || row.order || "";
+    input.disabled = !state.data.capabilities.edit || state.busy;
+    input.oninput = () => { if (!state.busy && !state.fetching) editCell(row, "ORDEN_PRELIMINAR", input.value, null); };
   }
 
   function confirmChanges() {
@@ -331,22 +378,14 @@
         method: "POST", headers: { "Content-Type": "application/json", "X-CSRFToken": csrf() },
         body: JSON.stringify({ scope, revision: state.data.summary.revision }), signal: AbortSignal.timeout(300000)
       });
-      if (response.redirected || response.status === 401) throw new Error("La sesión terminó. Inicia sesión nuevamente.");
-      if (!response.ok) {
-        const payload = (response.headers.get("content-type") || "").includes("json") ? await response.json() : {};
-        throw new Error(payload.error?.message || "No se pudo descargar el lote.");
-      }
-      if (!(response.headers.get("content-type") || "").includes("spreadsheetml")) throw new Error("La sesión terminó. Inicia sesión nuevamente.");
-      const count = Number(response.headers.get("X-ARNOLD-Export-Rows"));
-      if (count !== expected) throw new Error("El servidor no confirmó la cantidad esperada de filas. Actualiza la cartera antes de reintentar.");
-      const blob = await response.blob();
-      const signature = new Uint8Array(await blob.slice(0, 4).arrayBuffer());
-      if (blob.size < 100 || signature[0] !== 80 || signature[1] !== 75 || signature[2] !== 3 || signature[3] !== 4) throw new Error("El servidor no devolvió un Excel válido. No se inició la descarga.");
+      const {blob, name, count} = await window.ArnoldDownload.receive(response, {
+        batch: state.batch.id, revision: state.data.summary.revision, expected
+      });
       const url = URL.createObjectURL(blob);
       const anchor = document.createElement("a"); anchor.href = url;
-      anchor.download = `ARNOLD_${scope}_${state.batch.period}_r${state.data.summary.revision}.xlsx`;
+      anchor.download = name;
       document.body.append(anchor); anchor.click(); anchor.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000);
-      status(`${savedMessage ? savedMessage + " " : ""}Descarga iniciada: ${count.toLocaleString("es-EC")} filas de ${scope === "clean" ? "lote principal" : "errores y duplicados"}.`, "success");
+      status(`${savedMessage ? savedMessage + " " : ""}Descarga iniciada: ${name} · ${count.toLocaleString("es-EC")} filas exportadas.`, "success");
     } catch (error) { status(`${savedMessage ? savedMessage + " " : ""}No se pudo descargar: ${error.name === "TimeoutError" ? "se agotó el tiempo; reintenta la descarga" : error.message}`, "error"); }
     finally { state.busy = false; controls(); }
   }
@@ -424,16 +463,16 @@
     $("batchSelect").onchange = async event => {
       if (!canNavigate()) { event.target.value = state.batch?.id || ""; return; }
       state.batch = state.batches.find(batch => batch.id === event.target.value); state.page = 1; state.data = null;
+      state.choosePopulatedTab = true;
       state.resetGridPosition = true;
       localStorage.setItem("arnold.selectedBatch", state.batch.id); await loadRows();
       if (state.view !== "grid") await loadLog(state.view);
     };
-    document.querySelectorAll("[data-scope]").forEach(button => button.onclick = async () => {
-      if (!canNavigate()) return;
-      state.scope = button.dataset.scope; state.page = 1;
-      state.resetGridPosition = true;
-      document.querySelectorAll("[data-scope]").forEach(other => other.classList.toggle("active", other === button)); await loadRows();
-    });
+    $("showHiddenColumns").onclick = () => {
+      if (!canNavigate() || !state.data) return;
+      state.showHidden = !state.showHidden; $("showHiddenColumns").setAttribute("aria-pressed", String(state.showHidden));
+      $("showHiddenColumns").textContent = state.showHidden ? "Ocultar auxiliares" : "Mostrar ocultas"; renderRows();
+    };
     document.querySelectorAll("[data-view]").forEach(button => button.onclick = () => {
       state.view = button.dataset.view;
       if (state.view !== "grid") setFocusMode(false);
@@ -493,8 +532,8 @@
 
   async function start() {
     try {
-      bind(); await loadBatches();
-      setInterval(() => { if (!document.hidden && !state.busy && !state.fetching && !state.dirty.size && state.view === "grid" && !document.activeElement?.closest("#gridWrap")) loadRows(true); }, 10000);
+      bind(); await loadBatches(new URLSearchParams(location.search).get("batch"));
+      setInterval(() => { if (!document.hidden && !state.busy && !state.fetching && !state.dirty.size && state.view === "grid" && !document.activeElement?.closest("#gridWrap, #rowContext")) loadRows(true); }, 10000);
     } catch (error) { status(`No se pudo iniciar la hoja: ${error.message}`, "error"); }
   }
   start();

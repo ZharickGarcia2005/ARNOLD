@@ -20,7 +20,7 @@ from .contracts import CellKind, DatasetInput, DatasetRole, FieldCell, RecordInp
 from .rules import SOURCE_PROFILES, make_unique_headers, normalize_header, recognize_schema
 
 
-ADAPTER_VERSION = "2026.10.1"
+ADAPTER_VERSION = "2026.10.19.2"
 _REQUIRED_PARTS = {"[Content_Types].xml", "xl/workbook.xml"}
 _FORBIDDEN_PREFIXES = (
     "xl/activex/",
@@ -135,7 +135,8 @@ def _identifier_raw(cell) -> str | None:
 
 def _field_cell(cell, normalized_name: str) -> FieldCell:
     value = _safe_scalar(cell.value)
-    raw = _identifier_raw(cell) if normalized_name in {"CLAVE", "CIU", "CEDULA_RUC"} else (
+    raw = _identifier_raw(cell) if normalized_name in {"CLAVE", "CATASTRO", "TITULO", "CIU", "CEDULA_RUC", "PREDIO_MUN", "PREDIO", "ID_PLAN",
+                                                     "COD_PARROQUIA", "ZONA", "SECTOR", "MANZANA", "OP", "OC", "EXP", "TELEF", "TELEFONO", "ORDEN", "ORDEN_PRELIMINAR"} else (
         None if cell.value is None else str(cell.value)
     )
     if cell.data_type == "f":

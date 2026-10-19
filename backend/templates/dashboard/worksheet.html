@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}Preliminar · ARNOLD{% endblock %}
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/worksheet.css' %}?v={{ asset_version }}" /><link rel="stylesheet" href="{% static 'css/worksheet-grid.css' %}?v={{ asset_version }}" />{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/worksheet.css' %}?v={{ asset_version }}" /><link rel="stylesheet" href="{% static 'css/worksheet-grid.css' %}?v={{ asset_version }}" /><link rel="stylesheet" href="{% static 'css/worksheet-orders.css' %}?v={{ asset_version }}" />{% endblock %}
 {% block content %}
 <div class="sheet-app" id="sheetApp" data-can-import="{{ perms.batches.import_batch|yesno:'true,false' }}" data-max-bytes="{{ max_upload_bytes }}">
   <aside class="sheet-sidebar" id="sheetSidebar" aria-label="Navegación de ARNOLD">
@@ -25,9 +25,12 @@
     <section id="gridView" class="sheet-view">
       <div class="sheet-card">
         <div class="sheet-titlebar"><div class="sheet-caption"><h2>Hoja preliminar</h2><span id="toolbarSaveStatus" class="toolbar-save-status" role="status" aria-live="polite">Sin cambios</span></div><div class="export-actions"><button class="sheet-btn focus-toggle" id="focusToggle" type="button" aria-pressed="false" title="Ampliar la hoja; Esc para salir">⛶ Pantalla completa</button><button class="sheet-btn" id="discardButton" disabled>Descartar</button><button class="sheet-btn primary" id="saveButton">Guardar cambios</button><button class="sheet-btn" id="downloadProblems" title="Descargar todas las filas de revisión, sin limitar por búsqueda o página" disabled>↓ Errores / duplicados .xlsx</button><button class="sheet-btn" id="downloadClean" title="Descargar todo el lote principal, sin limitar por búsqueda o página" disabled>↓ Lote principal .xlsx</button></div></div>
-        <div class="sheet-controls"><div class="sheet-tabs" role="group" aria-label="Conjunto de registros"><button data-scope="clean" class="active">Lote principal <b id="cleanTab">0</b></button><button data-scope="problem">Errores y duplicados <b id="problemTab">0</b></button></div>
+        <p id="legacyNotice" class="sheet-status" hidden></p>
+        <div class="sheet-controls"><div class="order-caption"><strong id="activeOrderName">030-SAN CARLOS (LISTA)</strong><button type="button" id="showHiddenColumns" class="sheet-btn" aria-pressed="false">Mostrar ocultas</button></div>
           <form id="searchForm" class="sheet-search"><input id="searchInput" placeholder="CLAVE, cédula/RUC o CIU exactos" aria-label="Buscar en toda la cartera" /><button class="sheet-btn">Buscar</button></form></div>
         <div class="spreadsheet-wrap" id="gridWrap" tabindex="0" role="region" aria-label="Tabla editable con desplazamiento interno"><table class="spreadsheet" id="dataGrid" role="grid" aria-label="Cartera editable"><thead id="gridHead"></thead><tbody id="gridBody"><tr><td>Esperando cartera…</td></tr></tbody></table></div>
+        <div id="orderTabs" class="order-tabs" role="tablist" aria-label="Órdenes e inconsistencias"></div>
+        <details class="row-context" id="rowContext"><summary>Revisión de la fila seleccionada</summary><p id="rowContextText">Selecciona una fila para ver su origen, incidencias y campos no recibidos.</p><label>Orden confirmada <input id="rowOrderInput" maxlength="3" placeholder="030–040" disabled /></label></details>
         <div class="sheet-footer"><span id="pageInfo">Sin filas</span><a class="summary-link" href="#sheetSecondary">Resumen y validaciones ↓</a><div><button class="sheet-btn" id="previousPage" disabled>← Anterior</button><span id="pageNumber">1</span><button class="sheet-btn" id="nextPage" disabled>Siguiente →</button></div></div>
       </div>
     </section>
@@ -96,4 +99,4 @@
 <dialog id="cellTextDialog" class="sheet-dialog"><div class="dialog-head"><h2 id="cellTextTitle">Texto completo</h2><button id="closeCellText" class="sheet-text">Cerrar</button></div><pre id="cellTextContent"></pre></dialog>
 <noscript><p>Activa JavaScript para utilizar la hoja. La cartera permanece guardada en el servidor.</p></noscript>
 {% endblock %}
-{% block extra_js %}<script src="{% static 'js/worksheet-grid-model.js' %}?v={{ asset_version }}" defer></script><script src="{% static 'js/worksheet-grid.js' %}?v={{ asset_version }}" defer></script><script src="{% static 'js/worksheet-app.js' %}?v={{ asset_version }}" defer></script>{% endblock %}
+{% block extra_js %}<script src="{% static 'js/worksheet-grid-model.js' %}?v={{ asset_version }}" defer></script><script src="{% static 'js/worksheet-grid.js' %}?v={{ asset_version }}" defer></script><script src="{% static 'js/worksheet-download.js' %}?v={{ asset_version }}" defer></script><script src="{% static 'js/worksheet-app.js' %}?v={{ asset_version }}" defer></script>{% endblock %}

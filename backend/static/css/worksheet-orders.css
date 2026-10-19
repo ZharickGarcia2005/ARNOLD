@@ -1,0 +1,26 @@
+/* Presentación del manifiesto por orden; no altera valores ni preferencias. */
+.order-caption { display:flex; align-items:center; gap:12px; min-width:0; font-size:12px; }
+.order-caption strong { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.order-tabs { display:flex; flex-shrink:0; gap:1px; overflow-x:auto; background:#e8edf2; border-top:1px solid #bccbd8; padding:0 6px; scrollbar-width:thin; }
+.order-tabs button { flex:0 0 auto; border:0; border-right:1px solid #cad5df; border-bottom:3px solid transparent; background:#edf2f6; color:#345367; padding:9px 12px; font:11px 'Segoe UI',Arial,sans-serif; cursor:pointer; white-space:nowrap; }
+.order-tabs button[aria-selected=true] { background:#fff; border-bottom-color:#178476; font-weight:650; color:#164e48; }
+.order-tabs button[data-order=issues] { color:#9e531e; }
+.row-context { flex-shrink:0; font-size:11px; color:#466174; padding:5px 12px; border-top:1px solid #d9e2e9; background:#f8fafc; max-height:130px; overflow:auto; }
+.row-context summary { cursor:pointer; }
+.row-context p { margin:6px 0; line-height:1.5; overflow-wrap:anywhere; }
+.row-context input { width:80px; margin:2px 8px; padding:4px; border:1px solid #b9cbd7; border-radius:3px; }
+.spreadsheet th { background:var(--order-header,#D9E2F3); color:#243e54; border-color:var(--order-border,#B8C9DB); position:sticky; top:0; z-index:3; }
+.spreadsheet th b,.spreadsheet th span { color:inherit; background:transparent; }
+.spreadsheet th:first-child { position:sticky; left:auto; z-index:3; }
+.spreadsheet td:first-child { position:relative; left:auto; z-index:auto; }
+.spreadsheet td { border:1px solid var(--order-border,#B8C9DB); background:#fff; }
+.spreadsheet tbody tr:nth-child(even) td { background:var(--order-stripe,#DEEAF6); }
+.spreadsheet td.row-anchor { position:relative; }
+.spreadsheet .row-anchor .cell-editor { padding-left:17px; }
+.spreadsheet .row-anchor > .row-resizer { position:absolute; left:0; bottom:-1px; width:100%; height:6px; padding:0; cursor:row-resize; z-index:8; touch-action:none; }
+.row-indicator { position:absolute; top:1px; bottom:2px; left:0; width:14px; padding:0; border:0; background:transparent; color:#6b8294; cursor:pointer; z-index:2; font-size:14px; }
+.has-issues .row-indicator { color:#a34c20; background:#fff1df; }
+.spreadsheet td > .cell-editor { background:transparent; }
+.spreadsheet td.money-cell { position:relative; }
+.spreadsheet td.money-cell::before { content:attr(data-currency); position:absolute; left:3px; top:6px; font-size:11px; color:#627887; pointer-events:none; }
+@media(max-width:760px) { .order-caption { flex-wrap:wrap; gap:4px; } .order-tabs button { padding:8px; } }

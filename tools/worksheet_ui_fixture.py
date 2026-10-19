@@ -1,125 +1,117 @@
-"""Servidor de prueba visual con datos sintéticos; nunca consulta carteras reales.
+"""Aplicación REAL Django con base aislada y un lote exclusivamente sintético.
 
-Ejecutar desde backend con ../tools/worksheet_ui_fixture.py. Solo escucha 127.0.0.1:8011.
-No sustituye la autenticación ni publica una sesión del servidor principal.
+Sin --verify-only: http://127.0.0.1:8011/ (boss / Arnold-Visual-2026!).
+Con --verify-only: genera las dos descargas usando los endpoints reales.
+No lee, migra, reemplaza ni comparte la base operativa del servidor 8000.
 """
-
-from copy import deepcopy
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from datetime import date
+from decimal import Decimal
 from io import BytesIO
 import json
 import os
 from pathlib import Path
 import sys
-from urllib.parse import urlsplit
+import tempfile
 
-BACKEND = Path(__file__).resolve().parent.parent / "backend"
-sys.path.insert(0, str(BACKEND))
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "backend"))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.development")
 import django
 django.setup()
-from django.contrib.auth import get_user_model
-from django.template.loader import render_to_string
-from django.test import RequestFactory
-from apps.workflow.presentation import apply_operations, empty_document
-from apps.workflow.sheet_exports import typed_value
-from openpyxl import Workbook
+from django.conf import settings
+from django.core.management import call_command
+from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import Client
+from django.test.runner import DiscoverRunner
+from openpyxl import load_workbook
+from openpyxl.utils import get_column_letter
+from apps.workflow import test_column_contract as fixtures
+from apps.workflow.columns import SHEETS, CONTRACT_VERSION
+from apps.workflow.order_projection import presentation_counts
 
-FIELDS = ["CIU", "CEDULA_RUC", "NOMBRES", "CLAVE", "DIRECCION", "PARROQUIA", "TELEF", "CORREO", "TOTAL_EMISION", "TOTAL_INTERES", "TOTAL_COACTIVA", "TOTAL_RECARGO", "MESES_DEUDA", "FECHA_VENCIMIENTO"]
-BATCH = {"id": "00000000-0000-0000-0000-000000000001", "name": "PRUEBA SINTÉTICA · sin datos personales.xlsx", "status": "ready", "status_label": "Listo para revisar", "period": "2026-08-01", "status_url": "/api/v1/batches/00000000-0000-0000-0000-000000000001/"}
-VALUES = dict.fromkeys(FIELDS, "")
-VALUES.update(CIU="000042", CEDULA_RUC="1710034065", NOMBRES="PERSONA DE PRUEBA A", CLAVE="000123", TOTAL_EMISION="10.00", TOTAL_INTERES="2.00", TOTAL_COACTIVA="3.00", TOTAL_RECARGO="4.00", MESES_DEUDA="52.0")
-ROWS = [{"id": f"row-{number}", "source_row": number + 1, "version": 1, "quality": "clean", "errors": [], "total": "19", "values": {**VALUES, "CLAVE": f"{number:06d}", "NOMBRES": f"PERSONA DE PRUEBA {number}"}} for number in range(1, 101)]
-REVISION = 1
-PRESENTATION = empty_document()
+class VisualCase(fixtures.ColumnContractTests):
+    @staticmethod
+    def upload_file():
+        upload = fixtures.ColumnContractTests.upload_file()
+        book = load_workbook(BytesIO(upload.read()))
+        sheet = book.active
+        extra = ["EXP", "PREDIO MUNICIPAL", "PARROQUIA", "PARROQ", "ZONA", "SECTOR", "MZ", "PREDIO", "ID PLAN", "DIGITADOR", "FECHA", "HORA", "NOVEDAD", "UNIDAD", "FE", "REGISTRADO", "TOTAL", "TOTAL EN LETRA"]
+        first = sheet.max_column + 1
+        for c, label in enumerate(extra, first): sheet.cell(1, c, label)
+        order_column = next(c.column for c in sheet[1] if c.value == "ORDEN")
+        codes = ("036", "037", "038", "039", "040", "031", "035")
+        for number in range(111):
+            row = number + 2
+            if 100 <= number <= 106: sheet.cell(row, order_column, codes[number - 100])
+            values = [f"EXP-{number:04}", f"PREDIO-{number:05}", "PARROQUIA SINTETICA", "01", "02", "03", "04", "05", "00001", "OPERADOR DE PRUEBA", date(2026, 10, 1), "09:30:00", "Dato ficticio", "UNIDAD FICTICIA", "FE SINTETICO", "SI", 20.10, "TOTAL DE ORIGEN FICTICIO"]
+            for c, value in enumerate(values, first): sheet.cell(row, c, value)
+        output = BytesIO(); book.save(output); book.close()
+        return SimpleUploadedFile("PRUEBA-SINTETICA-ORDENES.xlsx", output.getvalue(), content_type=upload.content_type)
 
+def verify(case):
+    sheet = case.batch.worksheet
+    row = sheet.rows.order_by("record__source_row").first()
+    original = bytes(row.record.data_ciphertext)
+    saved = case.post("save", {"reason":"Nombre confirmado en expediente ficticio", "changes":[{"id":str(row.pk), "version":1, "values":{"NOMBRES":"PERSONA SINTETICA REVISADA"}}]}, case.worker)
+    assert saved.status_code == 200
+    pending = case.post("save", {"reason":"Clave contrastada con respaldo ficticio", "changes":[{"id":str(row.pk), "version":2, "values":{"CLAVE":"000099999"}}]}, case.worker)
+    assert pending.status_code == 200
+    approved = case.post(f"requests/{pending.json()['pending'][0]}/decide", {"approve":True}, case.boss)
+    assert approved.status_code == 200
+    row.record.refresh_from_db(); assert bytes(row.record.data_ciphertext) == original
+    output = ROOT / "outputs" / "order-presentation"
+    output.mkdir(parents=True, exist_ok=True)
+    report, ids = {}, []
+    for scope, count, filename in (("clean",107,"principal-por-orden-sintetico.xlsx"),("problem",4,"inconsistencias-sinteticas.xlsx")):
+        book, content = case.download(scope, 3, search="0000000", page=1, order="030")
+        names = [definition["name"] for code, definition in SHEETS.items() if (code == "issues") == (scope == "problem")]
+        assert book.sheetnames == names + ["Trazabilidad"]
+        written = 0; totals = dict.fromkeys(("EMISION","INTERES","TOTAL_COACTIVA","RECARGO"), Decimal(0))
+        for name in names:
+            code = next(code for code in SHEETS if SHEETS[code]["name"] == name)
+            data = case.post("query", {"order":code}).json()
+            ws = book[name]; labels = [c.value or "" for c in ws[1]]
+            assert labels == [c["label"] for c in data["columns"]]
+            for c, column in enumerate(data["columns"], 1):
+                assert ws.column_dimensions[get_column_letter(c)].hidden == column["hidden"]
+            fields = {label:i for i,label in enumerate(labels)}
+            written += ws.max_row - 1
+            for cells in ws.iter_rows(min_row=2):
+                assert isinstance(cells[fields["CLAVE"]].value, str)
+                assert not any(c.data_type in ("f","e") for c in cells)
+                for field in totals: totals[field] += Decimal(str(cells[fields[field]].value or 0))
+            assert ws.freeze_panes == "A2"
+        assert written == count
+        assert sum(totals.values()) == Decimal("20.10") * count
+        meta = dict(book["Trazabilidad"].values); assert meta["Filas"] == count
+        ids.append({key for key in meta if str(key).startswith("Record ")})
+        (output / filename).write_bytes(content)
+        report[scope] = {"rows":written, "sheets":names, "totals":{k:str(v) for k,v in totals.items()}, "contract":CONTRACT_VERSION}
+    assert not ids[0] & ids[1] and len(ids[0] | ids[1]) == 111
+    result = {"synthetic_only":True, "disjoint":True, "original_unchanged":True, "revision":3, "downloads":report}
+    (output / "verification.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(json.dumps(result, ensure_ascii=False, indent=2), flush=True)
 
-class Handler(BaseHTTPRequestHandler):
-    def log_message(self, *args):
-        pass
+def main():
+    if settings.DATABASES["default"]["ENGINE"] != "django.db.backends.sqlite3": raise RuntimeError("Sólo SQLite de pruebas.")
+    root = ROOT / "outputs"; root.mkdir(exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix="order-ui-test-", dir=root) as directory:
+        settings.DATABASES["default"].setdefault("TEST", {})["NAME"] = str(Path(directory) / "test.sqlite3")
+        runner = DiscoverRunner(verbosity=0, interactive=False)
+        runner.setup_test_environment(); old_config = runner.setup_databases()
+        # Los puertos no aíslan cookies: no compartir las de la aplicación 8000.
+        settings.SESSION_COOKIE_NAME = "arnold_order_ui_session"
+        settings.CSRF_COOKIE_NAME = "arnold_order_ui_csrf"
+        case = VisualCase(methodName="test_full_upload_validation_partition_query_and_both_complete_downloads")
+        case.client = Client()
+        try:
+            case.setUp(); case.uploaded_pipeline()
+            if "--verify-only" in sys.argv: verify(case); return
+            case.boss.set_password("Arnold-Visual-2026!"); case.boss.save(update_fields=("password",))
+            settings.DEBUG = True
+            print("Servidor Django aislado: http://127.0.0.1:8011/ · sólo datos ficticios", flush=True)
+            call_command("runserver", "127.0.0.1:8011", use_reloader=False)
+        finally:
+            case.doCleanups(); runner.teardown_databases(old_config); runner.teardown_test_environment()
 
-    def respond(self, content, kind="application/json", status=200, headers=None):
-        if isinstance(content, (dict, list)):
-            content = json.dumps(content).encode()
-        self.send_response(status)
-        self.send_header("Content-Type", kind)
-        self.send_header("Cache-Control", "no-store")
-        for name, value in (headers or {}).items():
-            self.send_header(name, str(value))
-        self.end_headers()
-        self.wfile.write(content)
-
-    def do_GET(self):
-        path = urlsplit(self.path).path
-        if path.startswith("/static/"):
-            asset = (BACKEND / "static" / path.removeprefix("/static/")).resolve()
-            if not asset.is_relative_to((BACKEND / "static").resolve()) or not asset.is_file():
-                self.respond({}, status=404)
-                return
-            content = asset.read_bytes()
-            if asset.name == "worksheet.css" and "baseline=1" in self.path:
-                content = content.split("/* Hoja como primera pantalla".encode())[0]
-            self.respond(content, "text/javascript" if asset.suffix == ".js" else "text/css")
-        elif path == "/api/v1/batches/":
-            self.respond({"batches": [BATCH]})
-        elif path == BATCH["status_url"]:
-            self.respond({"status": "ready", "run": {"status": "succeeded"}})
-        else:
-            request = RequestFactory().get("/")
-            request.user = get_user_model()(username="Prueba sintética", role="admin", is_superuser=True, is_active=True)
-            html = render_to_string("dashboard/worksheet.html", {"max_upload_bytes": 52428800, "asset_version": "fixture"}, request=request)
-            if path == "/baseline/":
-                html = html.replace("worksheet.css?v=fixture", "worksheet.css?v=fixture&baseline=1")
-            self.respond(html.encode(), "text/html;charset=utf-8")
-
-    def do_POST(self):
-        global REVISION, PRESENTATION
-        body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", "0"))) or b"{}")
-        if self.path.endswith("/presentation/"):
-            if "operations" in body:
-                if body.get("version") != PRESENTATION["version"]:
-                    self.respond({"error": {"code": "presentation_conflict", "message": "Conflicto de formato sintético."}}, status=409)
-                    return
-                apply_operations(PRESENTATION, body["operations"])
-                PRESENTATION["version"] += 1
-                self.respond({"version": PRESENTATION["version"]})
-            else:
-                self.respond({"presentation": PRESENTATION})
-        elif self.path.endswith("/download/"):
-            if "error-download" in self.headers.get("Referer", ""):
-                self.respond({"error": {"message": "Fallo de descarga sintético."}}, status=503)
-                return
-            book = Workbook(); data = book.active; data.title = "Principal"
-            data.append(FIELDS)
-            for row in ROWS:
-                data.append([typed_value(field, row["values"][field]) for field in FIELDS])
-            stream = BytesIO(); book.save(stream); book.close()
-            self.respond(stream.getvalue(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                         headers={"Content-Disposition": 'attachment; filename="fixture-principal.xlsx"',
-                                  "X-ARNOLD-Export-Rows": len(ROWS), "X-ARNOLD-Export-Revision": REVISION})
-        elif self.path.endswith("/save/"):
-            if "error-save" in self.headers.get("Referer", ""):
-                self.respond({"error": {"message": "Fallo de guardado sintético."}}, status=503)
-                return
-            ids = []
-            for change in body["changes"]:
-                row = next(item for item in ROWS if item["id"] == change["id"])
-                row["values"].update(change["values"])
-                row["version"] += 1
-                ids.append(row["id"])
-            REVISION += 1
-            self.respond({"applied": ids, "pending": [], "summary": {"revision": REVISION}})
-        else:
-            rows = deepcopy(ROWS) if body.get("scope") != "problem" else []
-            if body.get("search"):
-                rows = [row for row in rows if body["search"] in (row["values"]["CLAVE"], row["values"]["CIU"], row["values"]["CEDULA_RUC"])]
-            self.respond({"name": BATCH["name"], "fields": FIELDS, "rows": rows, "page": 1, "filtered_total": len(rows), "has_next": False,
-                          "summary": {"revision": REVISION, "total": len(ROWS), "clean": len(ROWS), "problem": 0, "duplicates": 0, "pending_approvals": 0},
-                          "presentation": PRESENTATION,
-                          "capabilities": {"edit": True, "protected": True, "export": True, "format": True},
-                          "skipped_rules": {"MONTH-001": "Fixture visual: sin fuente histórica."}})
-
-
-if __name__ == "__main__":
-    print("Fixture sintético de hoja: http://127.0.0.1:8011/", flush=True)
-    ThreadingHTTPServer(("127.0.0.1", 8011), Handler).serve_forever()
+if __name__ == "__main__": main()

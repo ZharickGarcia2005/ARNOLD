@@ -16,9 +16,9 @@ from django.conf import settings
 
 from apps.audit.services import append_audit_event
 from apps.batches.crypto import decrypt_json, encrypt_json
-from .worksheet import FIELDS, SheetError, can_edit
+from .worksheet import SheetError, can_edit
+from .columns import SHEETS, columns_for
 
-COLUMNS = ("#", "QUALITY", *FIELDS, "TOTAL", "ERRORS")
 STYLE_KEYS = {"background", "color", "bold", "italic", "underline", "align", "size", "wrap"}
 MAX_BYTES = 4 * 1024 * 1024
 
@@ -116,6 +116,7 @@ def integer(value, low, high):
 
 
 def validate_operations(sheet, operations):
+    allowed_columns = {col.field for code in SHEETS for col in columns_for(sheet.batch, code)}
     if not isinstance(operations, list) or not 1 <= len(operations) <= 100:
         raise SheetError("operation_limit", "Envíe entre 1 y 100 operaciones visuales por lote.")
     ids, cost = set(), 0
@@ -127,7 +128,7 @@ def validate_operations(sheet, operations):
             raise SheetError("invalid_operation", "Operación visual desconocida.")
         columns = op.get("columns", [])
         rows = op.get("rows", [])
-        if not isinstance(columns, list) or len(columns) > len(COLUMNS) or any(column not in COLUMNS for column in columns):
+        if not isinstance(columns, list) or len(columns) > len(allowed_columns) or any(column not in allowed_columns for column in columns):
             raise SheetError("invalid_column", "Columna visual no admitida.")
         if not isinstance(rows, list) or len(rows) > 100:
             raise SheetError("row_limit", "Seleccione hasta 100 filas por operación.")

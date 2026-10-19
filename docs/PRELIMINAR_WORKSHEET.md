@@ -1,5 +1,10 @@
 # Hoja preliminar de ARNOLD
 
+La organización vigente de columnas y su compatibilidad con lotes históricos
+se especifican en [ORDER_WORKBOOK_PRESENTATION.md](ORDER_WORKBOOK_PRESENTATION.md).
+Las nuevas validaciones sólo se aplican a próximas cargas. No ejecutar comandos
+de revalidación sobre los lotes existentes sin autorización del usuario.
+
 La pantalla operativa usa `dashboard/worksheet.html` y un único controlador de
 estado en `static/js/worksheet-app.js`. No carga los registros demo ni depende
 de la inicialización del dashboard anterior. Los recursos llevan una versión

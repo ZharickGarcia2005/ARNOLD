@@ -1,0 +1,6947 @@
+{
+  "version": "current-reference-1",
+  "sha256": "c1527fbbca77b4d92f38f420f284de65851b9f3bac68a58d33e9c25109dda29f",
+  "sheets": [
+    {
+      "name": "030-SAN CARLOS (LISTA)",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 2
+        },
+        {
+          "column": "B",
+          "label": "",
+          "style": 4
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 4
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 4
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 6
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 4
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 2
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 2
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 2
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 8
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 2
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 8
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 8
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 9
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 14
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 14
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 14
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 14
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 16
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 2
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 18
+        },
+        {
+          "column": "V",
+          "label": "EMISION",
+          "style": 19
+        },
+        {
+          "column": "W",
+          "label": "EMI LETRA",
+          "style": 16
+        },
+        {
+          "column": "X",
+          "label": "INTERES",
+          "style": 19
+        },
+        {
+          "column": "Y",
+          "label": "INT LETRA",
+          "style": 16
+        },
+        {
+          "column": "Z",
+          "label": "SUBTOTAL",
+          "style": 19
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 19
+        },
+        {
+          "column": "AB",
+          "label": "RECARGO",
+          "style": 19
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO EN LETRA",
+          "style": 19
+        },
+        {
+          "column": "AD",
+          "label": "TOTAL",
+          "style": 19
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL EN LETRA",
+          "style": 19
+        },
+        {
+          "column": "AF",
+          "label": "TITULOS",
+          "style": 6
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 6
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 6
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 6
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 6
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 24
+        },
+        {
+          "column": "AL",
+          "label": "",
+          "style": 6
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 6
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "37.0"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "6",
+          "max": "6",
+          "width": "13.13"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "hidden": "1",
+          "min": "8",
+          "max": "10",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.5"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "13",
+          "max": "13",
+          "width": "12.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "14",
+          "max": "18",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "7.38"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "8.25"
+        },
+        {
+          "hidden": "1",
+          "min": "23",
+          "max": "23",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "24",
+          "max": "24",
+          "width": "8.38"
+        },
+        {
+          "hidden": "1",
+          "min": "25",
+          "max": "25",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "26",
+          "max": "26",
+          "width": "15.13"
+        },
+        {
+          "hidden": "1",
+          "min": "27",
+          "max": "27",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "28",
+          "max": "28",
+          "width": "8.63"
+        },
+        {
+          "hidden": "1",
+          "min": "29",
+          "max": "29",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "30",
+          "max": "30",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "32",
+          "max": "32",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "10.88"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "11.0"
+        },
+        {
+          "hidden": "1",
+          "min": "35",
+          "max": "35",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "39",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 340,
+      "errors": {},
+      "formulas": {
+        "O": 339,
+        "P": 339,
+        "Q": 339,
+        "R": 339,
+        "AB": 113,
+        "AD": 339,
+        "AE": 339,
+        "AK": 339
+      },
+      "types": {
+        "s": 3187,
+        "n": 3737,
+        "str": 1695
+      },
+      "header_styles": {
+        "2": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "4": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "6": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "8": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "9": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "164"
+        },
+        "14": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "16": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "18": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "165"
+        },
+        "19": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "24": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "bottom",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [],
+      "identifiers": {
+        "CLAVE": {
+          "nonempty": 339,
+          "distinct": 339,
+          "lengths": {
+            "25": 210,
+            "12": 2,
+            "22": 38,
+            "21": 80,
+            "15": 2,
+            "16": 5,
+            "14": 1,
+            "20": 1
+          },
+          "patterns": {
+            "otro": 339
+          }
+        },
+        "TITULOS": {
+          "nonempty": 339,
+          "distinct": 102,
+          "lengths": {
+            "4": 175,
+            "3": 117,
+            "5": 47
+          },
+          "patterns": {
+            "decimal": 339
+          }
+        }
+      }
+    },
+    {
+      "name": "031-(24 DE MAYO) LISTA",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 2
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 4
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 4
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 4
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 4
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 4
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 2
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 2
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 2
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 2
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 2
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 2
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 4
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 14
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 14
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 14
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 14
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 14
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 2
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 2
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 21
+        },
+        {
+          "column": "V",
+          "label": "EMISION",
+          "style": 19
+        },
+        {
+          "column": "W",
+          "label": "EMI LETRA",
+          "style": 2
+        },
+        {
+          "column": "X",
+          "label": "INTERES",
+          "style": 19
+        },
+        {
+          "column": "Y",
+          "label": "INT LETRA",
+          "style": 2
+        },
+        {
+          "column": "Z",
+          "label": "SUBTOTAL",
+          "style": 4
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 4
+        },
+        {
+          "column": "AB",
+          "label": "RECARGO",
+          "style": 19
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO EN LETRA",
+          "style": 4
+        },
+        {
+          "column": "AD",
+          "label": "TOTAL",
+          "style": 19
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL EN LETRA",
+          "style": 4
+        },
+        {
+          "column": "AF",
+          "label": "TITULOS",
+          "style": 4
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 4
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 4
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 4
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 4
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 24
+        },
+        {
+          "column": "AL",
+          "label": "",
+          "style": 4
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 4
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "37.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "6",
+          "max": "6",
+          "width": "13.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "13",
+          "max": "13",
+          "width": "21.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "14",
+          "max": "18",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "7.38"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "8.25"
+        },
+        {
+          "hidden": "1",
+          "min": "23",
+          "max": "23",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "24",
+          "max": "24",
+          "width": "8.38"
+        },
+        {
+          "hidden": "1",
+          "min": "25",
+          "max": "25",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "26",
+          "max": "26",
+          "width": "15.13"
+        },
+        {
+          "hidden": "1",
+          "min": "27",
+          "max": "27",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "28",
+          "max": "28",
+          "width": "8.63"
+        },
+        {
+          "hidden": "1",
+          "min": "29",
+          "max": "29",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "30",
+          "max": "30",
+          "width": "8.63"
+        },
+        {
+          "hidden": "1",
+          "min": "31",
+          "max": "31",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "32",
+          "max": "32",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "11.0"
+        },
+        {
+          "hidden": "1",
+          "min": "35",
+          "max": "35",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "39",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 408,
+      "errors": {},
+      "formulas": {
+        "N": 407,
+        "O": 407,
+        "P": 407,
+        "Q": 407,
+        "R": 407,
+        "AB": 83,
+        "AD": 407,
+        "AK": 407
+      },
+      "types": {
+        "s": 6319,
+        "str": 2442,
+        "n": 1628
+      },
+      "header_styles": {
+        "2": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "4": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "14": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "21": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "19": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "24": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "bottom",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [],
+      "identifiers": {
+        "CLAVE": {
+          "nonempty": 407,
+          "distinct": 407,
+          "lengths": {
+            "25": 88,
+            "18": 172,
+            "21": 134,
+            "23": 5,
+            "20": 2,
+            "19": 1,
+            "22": 5
+          },
+          "patterns": {
+            "otro": 407
+          }
+        },
+        "TITULOS": {
+          "nonempty": 407,
+          "distinct": 68,
+          "lengths": {
+            "1": 234,
+            "2": 141,
+            "3": 32
+          },
+          "patterns": {
+            "entero": 407
+          }
+        }
+      }
+    },
+    {
+      "name": "032-SAN CRISTOBAL(LISTA)",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 12
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 15
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 15
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 15
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 15
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 15
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 12
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 12
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 12
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 12
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 12
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 12
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 12
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 12
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 12
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 12
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 12
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 12
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 12
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 12
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 26
+        },
+        {
+          "column": "V",
+          "label": "EMISION",
+          "style": 32
+        },
+        {
+          "column": "W",
+          "label": "EMI LETRA",
+          "style": 12
+        },
+        {
+          "column": "X",
+          "label": "INTERES",
+          "style": 32
+        },
+        {
+          "column": "Y",
+          "label": "INT LETRA",
+          "style": 12
+        },
+        {
+          "column": "Z",
+          "label": "SUBTOTAL",
+          "style": 15
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 15
+        },
+        {
+          "column": "AB",
+          "label": "RECARGO",
+          "style": 32
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO EN LETRA",
+          "style": 15
+        },
+        {
+          "column": "AD",
+          "label": "TOTAL",
+          "style": 32
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL EN LETRA",
+          "style": 15
+        },
+        {
+          "column": "AF",
+          "label": "TITULOS",
+          "style": 15
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 15
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 15
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 15
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 15
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 20
+        },
+        {
+          "column": "AL",
+          "label": "",
+          "style": 15
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 15
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "37.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "6",
+          "max": "6",
+          "width": "14.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "13",
+          "max": "13",
+          "width": "12.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "14",
+          "max": "18",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "8.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "9.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "24",
+          "max": "24",
+          "width": "9.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "26",
+          "max": "26",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "28",
+          "max": "28",
+          "width": "8.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "30",
+          "max": "30",
+          "width": "9.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "32",
+          "max": "32",
+          "width": "7.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "13.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "11.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "36",
+          "width": "27.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "37",
+          "max": "39",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 247,
+      "errors": {},
+      "formulas": {
+        "AD": 246,
+        "AK": 246,
+        "AB": 26
+      },
+      "types": {
+        "s": 4041,
+        "n": 1476,
+        "str": 246
+      },
+      "header_styles": {
+        "12": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9D2E9\" /><ns0:bgColor rgb=\"FFD9D2E9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "15": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9D2E9\" /><ns0:bgColor rgb=\"FFD9D2E9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "26": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9D2E9\" /><ns0:bgColor rgb=\"FFD9D2E9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "32": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9D2E9\" /><ns0:bgColor rgb=\"FFD9D2E9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "20": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [],
+      "identifiers": {
+        "CLAVE": {
+          "nonempty": 246,
+          "distinct": 246,
+          "lengths": {
+            "21": 108,
+            "12": 1,
+            "25": 76,
+            "18": 47,
+            "23": 4,
+            "19": 1,
+            "22": 6,
+            "14": 1,
+            "13": 2
+          },
+          "patterns": {
+            "otro": 246
+          }
+        },
+        "TITULOS": {
+          "nonempty": 246,
+          "distinct": 123,
+          "lengths": {
+            "1": 65,
+            "2": 94,
+            "3": 71,
+            "5": 5,
+            "4": 11
+          },
+          "patterns": {
+            "entero": 203,
+            "otro": 43
+          }
+        }
+      }
+    },
+    {
+      "name": "033-GUAYACAN(LISTA)",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 1
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 3
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 5
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 5
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 5
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 5
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 1
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 1
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 1
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 1
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 1
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 1
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 7
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 7
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 7
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 7
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 7
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 7
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 10
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 1
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 11
+        },
+        {
+          "column": "V",
+          "label": "EMISION",
+          "style": 13
+        },
+        {
+          "column": "W",
+          "label": "EMI LETRA",
+          "style": 1
+        },
+        {
+          "column": "X",
+          "label": "INTERES",
+          "style": 13
+        },
+        {
+          "column": "Y",
+          "label": "INT LETRA",
+          "style": 1
+        },
+        {
+          "column": "Z",
+          "label": "SUBTOTAL",
+          "style": 5
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AB",
+          "label": "RECARGO",
+          "style": 13
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AD",
+          "label": "TOTAL",
+          "style": 17
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AF",
+          "label": "TITULO",
+          "style": 5
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 5
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 5
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 5
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 5
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 20
+        },
+        {
+          "column": "AL",
+          "label": "",
+          "style": 5
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 5
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "37.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "6",
+          "max": "6",
+          "width": "11.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "13",
+          "max": "13",
+          "width": "30.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "14",
+          "max": "18",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "8.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "24",
+          "max": "24",
+          "width": "8.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "26",
+          "max": "26",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "28",
+          "max": "28",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "30",
+          "max": "30",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "32",
+          "max": "32",
+          "width": "5.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "11.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "37",
+          "width": "21.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "38",
+          "max": "38",
+          "width": "8.88"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "39",
+          "max": "39",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 702,
+      "errors": {},
+      "formulas": {
+        "M": 700,
+        "N": 700,
+        "O": 700,
+        "P": 700,
+        "Q": 700,
+        "R": 700,
+        "AD": 700,
+        "AE": 700,
+        "AK": 701,
+        "AM": 700,
+        "AB": 12
+      },
+      "types": {
+        "s": 7013,
+        "n": 5383,
+        "str": 4905,
+        "b": 700
+      },
+      "header_styles": {
+        "1": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "3": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "5": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "7": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "10": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "11": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "13": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "17": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "20": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [],
+      "identifiers": {
+        "CLAVE": {
+          "nonempty": 700,
+          "distinct": 700,
+          "lengths": {
+            "25": 275,
+            "21": 236,
+            "22": 22,
+            "23": 20,
+            "13": 2,
+            "18": 135,
+            "20": 5,
+            "19": 4,
+            "16": 1
+          },
+          "patterns": {
+            "otro": 700
+          }
+        },
+        "TITULO": {
+          "nonempty": 701,
+          "distinct": 32,
+          "lengths": {
+            "3": 409,
+            "1": 272,
+            "2": 6,
+            "4": 14
+          },
+          "patterns": {
+            "decimal": 415,
+            "entero": 276,
+            "otro": 10
+          }
+        }
+      }
+    },
+    {
+      "name": "034-GUAYACAN(LISTA)",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 1
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 3
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 5
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 5
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 5
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 5
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 1
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 1
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 1
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 1
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 1
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 1
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 7
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 7
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 7
+        },
+        {
+          "column": "P",
+          "label": "SECTOR",
+          "style": 7
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 7
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 7
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 10
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 1
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 11
+        },
+        {
+          "column": "V",
+          "label": "EMISION",
+          "style": 13
+        },
+        {
+          "column": "W",
+          "label": "EMI LETRA",
+          "style": 1
+        },
+        {
+          "column": "X",
+          "label": "INTERES",
+          "style": 13
+        },
+        {
+          "column": "Y",
+          "label": "INT LETRA",
+          "style": 1
+        },
+        {
+          "column": "Z",
+          "label": "SUBTOTAL",
+          "style": 5
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AB",
+          "label": "RECARGO",
+          "style": 13
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AD",
+          "label": "TOTAL",
+          "style": 17
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AF",
+          "label": "TITULO",
+          "style": 5
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 5
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 5
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 5
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 5
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 20
+        },
+        {
+          "column": "AL",
+          "label": "",
+          "style": 5
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 5
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "37.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "6",
+          "max": "6",
+          "width": "11.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "13",
+          "max": "13",
+          "width": "30.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "14",
+          "max": "18",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "8.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "24",
+          "max": "24",
+          "width": "8.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "26",
+          "max": "26",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "28",
+          "max": "28",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "30",
+          "max": "30",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "32",
+          "max": "32",
+          "width": "5.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "11.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "37",
+          "width": "21.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "38",
+          "max": "38",
+          "width": "8.88"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "39",
+          "max": "39",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 310,
+      "errors": {},
+      "formulas": {
+        "M": 308,
+        "N": 309,
+        "O": 309,
+        "P": 309,
+        "Q": 309,
+        "R": 309,
+        "AD": 309,
+        "AE": 309,
+        "AK": 309,
+        "AM": 309
+      },
+      "types": {
+        "s": 3288,
+        "n": 2163,
+        "str": 2162,
+        "b": 309
+      },
+      "header_styles": {
+        "1": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "3": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "5": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "7": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "10": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "11": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "13": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "17": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "20": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [],
+      "identifiers": {
+        "CLAVE": {
+          "nonempty": 309,
+          "distinct": 309,
+          "lengths": {
+            "18": 39,
+            "21": 125,
+            "25": 122,
+            "23": 11,
+            "19": 3,
+            "22": 8,
+            "26": 1
+          },
+          "patterns": {
+            "otro": 309
+          }
+        },
+        "TITULO": {
+          "nonempty": 309,
+          "distinct": 30,
+          "lengths": {
+            "1": 156,
+            "2": 152,
+            "3": 1
+          },
+          "patterns": {
+            "entero": 309
+          }
+        }
+      }
+    },
+    {
+      "name": "035-NICOLAS ALTA(LISTA)",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 1
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 5
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 5
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 106
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 5
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 5
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 1
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 1
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 1
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 1
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 1
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 1
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 7
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 7
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 7
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 7
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 7
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 7
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 1
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 1
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 11
+        },
+        {
+          "column": "V",
+          "label": "EMISION",
+          "style": 13
+        },
+        {
+          "column": "W",
+          "label": "EMI LETRA",
+          "style": 1
+        },
+        {
+          "column": "X",
+          "label": "INTERES",
+          "style": 13
+        },
+        {
+          "column": "Y",
+          "label": "INT LETRA",
+          "style": 1
+        },
+        {
+          "column": "Z",
+          "label": "SUBTOTAL",
+          "style": 5
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AB",
+          "label": "RECARGO",
+          "style": 13
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AD",
+          "label": "TOTAL",
+          "style": 107
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AF",
+          "label": "TITULO",
+          "style": 3
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 5
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 5
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 5
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 5
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 20
+        },
+        {
+          "column": "AL",
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "style": 5
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 5
+        },
+        {
+          "column": "AN",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AO",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AP",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AQ",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AR",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AS",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AT",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AU",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AV",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AW",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AX",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AY",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AZ",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BA",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BB",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BC",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BD",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BE",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BF",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BG",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BH",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BI",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BJ",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BK",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BL",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BM",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BN",
+          "label": "",
+          "style": 108
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "37.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "6",
+          "max": "6",
+          "width": "12.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "13",
+          "max": "13",
+          "width": "30.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "14",
+          "max": "14",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "15",
+          "max": "16",
+          "width": "12.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "17",
+          "max": "17",
+          "width": "13.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "18",
+          "max": "18",
+          "width": "16.88"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "7.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "9.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "24",
+          "max": "24",
+          "width": "8.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "26",
+          "max": "26",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "28",
+          "max": "28",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "30",
+          "max": "30",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "32",
+          "max": "32",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "7.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "11.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "36",
+          "width": "20.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "37",
+          "max": "37",
+          "width": "21.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "38",
+          "max": "38",
+          "width": "19.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "39",
+          "max": "66",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 463,
+      "errors": {},
+      "formulas": {
+        "Z": 460,
+        "AD": 462,
+        "AK": 462,
+        "AL": 462,
+        "O": 461,
+        "P": 461,
+        "Q": 461,
+        "R": 461,
+        "AB": 8
+      },
+      "types": {
+        "s": 5212,
+        "n": 4155,
+        "str": 2768
+      },
+      "header_styles": {
+        "1": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "5": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "106": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"10.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "7": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "11": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "13": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "107": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "3": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "20": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "108": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [],
+      "identifiers": {
+        "CLAVE": {
+          "nonempty": 461,
+          "distinct": 461,
+          "lengths": {
+            "25": 183,
+            "18": 136,
+            "23": 12,
+            "21": 127,
+            "19": 3
+          },
+          "patterns": {
+            "otro": 461
+          }
+        },
+        "TITULO": {
+          "nonempty": 462,
+          "distinct": 111,
+          "lengths": {
+            "4": 225,
+            "3": 168,
+            "5": 69
+          },
+          "patterns": {
+            "decimal": 462
+          }
+        }
+      }
+    },
+    {
+      "name": "Hoja 8",
+      "visibility": "visible",
+      "headers": [],
+      "columns": [],
+      "populated_rows": 0,
+      "errors": {},
+      "formulas": {},
+      "types": {},
+      "header_styles": {},
+      "panes": [],
+      "filters": [],
+      "identifiers": {}
+    },
+    {
+      "name": "036-RUTA DEL RIO(LISTA)",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 116
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 117
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 117
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 117
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 117
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 117
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 116
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 116
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 116
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 116
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 116
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 116
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 118
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 118
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 118
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 118
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 118
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 118
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 119
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 116
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 120
+        },
+        {
+          "column": "V",
+          "label": "TITULOS",
+          "style": 117
+        },
+        {
+          "column": "W",
+          "label": "EMISION",
+          "style": 121
+        },
+        {
+          "column": "X",
+          "label": "EMI LETRA",
+          "style": 116
+        },
+        {
+          "column": "Y",
+          "label": "INTERES",
+          "style": 121
+        },
+        {
+          "column": "Z",
+          "label": "INT LETRA",
+          "style": 116
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL",
+          "style": 117
+        },
+        {
+          "column": "AB",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 117
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO",
+          "style": 121
+        },
+        {
+          "column": "AD",
+          "label": "RECARGO EN LETRA",
+          "style": 117
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL",
+          "style": 122
+        },
+        {
+          "column": "AF",
+          "label": "TOTAL EN LETRA",
+          "style": 117
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 117
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 117
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 117
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 117
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 118
+        },
+        {
+          "column": "AL",
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "style": 117
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 117
+        },
+        {
+          "column": "AN",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AO",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AP",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AQ",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AR",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AS",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AT",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AU",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AV",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AW",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AX",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AY",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "AZ",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BA",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BB",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BC",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BD",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BE",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BF",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BG",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BH",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BI",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BJ",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BK",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BL",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BM",
+          "label": "",
+          "style": 123
+        },
+        {
+          "column": "BN",
+          "label": "",
+          "style": 123
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "37.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "6",
+          "max": "6",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "13",
+          "max": "13",
+          "width": "30.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "14",
+          "max": "18",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "7.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "8.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "23",
+          "max": "23",
+          "width": "9.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "25",
+          "max": "25",
+          "width": "8.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "27",
+          "max": "27",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "29",
+          "max": "29",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "31",
+          "max": "31",
+          "width": "9.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "11.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "11.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "36",
+          "width": "20.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "37",
+          "max": "37",
+          "width": "21.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "38",
+          "max": "38",
+          "width": "19.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "39",
+          "max": "66",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 45,
+      "errors": {},
+      "formulas": {
+        "AE": 44,
+        "AK": 44,
+        "AL": 44,
+        "AC": 20,
+        "M": 1,
+        "N": 1,
+        "O": 1,
+        "P": 1,
+        "Q": 1,
+        "R": 1,
+        "AM": 1
+      },
+      "types": {
+        "s": 786,
+        "n": 266,
+        "str": 95
+      },
+      "header_styles": {
+        "116": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "117": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "118": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "119": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "120": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "121": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "122": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "123": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFF7CB4D\" /><ns0:bgColor rgb=\"FFF7CB4D\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [
+        "$A$1:$AM$44"
+      ],
+      "identifiers": {
+        "CLAVE": {
+          "nonempty": 1,
+          "distinct": 1,
+          "lengths": {
+            "25": 1
+          },
+          "patterns": {
+            "otro": 1
+          }
+        },
+        "TITULOS": {
+          "nonempty": 44,
+          "distinct": 14,
+          "lengths": {
+            "2": 41,
+            "1": 3
+          },
+          "patterns": {
+            "entero": 44
+          }
+        }
+      }
+    },
+    {
+      "name": "037-VIVA ALFARO(LISTA)",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 167
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 168
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 168
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 168
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 168
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 168
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 169
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 167
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 167
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 167
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 167
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 167
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 169
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 169
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 169
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 169
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 169
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 169
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 170
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 167
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 171
+        },
+        {
+          "column": "V",
+          "label": "TITULOS VENCIDOS",
+          "style": 168
+        },
+        {
+          "column": "W",
+          "label": "EMISION",
+          "style": 172
+        },
+        {
+          "column": "X",
+          "label": "EMI LETRA",
+          "style": 167
+        },
+        {
+          "column": "Y",
+          "label": "INTERES",
+          "style": 172
+        },
+        {
+          "column": "Z",
+          "label": "INT LETRA",
+          "style": 167
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL",
+          "style": 168
+        },
+        {
+          "column": "AB",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 168
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO",
+          "style": 172
+        },
+        {
+          "column": "AD",
+          "label": "RECARGO EN LETRA",
+          "style": 168
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL",
+          "style": 173
+        },
+        {
+          "column": "AF",
+          "label": "TOTAL EN LETRA",
+          "style": 168
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 168
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 168
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 168
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 168
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 168
+        },
+        {
+          "column": "AL",
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "style": 168
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 168
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "37.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "6",
+          "max": "6",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "13",
+          "max": "13",
+          "width": "30.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "14",
+          "max": "18",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "7.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "23",
+          "width": "9.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "25",
+          "max": "25",
+          "width": "8.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "27",
+          "max": "27",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "29",
+          "max": "29",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "31",
+          "max": "31",
+          "width": "9.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "11.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "9.88"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "36",
+          "width": "20.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "37",
+          "max": "37",
+          "width": "46.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "38",
+          "max": "38",
+          "width": "19.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "39",
+          "max": "39",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 1168,
+      "errors": {
+        "#N/A": 1098
+      },
+      "formulas": {
+        "AE": 1162,
+        "AK": 1167,
+        "AL": 1167,
+        "AC": 336
+      },
+      "types": {
+        "s": 18130,
+        "n": 7898,
+        "str": 2334,
+        "e": 1098
+      },
+      "header_styles": {
+        "167": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "168": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "169": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "170": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "171": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "172": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "173": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        }
+      },
+      "panes": [],
+      "filters": [
+        "$C$1:$C$1168"
+      ],
+      "identifiers": {
+        "TITULOS VENCIDOS": {
+          "nonempty": 1167,
+          "distinct": 231,
+          "lengths": {
+            "1": 40,
+            "3": 458,
+            "2": 228,
+            "4": 191,
+            "5": 250
+          },
+          "patterns": {
+            "entero": 274,
+            "decimal": 871,
+            "otro": 22
+          }
+        }
+      }
+    },
+    {
+      "name": "038- VENUS",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 168
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 195
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 168
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 168
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 168
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 168
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 167
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 167
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 167
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 167
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 167
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 167
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 167
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 169
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 169
+        },
+        {
+          "column": "P",
+          "label": "SECTOR",
+          "style": 169
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 169
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 169
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 170
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 167
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 171
+        },
+        {
+          "column": "V",
+          "label": "TITULOS VENC.",
+          "style": 168
+        },
+        {
+          "column": "W",
+          "label": "EMISION",
+          "style": 172
+        },
+        {
+          "column": "X",
+          "label": "EMI LETRA",
+          "style": 167
+        },
+        {
+          "column": "Y",
+          "label": "INTERES",
+          "style": 172
+        },
+        {
+          "column": "Z",
+          "label": "INT LETRA",
+          "style": 167
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL",
+          "style": 168
+        },
+        {
+          "column": "AB",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 168
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO",
+          "style": 172
+        },
+        {
+          "column": "AD",
+          "label": "RECARGO EN LETRA",
+          "style": 168
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL",
+          "style": 173
+        },
+        {
+          "column": "AF",
+          "label": "TOTAL EN LETRA",
+          "style": 168
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 168
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 168
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 168
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 168
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 168
+        },
+        {
+          "column": "AL",
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "style": 168
+        },
+        {
+          "column": "AM",
+          "label": "<sin encabezado reconocido>",
+          "style": 168
+        },
+        {
+          "column": "AN",
+          "label": "<sin encabezado reconocido>",
+          "style": 196
+        },
+        {
+          "column": "AO",
+          "label": "<sin encabezado reconocido>",
+          "style": 196
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "37.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "6",
+          "max": "6",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "13",
+          "max": "13",
+          "width": "30.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "14",
+          "max": "18",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "7.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "8.88"
+        },
+        {
+          "customWidth": "1",
+          "min": "23",
+          "max": "23",
+          "width": "9.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "25",
+          "max": "25",
+          "width": "8.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "27",
+          "max": "27",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "29",
+          "max": "29",
+          "width": "8.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "31",
+          "max": "31",
+          "width": "9.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "9.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "9.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "36",
+          "width": "20.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "37",
+          "max": "37",
+          "width": "43.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "38",
+          "max": "38",
+          "width": "19.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "39",
+          "max": "41",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 503,
+      "errors": {},
+      "formulas": {
+        "N": 502,
+        "O": 502,
+        "P": 502,
+        "Q": 502,
+        "R": 502,
+        "AE": 502,
+        "AK": 502,
+        "AL": 502,
+        "AC": 83,
+        "L": 1
+      },
+      "types": {
+        "s": 6065,
+        "n": 3210,
+        "str": 3515
+      },
+      "header_styles": {
+        "168": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "195": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "167": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "169": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "170": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "171": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "172": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "173": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "196": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [],
+      "filters": [
+        "$G$1:$G$503"
+      ],
+      "identifiers": {
+        "TITULOS VENC.": {
+          "nonempty": 502,
+          "distinct": 194,
+          "lengths": {
+            "2": 163,
+            "3": 285,
+            "5": 5,
+            "4": 40,
+            "1": 9
+          },
+          "patterns": {
+            "entero": 288,
+            "decimal": 181,
+            "otro": 33
+          }
+        }
+      }
+    },
+    {
+      "name": "039-VENUS",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 5
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 5
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 5
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 5
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 5
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 5
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 1
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 1
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 1
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 1
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 1
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 1
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 213
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 214
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 214
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 214
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 214
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 214
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 10
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 1
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 11
+        },
+        {
+          "column": "V",
+          "label": "TITULOS VENC.",
+          "style": 5
+        },
+        {
+          "column": "W",
+          "label": "EMISION",
+          "style": 13
+        },
+        {
+          "column": "X",
+          "label": "EMI LETRA",
+          "style": 1
+        },
+        {
+          "column": "Y",
+          "label": "INTERES",
+          "style": 13
+        },
+        {
+          "column": "Z",
+          "label": "INT LETRA",
+          "style": 1
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL",
+          "style": 5
+        },
+        {
+          "column": "AB",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO",
+          "style": 13
+        },
+        {
+          "column": "AD",
+          "label": "RECARGO EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL",
+          "style": 107
+        },
+        {
+          "column": "AF",
+          "label": "TOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 5
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 5
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 5
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 5
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 24
+        },
+        {
+          "column": "AL",
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "style": 5
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 5
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "1",
+          "max": "1",
+          "width": "5.13"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "5.38"
+        },
+        {
+          "hidden": "1",
+          "min": "3",
+          "max": "3",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "22.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "39.38"
+        },
+        {
+          "customWidth": "1",
+          "min": "6",
+          "max": "6",
+          "width": "15.13"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "7",
+          "max": "7",
+          "width": "6.75"
+        },
+        {
+          "hidden": "1",
+          "min": "8",
+          "max": "10",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "11",
+          "max": "11",
+          "width": "6.38"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "12",
+          "max": "12",
+          "width": "40.38"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "13",
+          "max": "13",
+          "width": "30.0"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "14",
+          "max": "18",
+          "width": "5.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "19",
+          "max": "19",
+          "width": "7.63"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "20",
+          "max": "20",
+          "width": "13.75"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "21",
+          "max": "21",
+          "width": "13.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "10.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "23",
+          "max": "23",
+          "width": "9.13"
+        },
+        {
+          "hidden": "1",
+          "min": "24",
+          "max": "24",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "25",
+          "max": "25",
+          "width": "8.38"
+        },
+        {
+          "hidden": "1",
+          "min": "26",
+          "max": "26",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "27",
+          "max": "27",
+          "width": "15.13"
+        },
+        {
+          "hidden": "1",
+          "min": "28",
+          "max": "28",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "29",
+          "max": "29",
+          "width": "8.63"
+        },
+        {
+          "hidden": "1",
+          "min": "30",
+          "max": "30",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "31",
+          "max": "31",
+          "width": "9.25"
+        },
+        {
+          "hidden": "1",
+          "min": "32",
+          "max": "32",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "33",
+          "max": "33",
+          "width": "7.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "34",
+          "max": "34",
+          "width": "9.38"
+        },
+        {
+          "hidden": "1",
+          "min": "35",
+          "max": "35",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "36",
+          "max": "36",
+          "width": "20.0"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "37",
+          "max": "37",
+          "width": "21.75"
+        },
+        {
+          "customWidth": "1",
+          "min": "38",
+          "max": "38",
+          "width": "19.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "39",
+          "max": "39",
+          "width": "21.75"
+        }
+      ],
+      "populated_rows": 204,
+      "errors": {},
+      "formulas": {
+        "N": 203,
+        "O": 203,
+        "P": 203,
+        "Q": 203,
+        "R": 203,
+        "AE": 203,
+        "AK": 203,
+        "AL": 203,
+        "AC": 10
+      },
+      "types": {
+        "s": 2566,
+        "n": 1015,
+        "str": 1421
+      },
+      "header_styles": {
+        "5": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "1": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "213": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "214": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FF78909C\" /><ns0:bgColor rgb=\"FF78909C\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "10": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "11": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "13": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "107": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "24": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFA2C4C9\" /><ns0:bgColor rgb=\"FFA2C4C9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "bottom",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [],
+      "identifiers": {
+        "TITULOS VENC.": {
+          "nonempty": 203,
+          "distinct": 129,
+          "lengths": {
+            "1": 32,
+            "3": 78,
+            "2": 79,
+            "12": 1,
+            "4": 11,
+            "5": 2
+          },
+          "patterns": {
+            "entero": 137,
+            "otro": 66
+          }
+        }
+      }
+    },
+    {
+      "name": "040-VENUS",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 264
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 264
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 264
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 264
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 264
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 264
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 265
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 265
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 265
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 265
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 265
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 265
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 264
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 266
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 266
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 266
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 266
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 266
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 267
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 265
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 268
+        },
+        {
+          "column": "V",
+          "label": "TITULOS VENC.",
+          "style": 264
+        },
+        {
+          "column": "W",
+          "label": "EMISION",
+          "style": 269
+        },
+        {
+          "column": "X",
+          "label": "EMI LETRA",
+          "style": 265
+        },
+        {
+          "column": "Y",
+          "label": "INTERES",
+          "style": 269
+        },
+        {
+          "column": "Z",
+          "label": "INT LETRA",
+          "style": 265
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL",
+          "style": 264
+        },
+        {
+          "column": "AB",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 264
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO",
+          "style": 269
+        },
+        {
+          "column": "AD",
+          "label": "RECARGO EN LETRA",
+          "style": 264
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL",
+          "style": 270
+        },
+        {
+          "column": "AF",
+          "label": "TOTAL EN LETRA",
+          "style": 264
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 264
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 264
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 264
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 264
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 264
+        },
+        {
+          "column": "AL",
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "style": 264
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 264
+        }
+      ],
+      "columns": [
+        {
+          "hidden": "1",
+          "min": "3",
+          "max": "3",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "49.25"
+        },
+        {
+          "hidden": "1",
+          "min": "7",
+          "max": "12",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "hidden": "1",
+          "min": "13",
+          "max": "13",
+          "width": "25.88"
+        },
+        {
+          "hidden": "1",
+          "min": "14",
+          "max": "18",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "20",
+          "max": "21",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "22",
+          "max": "22",
+          "width": "9.88"
+        },
+        {
+          "hidden": "1",
+          "min": "24",
+          "max": "24",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "26",
+          "max": "28",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "30",
+          "max": "30",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "32",
+          "max": "32",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "35",
+          "max": "35",
+          "width": "12.63"
+        }
+      ],
+      "populated_rows": 1361,
+      "errors": {
+        "#N/A": 416
+      },
+      "formulas": {
+        "N": 1360,
+        "O": 1360,
+        "P": 1360,
+        "Q": 1360,
+        "R": 1360,
+        "AE": 1359,
+        "AL": 1360,
+        "M": 771,
+        "AC": 158
+      },
+      "types": {
+        "s": 12689,
+        "n": 5393,
+        "str": 8931,
+        "e": 416
+      },
+      "header_styles": {
+        "264": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9EAD3\" /><ns0:bgColor rgb=\"FFD9EAD3\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "265": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9EAD3\" /><ns0:bgColor rgb=\"FFD9EAD3\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "266": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9EAD3\" /><ns0:bgColor rgb=\"FFD9EAD3\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "267": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9EAD3\" /><ns0:bgColor rgb=\"FFD9EAD3\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "268": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9EAD3\" /><ns0:bgColor rgb=\"FFD9EAD3\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "269": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9EAD3\" /><ns0:bgColor rgb=\"FFD9EAD3\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "270": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9EAD3\" /><ns0:bgColor rgb=\"FFD9EAD3\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [
+        "$A$1:$AM$1361",
+        "$A$1:$AM$1361"
+      ],
+      "identifiers": {
+        "TITULOS VENC.": {
+          "nonempty": 1034,
+          "distinct": 343,
+          "lengths": {
+            "3": 503,
+            "2": 289,
+            "4": 186,
+            "1": 42,
+            "5": 13,
+            "6": 1
+          },
+          "patterns": {
+            "decimal": 389,
+            "entero": 437,
+            "otro": 207,
+            "lista": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "INCONSISTENCIAS",
+      "visibility": "hidden",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 12
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 15
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 15
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 15
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 15
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 15
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 12
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 12
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 12
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 12
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 12
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 12
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 12
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 12
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 12
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 12
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 12
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 12
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 12
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 12
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 26
+        },
+        {
+          "column": "V",
+          "label": "EMISION",
+          "style": 32
+        },
+        {
+          "column": "W",
+          "label": "EMI LETRA",
+          "style": 12
+        },
+        {
+          "column": "X",
+          "label": "INTERES",
+          "style": 32
+        },
+        {
+          "column": "Y",
+          "label": "INT LETRA",
+          "style": 12
+        },
+        {
+          "column": "Z",
+          "label": "SUBTOTAL",
+          "style": 15
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 15
+        },
+        {
+          "column": "AB",
+          "label": "RECARGO",
+          "style": 32
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO EN LETRA",
+          "style": 15
+        },
+        {
+          "column": "AD",
+          "label": "TOTAL",
+          "style": 32
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL EN LETRA",
+          "style": 15
+        },
+        {
+          "column": "AF",
+          "label": "TITULOS",
+          "style": 15
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 15
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 15
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 15
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 15
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 15
+        },
+        {
+          "column": "AL",
+          "label": "",
+          "style": 15
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 15
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "31.75"
+        },
+        {
+          "hidden": "1",
+          "min": "7",
+          "max": "18",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "20",
+          "max": "35",
+          "width": "12.63"
+        }
+      ],
+      "populated_rows": 62,
+      "errors": {
+        "#N/A": 10
+      },
+      "formulas": {
+        "AD": 30,
+        "M": 24,
+        "N": 30,
+        "O": 30,
+        "P": 30,
+        "Q": 30,
+        "R": 30,
+        "AE": 30,
+        "AM": 14,
+        "AL": 10,
+        "AK": 1,
+        "AC": 1
+      },
+      "types": {
+        "s": 761,
+        "n": 408,
+        "str": 185,
+        "b": 33,
+        "e": 10
+      },
+      "header_styles": {
+        "12": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9D2E9\" /><ns0:bgColor rgb=\"FFD9D2E9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "15": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9D2E9\" /><ns0:bgColor rgb=\"FFD9D2E9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "26": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9D2E9\" /><ns0:bgColor rgb=\"FFD9D2E9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "32": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"solid\"><ns0:fgColor rgb=\"FFD9D2E9\" /><ns0:bgColor rgb=\"FFD9D2E9\" /></ns0:patternFill></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [],
+      "identifiers": {
+        "CLAVE": {
+          "nonempty": 25,
+          "distinct": 25,
+          "lengths": {
+            "18": 6,
+            "23": 2,
+            "21": 4,
+            "25": 13
+          },
+          "patterns": {
+            "otro": 25
+          }
+        },
+        "TITULOS": {
+          "nonempty": 48,
+          "distinct": 25,
+          "lengths": {
+            "3": 21,
+            "4": 20,
+            "5": 4,
+            "1": 3
+          },
+          "patterns": {
+            "decimal": 45,
+            "entero": 3
+          }
+        }
+      }
+    },
+    {
+      "name": "PG RECARGO",
+      "visibility": "hidden",
+      "headers": [
+        {
+          "column": "A",
+          "label": "NO",
+          "style": 1
+        },
+        {
+          "column": "B",
+          "label": "TP",
+          "style": 5
+        },
+        {
+          "column": "C",
+          "label": "EXP",
+          "style": 5
+        },
+        {
+          "column": "D",
+          "label": "PREDIO MUNICIPAL",
+          "style": 106
+        },
+        {
+          "column": "E",
+          "label": "CONTRIBUYENTE",
+          "style": 5
+        },
+        {
+          "column": "F",
+          "label": "CEDULA",
+          "style": 5
+        },
+        {
+          "column": "G",
+          "label": "OP",
+          "style": 1
+        },
+        {
+          "column": "H",
+          "label": "OC",
+          "style": 1
+        },
+        {
+          "column": "I",
+          "label": "DIGIT",
+          "style": 1
+        },
+        {
+          "column": "J",
+          "label": "CLAVE",
+          "style": 1
+        },
+        {
+          "column": "K",
+          "label": "CIU",
+          "style": 1
+        },
+        {
+          "column": "L",
+          "label": "DIRECCION",
+          "style": 1
+        },
+        {
+          "column": "M",
+          "label": "PARROQUIA",
+          "style": 7
+        },
+        {
+          "column": "N",
+          "label": "PARROQ",
+          "style": 7
+        },
+        {
+          "column": "O",
+          "label": "ZONA",
+          "style": 7
+        },
+        {
+          "column": "P",
+          "label": "SECTOR ",
+          "style": 7
+        },
+        {
+          "column": "Q",
+          "label": "MZ",
+          "style": 7
+        },
+        {
+          "column": "R",
+          "label": "PREDIO",
+          "style": 7
+        },
+        {
+          "column": "S",
+          "label": "ID PLAN",
+          "style": 1
+        },
+        {
+          "column": "T",
+          "label": "TELEFONO",
+          "style": 1
+        },
+        {
+          "column": "U",
+          "label": "CORREO",
+          "style": 11
+        },
+        {
+          "column": "V",
+          "label": "EMISION",
+          "style": 13
+        },
+        {
+          "column": "W",
+          "label": "EMI LETRA",
+          "style": 1
+        },
+        {
+          "column": "X",
+          "label": "INTERES",
+          "style": 13
+        },
+        {
+          "column": "Y",
+          "label": "INT LETRA",
+          "style": 1
+        },
+        {
+          "column": "Z",
+          "label": "SUBTOTAL",
+          "style": 5
+        },
+        {
+          "column": "AA",
+          "label": "SUBTOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AB",
+          "label": "RECARGO",
+          "style": 13
+        },
+        {
+          "column": "AC",
+          "label": "RECARGO EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AD",
+          "label": "TOTAL",
+          "style": 107
+        },
+        {
+          "column": "AE",
+          "label": "TOTAL EN LETRA",
+          "style": 5
+        },
+        {
+          "column": "AF",
+          "label": "TITULO",
+          "style": 3
+        },
+        {
+          "column": "AG",
+          "label": "DIGITADOR",
+          "style": 5
+        },
+        {
+          "column": "AH",
+          "label": "FECHA",
+          "style": 5
+        },
+        {
+          "column": "AI",
+          "label": "HORA",
+          "style": 5
+        },
+        {
+          "column": "AJ",
+          "label": "NOVEDAD",
+          "style": 5
+        },
+        {
+          "column": "AK",
+          "label": "NOMBRE DE ARCHIVO Y NUMERO",
+          "style": 5
+        },
+        {
+          "column": "AL",
+          "label": "ORDEN COACTIVA ANTERIOR",
+          "style": 5
+        },
+        {
+          "column": "AM",
+          "label": "",
+          "style": 5
+        },
+        {
+          "column": "AN",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AO",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AP",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AQ",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AR",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AS",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AT",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AU",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AV",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AW",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AX",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AY",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "AZ",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BA",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BB",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BC",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BD",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BE",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BF",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BG",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BH",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BI",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BJ",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BK",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BL",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BM",
+          "label": "",
+          "style": 108
+        },
+        {
+          "column": "BN",
+          "label": "",
+          "style": 108
+        }
+      ],
+      "columns": [
+        {
+          "hidden": "1",
+          "min": "3",
+          "max": "3",
+          "width": "12.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "14.5"
+        },
+        {
+          "customWidth": "1",
+          "min": "5",
+          "max": "5",
+          "width": "30.88"
+        },
+        {
+          "hidden": "1",
+          "min": "8",
+          "max": "10",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "12",
+          "max": "18",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "20",
+          "max": "21",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "23",
+          "max": "23",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "25",
+          "max": "27",
+          "width": "12.63"
+        },
+        {
+          "hidden": "1",
+          "min": "29",
+          "max": "31",
+          "width": "12.63"
+        }
+      ],
+      "populated_rows": 26,
+      "errors": {},
+      "formulas": {
+        "O": 18,
+        "P": 18,
+        "Q": 18,
+        "R": 18,
+        "Z": 7,
+        "AD": 13,
+        "AL": 25,
+        "AB": 2,
+        "N": 12,
+        "AE": 12,
+        "AC": 1
+      },
+      "types": {
+        "s": 373,
+        "n": 136,
+        "str": 109
+      },
+      "header_styles": {
+        "1": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "5": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "106": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"10.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "7": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "11": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "0"
+          },
+          "numFmtId": "49"
+        },
+        "13": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "107": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "165"
+        },
+        "3": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "108": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:b /><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [],
+      "filters": [],
+      "identifiers": {
+        "CLAVE": {
+          "nonempty": 6,
+          "distinct": 6,
+          "lengths": {
+            "25": 2,
+            "21": 2,
+            "18": 2
+          },
+          "patterns": {
+            "otro": 6
+          }
+        },
+        "TITULO": {
+          "nonempty": 13,
+          "distinct": 9,
+          "lengths": {
+            "3": 10,
+            "4": 2,
+            "1": 1
+          },
+          "patterns": {
+            "decimal": 12,
+            "entero": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "COACTIVA",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "<sin encabezado reconocido>",
+          "style": 414
+        },
+        {
+          "column": "B",
+          "label": "<sin encabezado reconocido>",
+          "style": 415
+        },
+        {
+          "column": "C",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "D",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "E",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "F",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "G",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "H",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "I",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "J",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "K",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "L",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "M",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "N",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "O",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "P",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "Q",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "R",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "S",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "T",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "U",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "V",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "W",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "X",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "Y",
+          "label": "",
+          "style": 416
+        },
+        {
+          "column": "Z",
+          "label": "",
+          "style": 416
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "46.25"
+        }
+      ],
+      "populated_rows": 18669,
+      "errors": {},
+      "formulas": {},
+      "types": {
+        "s": 37337
+      },
+      "header_styles": {
+        "414": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:color theme=\"1\" /><ns0:name val=\"Arial\" /><ns0:scheme val=\"minor\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center"
+          },
+          "numFmtId": "49"
+        },
+        "415": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:sz val=\"11.0\" /><ns0:color theme=\"1\" /><ns0:name val=\"Calibri\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "49"
+        },
+        "416": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:color theme=\"1\" /><ns0:name val=\"Arial\" /><ns0:scheme val=\"minor\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "center"
+          },
+          "numFmtId": "49"
+        }
+      },
+      "panes": [],
+      "filters": [],
+      "identifiers": {}
+    },
+    {
+      "name": "Copia de BARRIOS DE QGUIS",
+      "visibility": "visible",
+      "headers": [
+        {
+          "column": "A",
+          "label": "clave_nuev",
+          "style": 433
+        },
+        {
+          "column": "B",
+          "label": "barrio",
+          "style": 433
+        },
+        {
+          "column": "C",
+          "label": "nombres",
+          "style": 433
+        },
+        {
+          "column": "D",
+          "label": "",
+          "style": 434
+        }
+      ],
+      "columns": [
+        {
+          "customWidth": "1",
+          "min": "1",
+          "max": "1",
+          "width": "20.0"
+        },
+        {
+          "customWidth": "1",
+          "min": "2",
+          "max": "2",
+          "width": "29.63"
+        },
+        {
+          "customWidth": "1",
+          "min": "3",
+          "max": "3",
+          "width": "73.25"
+        },
+        {
+          "customWidth": "1",
+          "min": "4",
+          "max": "4",
+          "width": "12.88"
+        }
+      ],
+      "populated_rows": 31335,
+      "errors": {},
+      "formulas": {},
+      "types": {
+        "s": 93918
+      },
+      "header_styles": {
+        "433": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:color theme=\"1\" /><ns0:name val=\"Arial\" /><ns0:scheme val=\"minor\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "horizontal": "left",
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "vertical": "center",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        },
+        "434": {
+          "font": "<ns0:font xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:color theme=\"1\" /><ns0:name val=\"Arial\" /><ns0:scheme val=\"minor\" /></ns0:font>",
+          "fill": "<ns0:fill xmlns:ns0=\"http://schemas.openxmlformats.org/spreadsheetml/2006/main\"><ns0:patternFill patternType=\"none\" /></ns0:fill>",
+          "alignment": {
+            "readingOrder": "0",
+            "shrinkToFit": "0",
+            "wrapText": "1"
+          },
+          "numFmtId": "0"
+        }
+      },
+      "panes": [
+        {
+          "ySplit": "1.0",
+          "topLeftCell": "A2",
+          "activePane": "bottomLeft",
+          "state": "frozen"
+        }
+      ],
+      "filters": [],
+      "identifiers": {}
+    }
+  ],
+  "external_parts": 0
+}
